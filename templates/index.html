@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>myFragranceHub</title>
+    <style>
+        /* Add any custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Fragrance Hub</h1>
+    <p>Please choose an option below:</p>
+    <form action="/handle_collection" method="POST">
+        <button type="submit">My Collection</button>
+    </form>
+    <form action="/handle_wishlist" method="POST">
+        <button type="submit">My Wishlist</button>
+    </form>
+</body>
+</html>
