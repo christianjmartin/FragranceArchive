@@ -594,7 +594,7 @@ Armani Code Absolu by Giorgio Armani Type
 Armani Code Absolu Gold by Giorgio Armani Type
 Armani Code by Giorgio Armani Type
 Armani Code Eau de Parfum by Giorgio Armani Type
-Armani Code for Women Giorgio Armani Type
+Armani Code for Women by Giorgio Armani Type
 Armani Code Parfum by Giorgio Armani Type
 Armani Code Profumo by Giorgio Armani Type
 Armani Privé Bleu Turquoise by Giorgio Armani Type
@@ -637,7 +637,7 @@ Astronomy Domine by MiN New York Type
 Aswad al Oudh by The Dua Brand Type
 At The Barber’s by Maison Martin Margiela Type
 At The Beach 1966 by CB I Hate Perfume Type
-At The Beach Bath And Body Works Type
+At The Beach by Bath And Body Works Type
 Atara by Michael Malul London Type
 Atelier Cologne by Atelier Cologne Type
 Atelier des Fleurs Tuberosa 1974 by Atelier Cologne Type
@@ -906,7 +906,7 @@ Black Citrus by Vilhelm Parfumerie Type
 Black Coconut by Ava Luxe Type
 Black Coconut by Kuumba Made Type
 Black Copium by Kuumba Made Type
-Black Diamond By Rue21 Type
+Black Diamond by Rue21 Type
 Black Flower Mexican Vanilla by Dame Perfumery Type
 Black For Her Eau de Parfum by Kenneth Cole Type
 Black For Him Eau de Toilette by Kenneth Cole Type
@@ -932,10 +932,10 @@ Black Pepper & Sandalwood by Acca Kappa Type
 Black Pepper by Demeter Fragrance Library Type
 Black Pepper by Erbario Toscano Type
 Black Perfecto by La Petite Robe Noire by Guerlain Type
-Black Phantom by By Kilian Type
 Black Phantom by Kilian Type
-Black Phantom Memento Mori Anniversary Edition By Kilian Type
-Black Phantom Memento Mori By Kilian Type
+Black Phantom by Kilian Type
+Black Phantom Memento Mori Anniversary Edition by Kilian Type
+Black Phantom Memento Mori by Kilian Type
 Black Phantom Memento Mori by Kilian Type
 Black Rose by A Beautiful Life Brands Type
 Black Rose by Abu Zari Fragrances Type
@@ -3152,7 +3152,7 @@ Eidesis by Aesop Type
 EIGHT & BOB by EIGHT & BOB Type
 Eilish by Billie Eilish Type
 Eilish No 2. by Billie Eilish Type
-El Capitan bby Hové Parfumeur Type
+El Capitan by Hové Parfumeur Type
 El Cosmico by DS&Durga Type
 El Diablo by Bud Parfums Type
 EL SIRENO by House of BŌ Type
@@ -3563,7 +3563,7 @@ Flower Fresh by Clean Beauty Collective Type
 Flower Market by Skeem Type
 Flower Moon by Pacifica Type
 Flower Of Immortality by Kilian Type
-Flower Princess By Vera Wang Type
+Flower Princess by Vera Wang Type
 Flower Show by Demeter Fragrance Library Type
 Flowerbomb Bloom by Viktor&Rolf Type
 Flowerbomb by Viktor&Rolf Type
@@ -3792,7 +3792,7 @@ Ghaliya Rosarie by Elixir Attar Type
 Ghazal by Blend Oud Type
 Ghost Pine Eau de Parfum by Lvnea Type
 Ghost Pine Parfum Botanique by Lvnea Type
-Ghost Serenity By Tanya Sarne Type
+Ghost Serenity by Tanya Sarne Type
 Gia by Tocca Type
 Giallo Elicriso by Acca Kappa Type
 Giallo Riviera by Arte Profumi Type
@@ -6368,7 +6368,7 @@ Pamella Roland Eau de Parfum by Pamella Roland Type
 Pamplemousse by DSH Perfumes Type
 Pamplemousse Grenade by Adopt’ by Reserve Naturelle Type
 Pamplemousse Vanille by La Bouquetiere Type
-Pan bby Anya’s Garden Perfumes Type
+Pan by Anya’s Garden Perfumes Type
 Pan by Opus Oils Type
 Pandora by DSH Perfumes Type
 Paper – by Commodity Type
@@ -6496,7 +6496,7 @@ Pearl by Mancera Type
 Pearl Eau de Parfum by Apothia Type
 Pearl Leather by Beach Geeza Type
 Pearl Musk by Ava Luxe Type
-Pearl Oud by By Kilian Type
+Pearl Oud by Kilian Type
 Peau by Arquiste Type
 Peau de Peche by Keiko Mecheri Type
 Pêche au Yuzu by Kyse Perfumes Type
@@ -6518,7 +6518,7 @@ Per Cent’anni by Laughing Saint Type
 Perception by Alexandre.J Type
 Percival by Parfums de Marly Type
 Perfect by Marc Jacobs Type
-Perfect Eau de Toiletteby Marc Jacobs Type
+Perfect Eau de Toilette by Marc Jacobs Type
 Perfect Intense by Marc Jacobs Type
 Perfect Man by Ainash Parfums Type
 Perfume #01 Amber & Cashmere by David’s Perfume Type
@@ -7986,7 +7986,7 @@ Sweet Dreams Love Yourself by Benetton Type
 Sweet Eau De Parfum by Ellis Brooklyn Type
 Sweet Gardenia by DSH Perfumes Type
 Sweet Jasmine Brown Perfume Oil by Providence Perfume Co. Type
-Sweet Like Candy By Ariana Grande Type
+Sweet Like Candy by Ariana Grande Type
 Sweet Like Candy by Ariana Grande Type
 Sweet Orange by Demeter Fragrance Library Type
 Sweet Patchouli by Ava Luxe Type
@@ -8869,7 +8869,7 @@ West Eau De Parfum by Ellis Brooklyn Type
 West Indian Lime Cologne by St Johns Fragrance Type
 West Side by Bond No. 9 Type
 Western Leather Black by Alexandre.J Type
-Western Leather White Type
+Western Leather White by Alexandre.J Type
 Wet Garden by Demeter Fragrance Library Type
 Wet Pavement London by CB I Hate Perfume Type
 Wet Stone – 0162 by CB I Hate Perfume Type
@@ -9140,3 +9140,22 @@ Zombie Perfume Oil by Possets Perfume Type
 Zonm by Seychelles de Parfum Type
 Zoogar EDT by JAFRA Cosmetics Type
 Zucchero Filato by Kyse Perfumes Type
+Pink Boa by Stéphane Humbert Lucas 777
+Panthea by Stéphane Humbert Lucas 777
+Mango Kiss by Stéphane Humbert Lucas 777
+Sand Dance by Stéphane Humbert Lucas 777
+Panthea Iris by Stéphane Humbert Lucas 777
+Little Song by meo fusciuni
+Notturno by meo fusciuni
+Luce by meo fusciuni
+Narcotico by meo fusciuni
+Odor 93 by meo fusciuni
+Spirito by meo fusciuni
+Varanasi by meo fusciuni
+Encore du temps by meo fusciuni
+Sogni by meo fusciuni
+Viole Nere by meo fusciuni
+Last Season by meo fusciuni
+Vanilla Diorama by Dior
+Pour Homme by Bvglari
+Fantomas by Nasomatto

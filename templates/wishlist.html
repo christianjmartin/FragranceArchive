@@ -1,36 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Wishlist Dashboard</title>
-    <style>
-        /* Add any custom styles here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        button {
-            margin: 10px;
-            padding: 10px;
-            border: none;
-            background-color: #007BFF;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wishlist Dashboard</title>
+        <link rel="stylesheet" href="static/inappstyles.css">
+    </head>
 </head>
 <body>
-    <h1>Welcome to the Wishlist Dashboard</h1>
-    <p>Here are your options:</p>
-    <!-- Add buttons or links to different functionalities -->
-    <button onclick="window.location.href='/Add fragrance'">Add Fragrance</button>
-    <button onclick="window.location.href='/Remove fragrance'">Remove Fragrance</button>
-    <button onclick="window.location.href='/logout'">Logout</button>
+    <h1 class = "title">Welcome to the Wishlist Dashboard</h1>
+    <div class="logo_container">
+        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+    </div>
+    <div class = selection_container>
+        <p>Here are your options:</p>
+        <!-- Add buttons or links to different functionalities -->
+        <form action="/add_wishlist" method="GET">
+            <button class = "btn" type="submit">Add a Fragrance</button>
+        </form>
+        <form action="/remove_wishlist" method="POST">
+            <button class = "btn" type="submit">Remove a Fragrance</button>
+        </form>
+        <p> Dont see a fragrance you know? </p>
+        <form action="/request_fragrance_wishlist" method="GET">
+            <button class = "btn" type="submit">Request a Fragrance</button>
+        </form>
+    </div>
+        <img src="{{ url_for('static', filename='assets/fragrances3.jpg.webp') }}" alt="fragrance icon" class="pic_container" />
+    <div class = "back_container">
+        <form action="/logout" method="POST">
+            <button class = "btn" type="submit">Logout</button>
+        </form>
+        <form action="/handle_menu" method="POST">
+            <button class = "btn" type="submit">Main Menu</button>
+        </form>
+    </div>
+    <div class = h20>
+        <h2 class = "h2o">My Fragrance Wishlist</h2>
+        <div class = "fragrance_collection">
+        <table>
+            <thead>
+                <tr>
+                    <th class = "header">Name</th>
+                    <th class = "header">House</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fragrance in fragrance_wishlist %}
+                <tr>
+                    <td class = "fragtext bordered">{{ fragrance.name }}</td>
+                    <td class = "fragtext bordered">{{ fragrance.house }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class = "sort_above">
+        <p>Would you like to change the sorting of your Wishlist?</p>
+    </div>
+    <div class = "sorting_container">
+        <form action="/alphabetically_sort_name_AZ" method="POST">
+            <button class = "btn2" type="submit">Name A-Z</button>
+        </form>
+        <form action="/alphabetically_sort_name_ZA" method="POST">
+            <button class = "btn2" type="submit">Name Z-A</button>
+        </form>
+        <form action="/alphabetically_sort_house_AZ" method="POST">
+            <button class = "btn2" type="submit">House A-Z</button>
+        </form>
+        <form action="/alphabetically_sort_house_ZA" method="POST">
+            <button class = "btn2" type="submit">House Z-A</button>
+        </form>
+        <form action="/newest_added" method="POST">
+            <button class = "btn2" type="submit">Newest Added</button>
+        </form>
+        <form action="/oldest_added" method="POST">
+            <button class = "btn2" type="submit">Oldest Added</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/inappstyles.css">
+    <title>Remove Fragrance Wishlist</title>
+</head>
+<div class = "top_of_removal">
+    <form action="/back_to_wishlist" method="POST">
+        <button class = "btn2" type="submit">Back</button>
+    </form>
+    <h1>My Fragrance Wishlist</h1>
+</div>
+<div class = "centered">
+    <h3>Please choose a fragrance to remove from your wishlist below</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class = "spacing4">Name</th>
+                    <th class = "spacing4">House</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fragrance in fragrance_wishlist %}
+                <tr>
+                    <td>{{ fragrance.name }}</td>
+                    <td>{{ fragrance.house }}</td>
+                    <td>
+                        <form action="/remove_fragrance_wishlist" method="POST">
+                            <input type="hidden" class="fragtext spacing3" name="fragrance_name" value="{{ fragrance.name }}">
+                            <input type="hidden" class="fragtext spacing3" name="fragrance_house" value="{{ fragrance.house }}">
+                            <button type="submit" class = "btn2">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>

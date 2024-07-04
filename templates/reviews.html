@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wishlist Dashboard</title>
+        <link rel="stylesheet" href="static/inappstyles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+<body>
+    <script>
+        function addLike(review_id) {
+            $.ajax({
+            url: '/like_review',
+            type: 'POST',
+            data: {review_id: review_id},
+            success: function(response) {
+                if (!response.success) {
+                    alert('You have already liked this review!');
+                }
+            },
+            error: function() {
+                alert('ERROR BAD');
+            }
+        });
+        }
+    </script>
+    <h1 class = "title">Welcome to the Reviews Dashboard</h1>
+    <div class="logo_container">
+        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+    </div>
+    <div class = selection_container>
+        <!-- Add buttons or links to different functionalities -->
+        <form action="/search_reviews" method="GET">
+            <p>From here, you can write a review of your own!</p>
+            <button class = "btn" type="submit">Search for a Fragrance</button>
+        </form>
+    </div>
+        <!-- <img src="{{ url_for('static', filename='assets/fragances1.jpg') }}" alt="fragrance icon" class="pic_container" /> -->
+    <div class = "back_container">
+        <form action="/logout" method="POST">
+            <button class = "btn" type="submit">Logout</button>
+        </form>
+        <form action="/handle_menu" method="POST">
+            <button class = "btn" type="submit">Main Menu</button>
+        </form>
+    </div>
+    <div class = "reviews_container">
+        <p>Fragrance Reviews </p>
+        {% for rev in reviews %}
+        <ul>
+            <li class = "fragtext bordered website special2">{{ rev.fragrance_name }} by {{rev.fragrance_house}} 
+                <button class = "btn2" type = "submit" onclick = "addLike('{{ rev.review_id }}')">Like</button>
+            </li>
+            <li class = "fragtext bordered">Likes: {{ rev.likes }} </li>
+            <li class = "fragtext bordered">User: {{ rev.name }}</li>
+            {% if rev.rating is not none %}
+            <li class="fragtext bordered">
+                Rating:
+                <div class="star-rating small-stars">
+                    {% for i in range(5, 0, -1) %}
+                        <input type="radio" id="star{{i}}_{{rev.review_id}}" name="rating{{rev.review_id}}" value="{{i}}" {% if rev.rating == i %}checked{% endif %} disabled/>
+                        <label for="star{{i}}_{{rev.review_id}}">&#9733;</label>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
+            <li class = "fragtext bordered special">Review: {{ rev.review }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    <div class = "sort_above">
+        <p>Would you like to change the sorting of the reviews?</p>
+    </div>
+    <div class = "sorting_container">
+        <form action="/sort_reviews_oldest" method="POST">
+            <button class = "btn2" type="submit">Oldest Added</button>
+        </form>
+        <form action="/sort_reviews_newest" method="POST">
+            <button class = "btn2" type="submit">Newest Added</button>
+        </form>
+        <form action="/sort_reviews_popularity" method="POST">
+            <button class = "btn2" type="submit">High Popularity</button>
+        </form>
+        <form action="/sort_reviews_highest_rated" method="POST">
+            <button class = "btn2" type="submit">High Rated</button>
+        </form>
+        <form action="/sort_reviews_lowest_rated" method="POST">
+            <button class = "btn2" type="submit">Low Rated</button>
+        </form>
+    </div>
+</body>
+</html>

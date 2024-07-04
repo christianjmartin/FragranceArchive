@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/inappstyles.css">
+    <title>Add Fragrance</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<div class = "top_of_removal">
+    <form action="/back_to_collection" method="POST">
+        <button class = "btn2" type="submit">Back</button>
+    </form>
+    <h1>Add Fragrance To Collection</h1>
+</div>
+<div class="form_container2">
+            <form id="fragrance_name_form" action="/add_fragrance_to_collection" method="POST" autocomplete="off">
+                <label for="fragrance_name">Search by fragrance name:</label>
+                <input type="text" id="fragrance_name" name="fragrance_name" autocomplete="off" autocorrect="off">
+                <!-- <button class = "btn2" type="submit">Submit</button> -->
+            </form>
+    
+            <form id="fragrance_house_form" action="/add_fragrance_to_collection" method="POST" autocomplete="off">
+                <label for="fragrance_house">Search by fragrance house:</label>
+                <input type="text" id="fragrance_house" name="fragrance_house" autocomplete="off" autocorrect="off">
+                <!-- <button class = "btn2" type="submit">Submit</button> -->
+            </form>
+
+    <div id="searchResults"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Function to handle click on fragrance option in the dropdown
+            $('#searchResults').on('click', 'div', function() {
+                var selectedFragrance = $(this).text().trim();
+                $('#fragrance_name').val(selectedFragrance);
+                $('#fragrance_name_form').submit();
+            });
+
+            function performSearch() {
+                var nameQuery = $('#fragrance_name').val();
+                var houseQuery = $('#fragrance_house').val();
+
+                var url = '';
+                var data = {};
+
+                if (nameQuery && houseQuery) {
+                    url = '/search_fragrances_by_name_and_house';
+                    data = { name_query: nameQuery, house_query: houseQuery };
+                } else if (nameQuery) {
+                    url = '/search_fragrances_by_name';
+                    data = { query: nameQuery };
+                } else if (houseQuery) {
+                    url = '/search_fragrances_by_house';
+                    data = { query: houseQuery };
+                } else {
+                    $('#searchResults').empty();
+                    return; // If both fields are empty, do nothing
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: data,
+                    success: function(data) {
+                        $('#searchResults').empty();
+                        
+                        data.sort(function(a, b) {
+                            var nameA = a.name.toUpperCase(); // Ignore case
+                            var nameB = b.name.toUpperCase(); // Ignore case
+                            
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+
+                            // names must be equal
+                            return 0;
+                        });
+
+                        $.each(data, function(index, fragrance) {
+                            $('#searchResults').append('<div class=" form fragtext bordered spacing2 fragrance_select">' + fragrance.name + ' by ' + fragrance.house + '</div>');
+                        });
+                    }
+                });
+            }
+
+            $('#fragrance_name, #fragrance_house').on('input', function() {
+                performSearch();
+            });
+        });
+    </script>
+</div>
+</html>

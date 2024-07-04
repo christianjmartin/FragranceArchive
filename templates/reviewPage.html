@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/inappstyles.css">
+    <title>Fragrance Review</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<div class = "top_of_removal">
+    <form action="/back_to_reviews" method="POST">
+        <button class = "btn2" type="submit">Back</button>
+    </form>
+    <h1>Reviews for {{ fragrance_name }} by {{ fragrance_house }} </h1>
+
+
+    {% if average_rating %}
+        <p>Average Rating: {{ average_rating }} / 5</p>
+    {% else %}
+        <p>No ratings available</p>
+    {% endif %}
+
+    
+</div>
+<div class = "reviews_container2">
+    <ul>
+        {% if reviews %}
+            {% for review in reviews %}
+                <li class = "fragtext bordered">{{ review.name}}</li>
+                <li class = "fragtext bordered special">{{ review.review }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No reviews available.</li>
+        {% endif %}
+    </ul>
+</div>
+<div class = "spacing2">
+<form action="/write_review" method="POST">
+    <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+    <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+    <input type="hidden" name="reviews" value="{{ reviews }}">
+    <button class="btn" type="submit">Write a Review</button>
+</form>
+
+<p>My rating:</p>
+
+<!-- Rating Stars -->
+<div class="star-rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">&#9733;</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">&#9733;</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">&#9733;</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">&#9733;</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">&#9733;</label>
+</div>
+
+<button class="btn2" type="button" onclick="submitRating('{{ fragrance_name }} ', '{{ fragrance_house }}')">Submit Rating</button>
+
+<script>
+function submitRating(fragrance_name, fragrance_house) {
+    const rating = document.querySelector('input[name="rating"]:checked').value;
+    $.ajax({
+        url: '/rate_fragrance',
+        type: 'POST',
+        data: {
+            fragrance_name: fragrance_name,
+            fragrance_house: fragrance_house,
+            rating: rating
+        },
+        success: function(response) {
+            if (response.success) {
+                alert('Rating added successfully!');
+            } else {
+                alert('Failed to add rating.');
+            }
+        },
+        error: function() {
+            alert('Error occurred while adding rating.');
+        }
+    });
+}
+</script>
+</div>
+</html>
+

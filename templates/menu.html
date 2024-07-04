@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FragranceVault</title>
+        <link rel="stylesheet" href="static/inappstyles.css">
+    </head>
+<body>
+    <h1 class="title">The Fragrance Vault</h1>
+    <div class="logo_container">
+        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+    </div>
+    <div class = "selection_container2">
+        <p>Hello {{ userName }}, Please choose an option below:</p>
+        <form action="/handle_collection" method="POST">
+            <button class = "btn" type="submit">My Collection</button>
+        </form>
+        <form action="/handle_wishlist" method="POST">
+            <button class = "btn" type="submit">My Wishlist</button>
+        </form>
+        <form action="/handle_reviews" method="POST">
+            <button class="btn" type="submit">Fragrance Reviews</button>
+        </form>
+        <form action="/logout" method="POST">
+            <button class = "btn" type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>myFragranceHub</title>
-    <style>
-        /* Add any custom styles here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        button {
-            margin: 10px;
-            padding: 10px;
-            border: none;
-            background-color: #007BFF;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FragranceVault</title>
+        <link rel="stylesheet" href="static/inappstyles.css">
+    </head>
 <body>
-    <h1>Welcome to the Fragrance Hub</h1>
-    <p>Please choose an option below:</p>
-    <form action="/handle_collection" method="POST">
-        <button type="submit">My Collection</button>
-    </form>
-    <form action="/handle_wishlist" method="POST">
-        <button type="submit">My Wishlist</button>
-    </form>
+    <h1 class = "title">Welcome to the Fragrance Vault</h1>
+    <div class="logo_container">
+        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+    </div>
+    <div class = "selection_container">
+        <p>Please choose an option below:</p>
+        <form action="/login" method="GET">
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <form action="/sign_up" method="GET">
+            <button class="btn" type="submit">Sign Up</button>
+        </form>
+    </div>
+    <div class = "information_site">
+        <p>Curate your collection, or a wishlist for your future in the fragrance world!</p>
+        <p>For more information on fragrances, updated everyday, visit this Reddit page - <a href="https://www.reddit.com/r/fragrance/" target="_blank" class = "link">r/fragrance</a></p>
+        <img src="{{ url_for('static', filename='assets/fragrances4.jpg') }}" alt="fragpic" class="pic_container_for_4"/>
+        <img src="{{ url_for('static', filename='assets/fragrances9.jpg') }}" alt="fragpic" class="pic_container_for_4"/>
+        <div class="trustworthy_sites">
+            <p>Trusted sites to purchase from:</p>
+            <p class = "bold">Discounters</p>
+            <p><a href="https://www.fragrancenet.com" target="_blank" class = "link">Fragrancenet</a></p>
+            <p><a href="https://fragrancebuy.ca" target="_blank" class = "link">Fragrancebuy</a></p>
+            <p><a href="https://www.jomashop.com/fragrances.html" target="_blank" class = "link">Jomashop</a></p>
+            <p><a href="https://www.aurafragrance.com" target="_blank" class = "link">Aurafragrance</a></p>
+            <p><a href="https://www.fragrancex.com" target="_blank" class = "link">FragranceX</a></p>
+            <p><a href="https://perfumeonline.ca" target="_blank" class = "link">Perfumeonline</a></p>
+            <p><a href="https://www.costco.com/fragrances.html" target="_blank" class = "link">Costco</a></p>
+            <p class = "bold">Niche</p>
+            <p><a href="https://www.maxaroma.com" target="_blank" class = "link">Maxaroma</a></p>
+            <p><a href="https://www.luckyscent.com" target="_blank" class = "link">Luckyscent</a></p>
+            <p><a href="https://www.neimanmarcus.com/c/beauty-fragrance-cat10470744" target="_blank" class = "link">Neiman Marcus</a></p>
+            <p><a href="https://www.nordstrom.com/browse/beauty/fragrance?breadcrumb=Home%2FBeauty%2FFragrance" target="_blank" class = "link">Nordstrom</a></p>
+            <p><a href="https://www.harrods.com/en-us/shopping/beauty-perfume" target="_blank" class = "link">Harrods</a></p>
+            <p><a href="https://www.selfridges.com/US/en/cat/beauty/fragrance/" target="_blank" class = "link">Selfridges</a></p>
+            <p class = "bold">Samples</p>
+            <p><a href="https://twistedlily.com/collections/samples-fragrance" target="_blank" class = "link">twistedlily</a></p>
+            <p><a href="https://www.scentsplit.com" target="_blank" class = "link">scentsplit</a></p>
+            <p><a href="https://microperfumes.com" target="_blank" class = "link">microperfumes</a></p>
+        </div>
+    </div>
 </body>
 </html>
