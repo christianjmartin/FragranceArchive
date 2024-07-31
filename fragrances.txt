@@ -6569,7 +6569,6 @@ Philosykos Eau de Parfum by Diptyque Type
 Philtre Ceylan by Atelier Cologne Type
 Phloria Eau de Parfum by Phlur Type
 Phoenix by MCMC Fragrances Type
-Phoenix Green by Oscar Perfumes Type Type
 Phtaloblue by Tauer Perfumes Type
 Pi by Givenchy Type
 Pierre Cardin by Pierre Cardin Type
@@ -9140,22 +9139,29 @@ Zombie Perfume Oil by Possets Perfume Type
 Zonm by Seychelles de Parfum Type
 Zoogar EDT by JAFRA Cosmetics Type
 Zucchero Filato by Kyse Perfumes Type
-Pink Boa by Stéphane Humbert Lucas 777
-Panthea by Stéphane Humbert Lucas 777
-Mango Kiss by Stéphane Humbert Lucas 777
-Sand Dance by Stéphane Humbert Lucas 777
-Panthea Iris by Stéphane Humbert Lucas 777
-Little Song by meo fusciuni
-Notturno by meo fusciuni
-Luce by meo fusciuni
-Narcotico by meo fusciuni
-Odor 93 by meo fusciuni
-Spirito by meo fusciuni
-Varanasi by meo fusciuni
-Encore du temps by meo fusciuni
-Sogni by meo fusciuni
-Viole Nere by meo fusciuni
-Last Season by meo fusciuni
-Vanilla Diorama by Dior
-Pour Homme by Bvglari
-Fantomas by Nasomatto
+Pink Boa by Stéphane Humbert Lucas 777 Type
+Panthea by Stéphane Humbert Lucas 777 Type
+Mango Kiss by Stéphane Humbert Lucas 777 Type
+Sand Dance by Stéphane Humbert Lucas 777 Type
+Panthea Iris by Stéphane Humbert Lucas 777 Type
+Little Song by Meo Fusciuni Type
+Notturno by Meo Fusciuni Type
+Luce by Meo Fusciuni Type
+Narcotico by Meo Fusciuni Type
+Odor 93 by Meo Fusciuni Type
+Spirito by Meo Fusciuni Type
+Varanasi by Meo Fusciuni Type
+Encore du temps by Meo Fusciuni Type
+Sogni by Meo Fusciuni Type
+Viole Nere by Meo Fusciuni Type
+Last Season by Meo Fusciuni Type
+Pour Homme by Bvglari Type
+Fantomas by Nasomatto Type
+Club de Nuit Iconic by Armaf Type
+Pour Homme by Bvlgari Type
+French Defense by Mind Games Fragrance Type
+Dawn by Frederic Malle Type
+Eau Rihla by Diptyque Type
+Myrrhe 55 by Le Labo Type
+Phoenix Green by Oscar Perfumes Type
+Penguin by Zoologist Type

@@ -4,81 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/inappstyles.css">
+    <link rel="stylesheet" href="static/mediaqueries.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Fragrance Review</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<div class = "top_of_removal">
-    <form action="/back_to_reviews" method="POST">
-        <button class = "btn2" type="submit">Back</button>
-    </form>
-    <h1>Reviews for {{ fragrance_name }} by {{ fragrance_house }} </h1>
-
-
-    {% if average_rating %}
-        <p>Average Rating: {{ average_rating }} / 5</p>
-    {% else %}
-        <p>No ratings available</p>
-    {% endif %}
-
-    
-</div>
-<div class = "reviews_container2">
-    <ul>
-        {% if reviews %}
-            {% for review in reviews %}
-                <li class = "fragtext bordered">{{ review.name}}</li>
-                <li class = "fragtext bordered special">{{ review.review }}</li>
-            {% endfor %}
-        {% else %}
-            <li>No reviews available.</li>
-        {% endif %}
-    </ul>
-</div>
-<div class = "spacing2">
-<form action="/write_review" method="POST">
-    <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
-    <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
-    <input type="hidden" name="reviews" value="{{ reviews }}">
-    <button class="btn" type="submit">Write a Review</button>
-</form>
-
-<p>My rating:</p>
-
-<!-- Rating Stars -->
-<div class="star-rating">
-    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">&#9733;</label>
-    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">&#9733;</label>
-    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">&#9733;</label>
-    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">&#9733;</label>
-    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">&#9733;</label>
-</div>
-
-<button class="btn2" type="button" onclick="submitRating('{{ fragrance_name }} ', '{{ fragrance_house }}')">Submit Rating</button>
-
-<script>
-function submitRating(fragrance_name, fragrance_house) {
-    const rating = document.querySelector('input[name="rating"]:checked').value;
-    $.ajax({
-        url: '/rate_fragrance',
-        type: 'POST',
-        data: {
-            fragrance_name: fragrance_name,
-            fragrance_house: fragrance_house,
-            rating: rating
-        },
-        success: function(response) {
-            if (response.success) {
-                alert('Rating added successfully!');
-            } else {
-                alert('Failed to add rating.');
-            }
-        },
-        error: function() {
-            alert('Error occurred while adding rating.');
+<body class="no-cursor">
+    <script>
+        function addLike(review_id, button) {
+            $.ajax({
+                url: '/like_review',
+                type: 'POST',
+                data: { review_id: review_id },
+                success: function(response) {
+                    if (response.success) {
+                        $(button).find('i').toggleClass('far fas');
+                        $(button).toggleClass('liked');
+                    } else {
+                        alert('An error occurred.');
+                    }
+                },
+                error: function() {
+                    alert('ERROR BAD');
+                }
+            });
         }
-    });
-}
-</script>
-</div>
-</html>
 
+        function submitRating(fragrance_name, fragrance_house, rating) {
+            $.ajax({
+                url: '/rate_fragrance',
+                type: 'POST',
+                data: {
+                    fragrance_name: fragrance_name,
+                    fragrance_house: fragrance_house,
+                    rating: rating
+                },
+                success: function(response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert('Failed to add rating.');
+                    }
+                },
+                error: function() {
+                    alert('Error occurred while adding rating.');
+                }
+            });
+        }
+
+        function removeRating(fragrance_name, fragrance_house) {
+            $.ajax({
+                url: '/remove_rating',
+                type: 'POST',
+                data: {
+                    fragrance_name: fragrance_name,
+                    fragrance_house: fragrance_house
+                },
+                success: function(response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert('Failed to remove rating.');
+                    }
+                },
+                error: function() {
+                    alert('Error occurred while removing rating.');
+                }
+            });
+        }
+
+        function confirmDelete(reviewId) {
+            const reviewElement = document.getElementById(`review_${reviewId}`);
+            reviewElement.innerHTML = `
+                <div class="fragtext bordered spacing">
+                    <p>Are you sure you want to delete this review?</p>
+                    <button class="confirm-button" onclick="deleteReview(${reviewId})">Yes</button>
+                    <button class="confirm-button" onclick="cancelDelete(${reviewId})">No</button>
+                </div>
+            `;
+        }
+
+        function deleteReview(reviewId) {
+            $.ajax({
+                url: '/delete_review',
+                type: 'POST',
+                data: { review_id: reviewId },
+                success: function(response) {
+                    if (response.success) {
+                        document.getElementById(`review_${reviewId}`).remove();
+                    } else {
+                        alert('Failed to delete review.');
+                    }
+                },
+                error: function() {
+                    alert('Error occurred while deleting review.');
+                }
+            });
+        }
+
+        function cancelDelete(reviewId) {
+            location.reload();
+        }
+    </script>
+    <div class="header">
+        <div class="logo_container">
+            <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+            <p class="website no-cursor">ScentConnection</p><p class="fragtext2">.com</p>
+        </div>
+        <div class="icon">
+            <form action="/profile_page" method="GET">
+                <button class="icon" type="submit">
+                    <img src="{{ url_for('static', filename='assets/profile_icon.jpeg') }}"/>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="left-column">
+            {% if average_rating %}
+                <p>Community Rating: <span class = "kinda-bold2">{{ average_rating }} / 5</span></p>
+            {% else %}
+                <p>Community Rating: <span class = "kinda-bold2">N/A</span></p>
+            {% endif %}
+            <div class="left-column-review-page">
+                <!-- <form action="{{ url_for('write_review', fragrance_name=fragrance_name|urlencode, fragrance_house=fragrance_house|urlencode) }}" method="POST">
+                    <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                    <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                    <input type="hidden" name="reviews" value="{{ reviews }}">
+                    <button class="btn" type="submit">Write a Review</button>
+                </form> -->
+                <form action="{{ url_for('write_review', fragrance_name=fragrance_name|urlencode, fragrance_house=fragrance_house|urlencode) }}" method="POST">
+                    <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                    <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                    <input type="hidden" name="reviews" value="{{ reviews }}">
+                    <button class="btn" type="submit">Write a Review</button>
+                </form>
+
+                <br>
+                <p>My rating:</p>
+
+                <!-- Rating Stars -->
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5" {% if user_rating == 5 %}checked{% endif %} onclick="submitRating('{{ fragrance_name }}', '{{ fragrance_house }}', 5)"/><label for="star5" title="5 stars">&#9733;</label>
+                    <input type="radio" id="star4" name="rating" value="4" {% if user_rating == 4 %}checked{% endif %} onclick="submitRating('{{ fragrance_name }}', '{{ fragrance_house }}', 4)"/><label for="star4" title="4 stars">&#9733;</label>
+                    <input type="radio" id="star3" name="rating" value="3" {% if user_rating == 3 %}checked{% endif %} onclick="submitRating('{{ fragrance_name }}', '{{ fragrance_house }}', 3)"/><label for="star3" title="3 stars">&#9733;</label>
+                    <input type="radio" id="star2" name="rating" value="2" {% if user_rating == 2 %}checked{% endif %} onclick="submitRating('{{ fragrance_name }}', '{{ fragrance_house }}', 2)"/><label for="star2" title="2 stars">&#9733;</label>
+                    <input type="radio" id="star1" name="rating" value="1" {% if user_rating == 1 %}checked{% endif %} onclick="submitRating('{{ fragrance_name }}', '{{ fragrance_house }}', 1)"/><label for="star1" title="1 star">&#9733;</label>
+                </div>
+
+                <div class="top-buttons-review-page">
+                    <button class="btn2 spacing11" type="button" onclick="removeRating('{{ fragrance_name }}', '{{ fragrance_house }}')">Remove Rating</button>
+                </div>
+
+                <img src="{{ url_for('static', filename='assets/fragrances12.jpg.avif') }}" alt="fragrance icon" class="pic_container_review_page" />
+
+                <div class="top-buttons-review-page">
+                    <form action="/add_fragrance_to_collection" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }} by {{ fragrance_house }}">
+                        <button class="btn2" type="submit">Add to Collection</button>
+                    </form>
+                    <form action="/add_fragrance_to_wishlist" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }} by {{ fragrance_house }}">
+                        <button class="btn2" type="submit">Add to Wishlist</button>
+                    </form>
+                </div>
+                <div class="back_container">
+                    <form action="/handle_menu" method="POST">
+                        <button class="btn" type="submit">Main Menu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="column-title2">
+                <h2 class="no-cursor">Reviews for {{ fragrance_name }}</h2>
+            </div>
+            <div class="reviews-container">
+                <ul>
+                    {% if reviews %}
+                        {% for review in reviews %}
+                        <ul id="review_{{ review.review_id }}">
+                            <li class="review-item fragtext bordered spacing5">
+                                <div class="review-header">
+                                    <a href="{{ url_for('review_page', fragrance_name=review.fragrance_name|urlencode, fragrance_house=review.fragrance_house|urlencode) }}" class="link-review">
+                                        <strong>{{ review.fragrance_name }} by {{ review.fragrance_house }}</strong>
+                                    </a>
+                                    {% if email != review.review_email %}
+                                        <button class="btn4 like-button {% if review.user_liked %}liked{% endif %}" onclick="addLike('{{ review.review_id }}', this)">
+                                            <i class="{% if review.user_liked %}fas{% else %}far{% endif %} fa-heart"></i>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                                <p class="spacing10 no-cursor">{{ review.review }}</p>
+                                <small class="no-cursor">Rating: 
+                                    <span class="small-stars">
+                                        {% for i in range(5, 0, -1) %}
+                                            <input type="radio" id="star{{i}}_{{review.review_id}}" name="rating{{review.review_id}}" value="{{i}}" {% if review.rating == i %}checked{% endif %} disabled/>
+                                            <label for="star{{i}}_{{review.review_id}}">&#9733;</label>
+                                        {% endfor %}
+                                    </span>
+                                </small>
+                                <br>
+                                <small class="no-cursor">Likes: {{ review.likes }}</small>
+                                <br>
+                                <small class="no-cursor">User: <a href="{{ url_for('profile_page', user_email=review.review_email) }}" class="link-review">{{ review.name }}</a></small>
+                                {% if email == review.review_email %}
+                                    <div class="edit-delete-buttons">
+                                        <form action="/edit_review" method="POST">
+                                            <input type="hidden" name="review_id" value="{{ review.review_id }}">
+                                            <input type="hidden" name="fragrance_name" value="{{ review.fragrance_name }}">
+                                            <input type="hidden" name="fragrance_house" value="{{ review.fragrance_house }}">
+                                            <input type="hidden" name="review_text" value="{{ review.review }}">
+                                            <input type="hidden" name="rating" value="{{ review.rating }}">
+                                            <button class="edit-button" type="submit">Edit</button>
+                                        </form>
+                                        <button class="delete-button" onclick="confirmDelete('{{ review.review_id }}')">Delete</button>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    {% else %}
+                        <li>No reviews available.</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="request-text-collection">
+                <p>Change the sorting of the reviews?</p>
+            </div>
+            <div class="sorting-collection">
+                    <form action="/sort_reviews_oldest_onpage" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                        <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                        <button class="btn2" type="submit">Oldest Added</button>
+                    </form>
+                    <form action="/sort_reviews_newest_onpage" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                        <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                        <button class="btn2" type="submit">Newest Added</button>
+                    </form>
+                    <form action="/sort_reviews_popularity_onpage" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                        <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                        <button class="btn2" type="submit">High Popularity</button>
+                    </form>
+                    <form action="/sort_reviews_highest_rated_onpage" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                        <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                        <button class="btn2" type="submit">High Rated</button>
+                    </form>
+                    <form action="/sort_reviews_lowest_rated_onpage" method="POST">
+                        <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+                        <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+                        <button class="btn2" type="submit">Low Rated</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

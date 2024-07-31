@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/inappstyles.css">
+    <title>Search Users</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="top_of_removal no-cursor">
+    <h1>Search for users</h1>
+</div>
+<div class="form_container2">
+    <form id="user_search_form" action="/go_to_user_profile" method="POST" autocomplete="off">
+        <input type="text" id="user" name="query" autocomplete="off" autocorrect="off">
+    </form>
+    <div id="searchResults"></div>
+</div>
+
+<script>
+$(document).ready(function() {
+    function performSearch() {
+        var query = $('#user').val();
+        if (query.trim() === '') {
+            $('#searchResults').empty();
+            return;
+        }
+        $.ajax({
+            url: '/search_users',
+            type: 'POST',
+            data: { query: query },
+            success: function(data) {
+                $('#searchResults').empty();
+                data.forEach(function(user) {
+                    var userDiv = $('<div>').addClass('form fragtext bordered spacing2 user_select').text(user.username);
+                    userDiv.data('email', user.email);
+                    $('#searchResults').append(userDiv);
+                });
+            }
+        });
+    }
+
+    $('#user').on('input', performSearch);
+
+    $('#searchResults').on('click', 'div.user_select', function() {
+        var selectedUser = $(this).text().trim();
+        var hiddenInput = $('#user_search_form').find('input[name="user"]');
+        if (hiddenInput.length) {
+            hiddenInput.val(selectedUser);
+        } else {
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'user',
+                value: selectedUser
+            }).appendTo('#user_search_form');
+        }
+        $('#user_search_form').submit();
+    });
+});
+</script>
+</body>
+</html>

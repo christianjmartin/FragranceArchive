@@ -1,94 +1,174 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wishlist Dashboard</title>
-        <link rel="stylesheet" href="static/inappstyles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Dashboard</title>
+    <link rel="stylesheet" href="static/inappstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="static/mediaqueries.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class = "no-cursor">
     <script>
-        function addLike(review_id) {
+        function addLike(review_id, button) {
             $.ajax({
-            url: '/like_review',
+                url: '/like_review',
+                type: 'POST',
+                data: { review_id: review_id },
+                success: function(response) {
+                    if (response.success) {
+                        $(button).find('i').toggleClass('far fas');
+                        $(button).toggleClass('liked');
+                    } else {
+                        alert('An error occurred.');
+                    }
+                },
+                error: function() {
+                    alert('ERROR BAD');
+                }
+            });
+        }
+
+        function confirmDelete(reviewId) {
+        const reviewElement = document.getElementById(`review_${reviewId}`);
+        reviewElement.innerHTML = `
+            <div class = "fragtext bordered spacing">
+            <p>Are you sure you want to delete this review?</p>
+            <button class="confirm-button" onclick="deleteReview(${reviewId})">Yes</button>
+            <button class="confirm-button" onclick="cancelDelete(${reviewId})">No</button>
+            <div/>
+        `;
+    }
+
+    function deleteReview(reviewId) {
+        $.ajax({
+            url: '/delete_review',
             type: 'POST',
-            data: {review_id: review_id},
+            data: { review_id: reviewId },
             success: function(response) {
-                if (!response.success) {
-                    alert('You have already liked this review!');
+                if (response.success) {
+                    document.getElementById(`review_${reviewId}`).remove();
+                } else {
+                    alert('Failed to delete review.');
                 }
             },
             error: function() {
-                alert('ERROR BAD');
+                alert('Error occurred while deleting review.');
             }
         });
-        }
+    }
+
+    function cancelDelete(reviewId) {
+        // Reload the page to show the original content
+        location.reload();
+    }
     </script>
-    <h1 class = "title">Welcome to the Reviews Dashboard</h1>
-    <div class="logo_container">
-        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+    <div class="header">
+        <div class="logo_container">
+            <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+            <p class="website no-cursor">ScentConnection</p>
+        </div>
+        <div class="icon">
+            <form action="/profile_page" method="GET">
+                <button class="icon" type="submit">
+                    <img src="{{ url_for('static', filename='assets/profile_icon.jpeg') }}"/>
+                </button>
+            </form>
+        </div>
     </div>
-    <div class = selection_container>
-        <!-- Add buttons or links to different functionalities -->
-        <form action="/search_reviews" method="GET">
-            <p>From here, you can write a review of your own!</p>
-            <button class = "btn" type="submit">Search for a Fragrance</button>
-        </form>
+
+    <div class = "profile-container">
+        <div class = "left-column">
+            <div class="top-buttons-collection">
+                <form action="/search_reviews" method="GET">
+                    <p class = "no-cursor">From here, you can write a review of your own!</p>
+                    <button class="btn" type="submit">Fragrance Search</button>
+                </form>
+            </div>
+            <img src="{{ url_for('static', filename='assets/fragrances11.jpg') }}" alt="fragrance icon" class="pic_container_reviews" />
+            <div class="back_container">
+                <form action="/handle_menu" method="POST">
+                    <button class="btn" type="submit">Main Menu</button>
+                </form>
+            </div>
+        </div>
+
+        <div class = "right-column">
+            <div class = "column-title">
+                <h2>Fragrance Reviews</h2>
+            </div>
+            <div class="reviews-container">
+                <ul>
+                    {% if reviews %}
+                        {% for review in reviews %}
+                        <ul id="review_{{ review.review_id }}">
+                            <li class="review-item fragtext bordered spacing5">
+                                <div class="review-header">
+                                    <a href="{{ url_for('review_page', fragrance_name=review.fragrance_name|urlencode, fragrance_house=review.fragrance_house|urlencode) }}" class="link-review">
+                                        <strong>{{ review.fragrance_name }} by {{ review.fragrance_house }}</strong>
+                                    </a>
+                                    {% if email != review.review_email %}
+                                        <button class="btn4 like-button {% if review.user_liked %}liked{% endif %}" onclick="addLike('{{ review.review_id }}', this)">
+                                            <i class="{% if review.user_liked %}fas{% else %}far{% endif %} fa-heart"></i>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                                <p class = "spacing10">{{ review.review }}</p>
+                                <small>Rating: 
+                                    <span class="small-stars">
+                                        {% for i in range(5, 0, -1) %}
+                                            <input type="radio" id="star{{i}}_{{review.review_id}}" name="rating{{review.review_id}}" value="{{i}}" {% if review.rating == i %}checked{% endif %} disabled/>
+                                            <label for="star{{i}}_{{review.review_id}}">&#9733;</label>
+                                        {% endfor %}
+                                    </span>
+                                </small>
+                                <br>
+                                <small>Likes: {{ review.likes }}</small>
+                                <br>
+                                <small>User: <a href="{{ url_for('profile_page', user_email=review.review_email) }}" class="link-review">{{ review.name }}</a></small>
+                                {% if email == review.review_email %}
+                                    <div class="edit-delete-buttons">
+                                        <form action="/edit_review" method="POST">
+                                            <input type="hidden" name="review_id" value="{{ review.review_id }}">
+                                            <input type="hidden" name="fragrance_name" value="{{ review.fragrance_name }}">
+                                            <input type="hidden" name="fragrance_house" value="{{ review.fragrance_house }}">
+                                            <input type="hidden" name="review_text" value="{{ review.review }}">
+                                            <input type="hidden" name="rating" value="{{ review.rating }}">
+                                            <button class="edit-button" type="submit">Edit</button>
+                                        </form>
+                                        <button class="delete-button" onclick="confirmDelete('{{ review.review_id }}')">Delete</button>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    {% else %}
+                        <li>No reviews available.</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="request-text-collection">
+                <p>Change the sorting of the reviews?</p>
+            </div>
+            <div class="sorting-collection">
+                    <form action="/sort_reviews_oldest" method="POST">
+                        <button class="btn2" type="submit">Oldest Added</button>
+                    </form>
+                    <form action="/sort_reviews_newest" method="POST">
+                        <button class="btn2" type="submit">Newest Added</button>
+                    </form>
+                    <form action="/sort_reviews_popularity" method="POST">
+                        <button class="btn2" type="submit">High Popularity</button>
+                    </form>
+                    <form action="/sort_reviews_highest_rated" method="POST">
+                        <button class="btn2" type="submit">High Rated</button>
+                    </form>
+                    <form action="/sort_reviews_lowest_rated" method="POST">
+                        <button class="btn2" type="submit">Low Rated</button>
+                    </form>
+            </div>
     </div>
-        <!-- <img src="{{ url_for('static', filename='assets/fragances1.jpg') }}" alt="fragrance icon" class="pic_container" /> -->
-    <div class = "back_container">
-        <form action="/logout" method="POST">
-            <button class = "btn" type="submit">Logout</button>
-        </form>
-        <form action="/handle_menu" method="POST">
-            <button class = "btn" type="submit">Main Menu</button>
-        </form>
-    </div>
-    <div class = "reviews_container">
-        <p>Fragrance Reviews </p>
-        {% for rev in reviews %}
-        <ul>
-            <li class = "fragtext bordered website special2">{{ rev.fragrance_name }} by {{rev.fragrance_house}} 
-                <button class = "btn2" type = "submit" onclick = "addLike('{{ rev.review_id }}')">Like</button>
-            </li>
-            <li class = "fragtext bordered">Likes: {{ rev.likes }} </li>
-            <li class = "fragtext bordered">User: {{ rev.name }}</li>
-            {% if rev.rating is not none %}
-            <li class="fragtext bordered">
-                Rating:
-                <div class="star-rating small-stars">
-                    {% for i in range(5, 0, -1) %}
-                        <input type="radio" id="star{{i}}_{{rev.review_id}}" name="rating{{rev.review_id}}" value="{{i}}" {% if rev.rating == i %}checked{% endif %} disabled/>
-                        <label for="star{{i}}_{{rev.review_id}}">&#9733;</label>
-                    {% endfor %}
-                </div>
-            </li>
-            {% endif %}
-            <li class = "fragtext bordered special">Review: {{ rev.review }}</li>
-        </ul>
-        {% endfor %}
-    </div>
-    <div class = "sort_above">
-        <p>Would you like to change the sorting of the reviews?</p>
-    </div>
-    <div class = "sorting_container">
-        <form action="/sort_reviews_oldest" method="POST">
-            <button class = "btn2" type="submit">Oldest Added</button>
-        </form>
-        <form action="/sort_reviews_newest" method="POST">
-            <button class = "btn2" type="submit">Newest Added</button>
-        </form>
-        <form action="/sort_reviews_popularity" method="POST">
-            <button class = "btn2" type="submit">High Popularity</button>
-        </form>
-        <form action="/sort_reviews_highest_rated" method="POST">
-            <button class = "btn2" type="submit">High Rated</button>
-        </form>
-        <form action="/sort_reviews_lowest_rated" method="POST">
-            <button class = "btn2" type="submit">Low Rated</button>
-        </form>
-    </div>
+</div>
 </body>
 </html>

@@ -3,17 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FragranceVault</title>
+        <title>ScentConnection</title>
         <link rel="stylesheet" href="static/inappstyles.css">
     </head>
 <body>
-    <h1 class="title">The Fragrance Vault</h1>
-    <div class="logo_container">
-        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+    <div class="header">
+        <div class="logo_container">
+            <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+            <p class="website no-cursor">ScentConnection</p>
+        </div>
+        <div class="icon">
+            <form action="/profile_page" method="GET">
+                <button class="icon" type="submit">
+                    <img src="{{ url_for('static', filename='assets/profile_icon.jpeg') }}"/>
+                </button>
+            </form>
+        </div>
     </div>
     <div class = "selection_container2">
-        <p>Hello {{ userName }}, Please choose an option below:</p>
+        <p class="no-cursor">Hello {{ userName }}, Please choose an option below:</p>
         <form action="/handle_collection" method="POST">
             <button class = "btn" type="submit">My Collection</button>
         </form>
@@ -22,6 +30,12 @@
         </form>
         <form action="/handle_reviews" method="POST">
             <button class="btn" type="submit">Fragrance Reviews</button>
+        </form>
+        <form action="/search_reviews" method="GET">
+            <button class="btn" type="submit">Search for a Fragrance</button>
+        </form>
+        <form action="/search_users" method="GET">
+            <button class="btn" type="submit">Search for Users</button>
         </form>
         <form action="/logout" method="POST">
             <button class = "btn" type="submit">Logout</button>

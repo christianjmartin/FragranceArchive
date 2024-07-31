@@ -1,0 +1,191 @@
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 1200px) {
+    /* MOST OF THIS SHOULD BE FINE OR CLOSE TO FIND, JUST COMMENTED
+    TO SEE WHAT DIFFERENCE IS WHEN UNCOMMENTED */
+
+
+    /* .left-column {
+        max-width: 400px;
+    }
+    .top-buttons-collection {
+        max-width: 100px;
+        gap: 5px;
+        margin-top: 33px;
+    }
+    .request-button-collection {
+        max-width: 230px;
+        text-wrap: nowrap;
+    }
+    .pic_container {
+        max-width: 350px;
+        max-height: 230px;
+    }
+    .btn {
+        padding: 15px 20px;
+    } */
+}
+
+@media screen and (max-width: 900px) {
+    .profile-title-name {
+        margin-top: 40px;
+        text-wrap: nowrap;
+    }
+    .specialCase {
+        margin-top: -40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* .left-column {
+        max-width: 115px;
+    } */
+
+    .information_site {
+        margin-top: 0;
+        display: block;
+        max-width: 340px;
+    }
+    .pic_container_for_4 {
+        max-width: 365px;
+        max-height: 200px;
+        left: 0;
+    }
+    .trustworthy_sites {
+        max-width: 120px;
+        min-width: 120px;
+        margin-top: 25px;
+    }
+    .selection_container {
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 5px;
+        margin-bottom: 50px;
+    }
+
+    .right-column {
+        min-width: 320px;
+    }
+    .top-buttons-collection {
+        max-width: 100px;
+        margin-top: 33px;
+        gap: 5px;
+        flex-wrap: wrap;
+        gap: 0px;
+    }
+    .btn {
+        padding: 15px 20px;
+        margin-top: 5px;
+        min-width: 115px;
+    }
+    .request-button-collection {
+        max-width: 115px;
+        text-wrap: wrap;
+        margin-top: 10px;
+        /* margin-bottom: 5px; */
+    }
+    .pic_container {
+        max-width: 115px;
+        max-height: 250px;
+        object-fit: cover;
+        object-position: left;
+    }
+    .sorting-collection {
+        flex-wrap: wrap;
+        place-content: center;
+        gap: 5px;
+        margin-top: 5px;
+        align-items: center;
+    }
+    .fragrance_collection2 {
+        max-height: 420px;
+        min-height: 420px;
+    }
+    .btn2 {
+        padding: 5px 8px;
+        margin-top: 5px;
+    }
+
+    .reviews-container {
+        max-height: 420px;
+        min-height: 420px;
+    }
+    .pic_container_reviews {
+        max-width: 115px;
+        max-height: 400px;
+        object-fit: cover;
+    }
+    .pic_container_review_page {
+        max-width: 115px;
+        max-height: 100px;
+        object-fit: cover;
+        object-position: right;
+    }
+    .top-buttons-collection p {
+        margin-top: -10px;
+        font-size: 0px;
+        color: rgb(255, 245, 246);;
+    }
+
+    .star-rating {
+        font-size: 10px;  
+    }
+    .top-buttons-review-page {
+        max-width: 100px;
+        gap: 5px;
+        flex-wrap: wrap;
+        gap: 0px;
+        margin-bottom: 10px;
+        margin-top: 17px;
+    }
+    .column-title2 {
+        font-size: smaller;
+    }
+    .left-column-review-page {
+        max-width: 115px;
+    }
+
+    .spacing9 {
+        margin-left: -10px
+    }
+}
+
+
+/* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
+/* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
+/* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
+@media screen and (max-width: 700px) {
+    /* .profile-title-name p{
+        position: absolute;
+        margin-left: -45px;
+        margin-top: 27px;
+    } */
+    .spacing9 {
+        margin-top: 15px;
+    }
+    .bruh {
+        position: absolute;
+        margin-top: 50px;
+    }
+    .specialCase {
+        margin-top: 0px;
+    }
+    /* .btn {
+        padding: 15px 20px;
+        margin-top: 5px;
+        min-width: 115px;
+    } */
+
+    /* FROM HERE IT IS THE SAME AS 600 
+    /* FROM HERE IT IS THE SAME AS 600
+    /* FROM HERE IT IS THE SAME AS 600
+    /* FROM HERE IT IS THE SAME AS 600
+    /* FROM HERE IT IS THE SAME AS 600
+    /* FROM HERE IT IS THE SAME AS 600 */
+
+    
+}
+ /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
+  /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
+   /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */

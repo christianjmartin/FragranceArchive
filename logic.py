@@ -1,27 +1,72 @@
-def validateSignup(dbCursor, conn, name, email, password):
+
+def passwordChecker(password):
+    if len(password) < 8:
+        return False
+
+    counter_upper = False
+    counter_lower = False
+    counter_digit = False
+    counter_symbol = False
+
+    for i in password:
+        if 'A' <= i <= 'Z':
+            counter_upper = True
+        elif 'a' <= i <= 'z':
+            counter_lower = True
+        elif '0' <= i <= '9':
+            counter_digit = True
+        else:
+            counter_symbol = True
+
+    if counter_upper == False or counter_lower == False or counter_digit == False or counter_symbol == False:
+        return False
+    else:
+        return True
+    
+
+def validateSignup(dbCursor, conn, name, email, password, lastname, username):
     name = name.strip()
     email = email.strip()
     password = password.strip()
+
+    passwordCheck = passwordChecker(password)
+    if passwordCheck == False:
+        return 0
+    
+    if len(username) > 15:
+        return 4
+
     query = "SELECT * FROM Client WHERE Email = %s"
     try: 
         dbCursor.execute(query, (email,))
         row = dbCursor.fetchone()
     except Exception as e:
         print("error in query execution" + e)
-        return False
+        return -1
 
     if row is not None:
-        return False
+        return 1
     
-    query2 = "INSERT INTO Client (Email, Name, Password) VALUES (%s, %s, %s)"
+    query2 = "SELECT * FROM Client WHERE Username = %s"
     try: 
-        dbCursor.execute(query2, (email, name, password))
+        dbCursor.execute(query2, (username,))
+        row2 = dbCursor.fetchone()
+    except Exception as e:
+        print("error in query execution" + e)
+        return -1
+
+    if row2 is not None:
+        return 2
+    
+    query3 = "INSERT INTO Client (Email, Name, Password, LastName, Username) VALUES (%s, %s, %s, %s, %s)"
+    try: 
+        dbCursor.execute(query3, (email, name, password, lastname, username))
         conn.commit()
-        return True
+        return 3
     except Exception as e:
         print("error in query execution" + e)
         conn.rollback()
-        return False
+        return -1
 
 
 
@@ -386,131 +431,332 @@ def getFragranceReviews(dbCursor, name, house):
 
 
 def saveFragranceReview(dbCursor, conn, name, house, reviewText, email, rating):
-    # IF A RATING ALREADY EXISTS, UPDATE IT WHEN REVIEW IS WRITTEN 
     email = email.strip()
     name = name.strip()
     house = house.strip()
-    getName = "SELECT Name FROM Client WHERE Email = %s"
+
+    # Get the client's USERNAME
+    getName = "SELECT Username FROM Client WHERE Email = %s"
     dbCursor.execute(getName, (email,))
-    clientName = dbCursor.fetchone()
-    if rating != '':
-        query = "INSERT INTO Reviews (Name, House, Review, ClientEmail, ClientName, Rating) VALUES (%s, %s, %s, %s, %s, %s)"
-        try: 
-            dbCursor.execute(query, (name, house, reviewText, email, clientName, rating))
+    clientName = dbCursor.fetchone() #THIS IS ACTUALLY THE USERNAME 
+
+    try:
+        # Insert the review into the Reviews table
+        if rating != '':
+            query = "INSERT INTO Reviews (Name, House, Review, ClientEmail, ClientName, Rating) VALUES (%s, %s, %s, %s, %s, %s) RETURNING ReviewID"
+            dbCursor.execute(query, (name, house, reviewText, email, clientName[0], rating))
             conn.commit()
-        except Exception as e:
-            print("error in query execution" + e)
-            conn.rollback()
-            return False
-    else:
-        query = "INSERT INTO Reviews (Name, House, Review, ClientEmail, ClientName) VALUES (%s, %s, %s, %s, %s)"
-        try: 
-            dbCursor.execute(query, (name, house, reviewText, email, clientName))
+        else:
+            query = "INSERT INTO Reviews (Name, House, Review, ClientEmail, ClientName) VALUES (%s, %s, %s, %s, %s) RETURNING ReviewID"
+            dbCursor.execute(query, (name, house, reviewText, email, clientName[0]))
             conn.commit()
-            return True
-        except Exception as e:
-            print("error in query execution" + e)
-            conn.rollback()
-            return False
+
+
+
+        # Insert or update the ReviewRatings table
+        if rating != '':
+            check = "SELECT * FROM ReviewRatings WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s"
+            dbCursor.execute(check, (email, name, house))
+            result = dbCursor.fetchone()
+
+            if result:
+                query2 = "UPDATE ReviewRatings SET Rating = %s WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s"
+                dbCursor.execute(query2, (rating, email, name, house))
+                conn.commit()
+            else:
+                query = "INSERT INTO ReviewRatings (Client_Email, Rating, FragName, FragHouse) VALUES (%s, %s, %s, %s)"
+                dbCursor.execute(query, (email, rating, name, house))
+                conn.commit()
+
+        return True
+    except Exception as e:
+        print("error in query execution: " + str(e))
+        conn.rollback()
+        return False
 
     
-    check = "SELECT Client_Email, FragName, FragHouse FROM ReviewRatings WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s" 
-    dbCursor.execute(check, (email, name, house))
-    result = dbCursor.fetchone()
-    if result is not None and rating != '':
-        #print(result)
+    # check = "SELECT Client_Email, FragName, FragHouse FROM ReviewRatings WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s" 
+    # dbCursor.execute(check, (email, name, house))
+    # result = dbCursor.fetchone()
+    # if result is not None and rating != '':
+    #     #print(result)
+    #         try:
+    #             query2 = "UPDATE ReviewRatings SET Rating = %s WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s"
+    #             dbCursor.execute(query2, (rating, email, name, house))
+    #             conn.commit()
+    #             return True
+    #         except Exception as e:
+    #             print("error in query execution" + e)
+    #             conn.rollback()
+    #             return False
+    # else:
+    #     if rating != '':
+    #         query = "INSERT INTO ReviewRatings (Client_Email, Rating, FragName, FragHouse) VALUES (%s, %s, %s, %s)"
+    #         try: 
+    #             dbCursor.execute(query, (email, rating, name, house))
+    #             conn.commit()
+    #             return True
+    #         except Exception as e:
+    #             print("error in query execution" + e)
+    #             conn.rollback()
+    #             return False
+
+
+
+
+def saveEditedFragranceReview(dbCursor, conn, name, house, reviewText, email, rating, review_id):
+    email = email.strip()
+    name = name.strip()
+    house = house.strip()
+    reviewText = reviewText.strip()
+    
+    getName = "SELECT Username FROM Client WHERE Email = %s"
+    dbCursor.execute(getName, (email,))
+    clientName = dbCursor.fetchone()
+    
+    # Check if the review exists
+    checkReview = "SELECT * FROM Reviews WHERE ReviewID = %s AND ClientEmail = %s"
+    dbCursor.execute(checkReview, (review_id, email))
+    existingReview = dbCursor.fetchone()
+
+    if existingReview:
+        # Update the existing review
+        if rating != '':
+            query = "UPDATE Reviews SET Name = %s, House = %s, Review = %s, ClientName = %s, Rating = %s WHERE ReviewID = %s AND ClientEmail = %s"
+            try: 
+                dbCursor.execute(query, (name, house, reviewText, clientName, rating, review_id, email))
+                conn.commit()
+            except Exception as e:
+                print("error in query execution" + str(e))
+                conn.rollback()
+                return False
+        else:
+            query = "UPDATE Reviews SET Name = %s, House = %s, Review = %s, ClientName = %s WHERE ReviewID = %s AND ClientEmail = %s"
+            try: 
+                dbCursor.execute(query, (name, house, reviewText, clientName, review_id, email))
+                conn.commit()
+                return True
+            except Exception as e:
+                print("error in query execution" + str(e))
+                conn.rollback()
+                return False
+
+        # Update the ReviewRatings table
+        check = "SELECT Client_Email, FragName, FragHouse FROM ReviewRatings WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s" 
+        dbCursor.execute(check, (email, name, house))
+        result = dbCursor.fetchone()
+        if result is not None and rating != '':
             try:
                 query2 = "UPDATE ReviewRatings SET Rating = %s WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s"
                 dbCursor.execute(query2, (rating, email, name, house))
                 conn.commit()
                 return True
             except Exception as e:
-                print("error in query execution" + e)
+                print("error in query execution" + str(e))
                 conn.rollback()
                 return False
+        else:
+            if rating != '':
+                query = "INSERT INTO ReviewRatings (Client_Email, Rating, FragName, FragHouse) VALUES (%s, %s, %s, %s)"
+                try: 
+                    dbCursor.execute(query, (email, rating, name, house))
+                    conn.commit()
+                    return True
+                except Exception as e:
+                    print("error in query execution" + str(e))
+                    conn.rollback()
+                    return False
     else:
-        if rating != '':
-            query = "INSERT INTO ReviewRatings (Client_Email, Rating, FragName, FragHouse) VALUES (%s, %s, %s, %s)"
-            try: 
-                dbCursor.execute(query, (email, rating, name, house))
-                conn.commit()
-                return True
-            except Exception as e:
-                print("error in query execution" + e)
-                conn.rollback()
-                return False
+        # Handle case where review does not exist (optional, based on your application logic)
+        print("Review does not exist.")
+        return False
 
 
 
 
-def getAllReviews(dbCursor, sorting):
+
+
+def getAllReviews(dbCursor, email, sorting):
     if sorting == "NONE":
-        query = "SELECT ReviewID, ClientName, Review, Name, House, Likes, Rating \
-                 FROM Reviews \
-                 ORDER BY ReviewID DESC"
-        dbCursor.execute(query)
-        rows = dbCursor.fetchall()
-        reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6]} for row in rows]
-        return reviews
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            ORDER BY r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email,))
     elif sorting == "oldest":
-        query = "SELECT ReviewID, ClientName, Review, Name, House, Likes, Rating \
-                 FROM Reviews \
-                 ORDER BY ReviewID ASC"
-        dbCursor.execute(query)
-        rows = dbCursor.fetchall()
-        reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6]} for row in rows]
-        return reviews
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            ORDER BY r.ReviewID ASC
+        """
+        dbCursor.execute(query, (email,))
     elif sorting == "popularity":
-        query = "SELECT ReviewID, ClientName, Review, Name, House, Likes, Rating \
-                 FROM Reviews \
-                 ORDER BY Likes DESC, ReviewID DESC"
-        dbCursor.execute(query)
-        rows = dbCursor.fetchall()
-        reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6]} for row in rows]
-        return reviews
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            ORDER BY r.Likes DESC, r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email,))
     elif sorting == "highRated":
-        query = "SELECT ReviewID, ClientName, Review, Name, House, Likes, Rating \
-                 FROM Reviews \
-                 ORDER BY CASE WHEN Rating IS NULL THEN 1 ELSE 0 END, Rating DESC, ReviewID DESC"
-        dbCursor.execute(query)
-        rows = dbCursor.fetchall()
-        reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6]} for row in rows]
-        return reviews
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            ORDER BY CASE WHEN r.Rating IS NULL THEN 1 ELSE 0 END, r.Rating DESC, r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email,))
     elif sorting == "lowRated":
-        query = "SELECT ReviewID, ClientName, Review, Name, House, Likes, Rating \
-                 FROM Reviews \
-                 ORDER BY CASE WHEN Rating IS NULL THEN 1 ELSE 0 END, Rating ASC, ReviewID DESC"
-        dbCursor.execute(query)
-        rows = dbCursor.fetchall()
-        reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6]} for row in rows]
-        return reviews
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            ORDER BY CASE WHEN r.Rating IS NULL THEN 1 ELSE 0 END, r.Rating ASC, r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email,))
 
-
+    rows = dbCursor.fetchall()
+    reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6], 'user_liked': row[7], 'review_email': row[8]} for row in rows]
+    return reviews
 
 
     
+
+
+
+
+
+
+def getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house):
+    if sorting == "NONE":
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            WHERE r.Name = %s AND r.House = %s
+            ORDER BY r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email, fragrance_name, fragrance_house))
+    elif sorting == "oldest":
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            WHERE r.Name = %s AND r.House = %s
+            ORDER BY r.ReviewID ASC
+        """
+        dbCursor.execute(query, (email, fragrance_name, fragrance_house))
+    elif sorting == "popularity":
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            WHERE r.Name = %s AND r.House = %s
+            ORDER BY r.Likes DESC, r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email, fragrance_name, fragrance_house))
+    elif sorting == "highRated":
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            WHERE r.Name = %s AND r.House = %s
+            ORDER BY CASE WHEN r.Rating IS NULL THEN 1 ELSE 0 END, r.Rating DESC, r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email, fragrance_name, fragrance_house))
+    elif sorting == "lowRated":
+        query = """
+            SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, l.ReviewLikesID IS NOT NULL AS UserLiked, r.ClientEmail
+            FROM Reviews r
+            LEFT JOIN ReviewLikes l ON r.ReviewID = l.Review_ID AND l.ClientEmail = %s
+            WHERE r.Name = %s AND r.House = %s
+            ORDER BY CASE WHEN r.Rating IS NULL THEN 1 ELSE 0 END, r.Rating ASC, r.ReviewID DESC
+        """
+        dbCursor.execute(query, (email, fragrance_name, fragrance_house))
+
+    rows = dbCursor.fetchall()
+    reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6], 'user_liked': row[7], 'review_email': row[8]} for row in rows]
+    return reviews
+
+
+
+
+def getUserReviews(dbCursor, user_email, viewer_email):
+    query = """
+        SELECT r.ReviewID, r.ClientName, r.Review, r.Name, r.House, r.Likes, r.Rating, 
+               CASE WHEN rl.ClientEmail IS NOT NULL THEN 1 ELSE 0 END AS UserLiked
+        FROM Reviews r
+        LEFT JOIN ReviewLikes rl ON r.ReviewID = rl.Review_ID AND rl.ClientEmail = %s
+        WHERE r.ClientEmail = %s
+        ORDER BY r.ReviewID DESC
+    """
+    dbCursor.execute(query, (viewer_email, user_email))
+    rows = dbCursor.fetchall()
+    reviews = [{'review_id': row[0], 'name': row[1], 'review': row[2], 'fragrance_name': row[3], 'fragrance_house': row[4], 'likes': row[5], 'rating': row[6], 'user_liked': row[7]} for row in rows]
+    return reviews
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def add_like_review(dbCursor, conn, email, reviewID):
     checkBefore = "SELECT * FROM ReviewLikes WHERE ClientEmail = %s AND Review_ID = %s"
     dbCursor.execute(checkBefore, (email, reviewID))
     result = dbCursor.fetchone()
+    
     if result is None:
+        # Add like
         query = "UPDATE Reviews SET Likes = Likes + 1 WHERE ReviewID = %s"
         try:
             dbCursor.execute(query, (reviewID,))
             conn.commit()
         except Exception as e:
-            print("error in query execution" + e)
+            print("error in query execution: " + str(e))
             conn.rollback()
+            return False
+        
         insertion = "INSERT INTO ReviewLikes (ClientEmail, Review_ID) VALUES (%s, %s)"
         try:
             dbCursor.execute(insertion, (email, reviewID))
             conn.commit()
             return True
         except Exception as e:
-            print("error in query execution" + e)
+            print("error in query execution: " + str(e))
             conn.rollback()
+            return False
     else:
-        return False
+        # Remove like
+        query = "UPDATE Reviews SET Likes = Likes - 1 WHERE ReviewID = %s"
+        try:
+            dbCursor.execute(query, (reviewID,))
+            conn.commit()
+        except Exception as e:
+            print("error in query execution: " + str(e))
+            conn.rollback()
+            return False
+        
+        deletion = "DELETE FROM ReviewLikes WHERE ClientEmail = %s AND Review_ID = %s"
+        try:
+            dbCursor.execute(deletion, (email, reviewID))
+            conn.commit()
+            return True
+        except Exception as e:
+            print("error in query execution: " + str(e))
+            conn.rollback()
+            return False
 
 
 def addRating(dbCursor, conn, email, rating, name, house):
@@ -559,3 +805,70 @@ def getAverageRating(dbCursor, name, house):
 
     
     
+
+def getUserRating(dbCursor, email, fragrance_name, fragrance_house):
+    query = "SELECT Rating FROM ReviewRatings WHERE Client_Email = %s AND FragName = %s AND FragHouse = %s"
+    dbCursor.execute(query, (email, fragrance_name, fragrance_house))
+    result = dbCursor.fetchone()
+    return result[0] if result else None
+
+
+
+
+
+def searchUsers(dbCursor, query):
+    search_query = f"%{query}%"
+    query = """
+        SELECT Username, Email 
+        FROM Client 
+        WHERE Username ILIKE %s
+    """
+    dbCursor.execute(query, (search_query,))
+    users = dbCursor.fetchall()
+    return [{'username': user[0], 'email': user[1]} for user in users]
+
+
+
+def getUserEmailByUsername(dbCursor, username):
+    query = "SELECT Email FROM Client WHERE Username = %s"
+    dbCursor.execute(query, (username,))
+    result = dbCursor.fetchone()
+    return result[0] if result else None
+
+
+def getUsername(dbCursor, email):
+    query = "SELECT Username FROM Client WHERE Email = %s"
+    dbCursor.execute(query, (email,))
+    result = dbCursor.fetchone()
+    return result[0] if result else None
+
+
+
+
+
+def is_following(dbCursor, follower_email, following_email):
+    query = "SELECT 1 FROM Follows WHERE FollowerEmail = %s AND FollowingEmail = %s"
+    dbCursor.execute(query, (follower_email, following_email))
+    return dbCursor.fetchone() is not None
+
+def getFollowers(dbCursor, email):
+    query = """
+        SELECT c.Username, c.Email 
+        FROM Follows f
+        JOIN Client c ON f.FollowerEmail = c.Email
+        WHERE f.FollowingEmail = %s
+    """
+    dbCursor.execute(query, (email,))
+    followers = dbCursor.fetchall()
+    return [{'username': follower[0], 'email': follower[1]} for follower in followers]
+
+def getFollowing(dbCursor, email):
+    query = """
+        SELECT c.Username, c.Email 
+        FROM Follows f
+        JOIN Client c ON f.FollowingEmail = c.Email
+        WHERE f.FollowerEmail = %s
+    """
+    dbCursor.execute(query, (email,))
+    following = dbCursor.fetchall()
+    return [{'username': follower[0], 'email': follower[1]} for follower in following]

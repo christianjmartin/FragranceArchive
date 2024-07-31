@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='inappstyles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="static/mediaqueries.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function confirmDelete(reviewId) {
+            const reviewElement = document.getElementById(`review_${reviewId}`);
+            reviewElement.innerHTML = `
+                <p>Are you sure you want to delete this review?</p>
+                <button class="confirm-button" onclick="deleteReview(${reviewId})">Yes</button>
+                <button class="confirm-button" onclick="cancelDelete(${reviewId})">No</button>
+            `;
+        }
+
+        function deleteReview(reviewId) {
+            $.ajax({
+                url: '/delete_review',
+                type: 'POST',
+                data: { review_id: reviewId },
+                success: function(response) {
+                    if (response.success) {
+                        document.getElementById(`review_${reviewId}`).remove();
+                    } else {
+                        alert('Failed to delete review.');
+                    }
+                },
+                error: function() {
+                    alert('Error occurred while deleting review.');
+                }
+            });
+        }
+
+        function cancelDelete(reviewId) {
+            // Reload the page to show the original content
+            location.reload();
+        }
+
+        function addLike(review_id, button) {
+            $.ajax({
+                url: '/like_review',
+                type: 'POST',
+                data: { review_id: review_id },
+                success: function(response) {
+                    if (response.success) {
+                        $(button).find('i').toggleClass('far fas');
+                        $(button).toggleClass('liked');
+                    } else {
+                        alert('An error occurred.');
+                    }
+                },
+                error: function() {
+                    alert('ERROR BAD');
+                }
+            });
+        }
+    </script>
+</head>
+<body class = "no-cursor">
+    <div class="header">
+        <div class="logo_container">
+            <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+            <p class="website no-cursor">ScentConnection</p>
+        </div>
+        <div class="icon-container">
+            <div class = "horizontal_container2">
+                {% if viewer_email == user_email %}
+                    <div class="dropdown">
+                        <button class="btn5 spacing9">Followers: <strong>{{ follower_count }}</strong></button>
+                        <div class="dropdown-content">
+                            {% for follower in followers %}
+                                <a class="colored" href="{{ url_for('profile_page', user_email=follower.email) }}">{{ follower.username }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn5 spacing9">Following: <strong>{{ following_count }}</strong></button>
+                        <div class="dropdown-content">
+                            {% for follow in following %}
+                                <a class="colored" href="{{ url_for('profile_page', user_email=follow.email) }}">{{ follow.username }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <small class = "spacing9 coloring">Followers: <strong>{{ follower_count }}</strong></small>
+                    <small class = "spacing9 coloring">Following: <strong>{{ following_count }}</strong></small>
+                {% endif %}
+                <form action="/profile_page" method="GET">
+                    <button class="icon" type="submit">
+                        <img src="{{ url_for('static', filename='assets/profile_icon.jpeg') }}"/>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-actions">
+        <div class="profile-title-name no-cursor spacing7">
+            {% if viewer_email == user_email %}
+                <p class = "specialCase">My Profile</p>
+            {% else %}
+                <p>{{ username }}'s Profile</p>
+                <form action="{{ url_for('toggle_follow') }}" method="POST">
+                    <input type="hidden" name="follower_email" value="{{ viewer_email }}">
+                    <input type="hidden" name="following_email" value="{{ user_email }}">
+                    {% if following_status %}
+                        <button class="btn7" type="submit">Unfollow</button>
+                    {% else %}
+                        <button class="btn7" type="submit">Follow</button>
+                    {% endif %}
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <!-- Column 1: Collection -->
+        <div class="column">
+            <h2 class="column-title no-cursor">Collection</h2>
+            <div class="column-content">
+                <ul>
+                    {% if fragrance_collection %}
+                        {% for fragrance in fragrance_collection %}
+                        <li class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
+                            <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No fragrances available.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Column 2: Wishlist -->
+        <div class="column">
+            <h2 class="column-title no-cursor">Wishlist</h2>
+            <div class="column-content">
+                <ul>
+                    {% if fragrance_wishlist %}
+                        {% for fragrance in fragrance_wishlist %}
+                            <!-- <li class="fragtext bordered spacing5"> <b>{{ fragrance.name }}</b> by {{ fragrance.house }}</li> -->
+                            <li class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
+                                <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No fragrances available.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Column 3: Reviews -->
+        <div class="column">
+            <h2 class="column-title no-cursor">Reviews</h2>
+            <div class="column-content">
+                <ul>
+                    {% if reviews %}
+                        {% for review in reviews %}
+                            <li id="review_{{ review.review_id }}" class="review-item fragtext bordered spacing5">
+                                <div class = "flexer">
+                                    <p><a href="{{ url_for('review_page', fragrance_name=review.fragrance_name|urlencode, fragrance_house=review.fragrance_house|urlencode) }}" class="link-review">
+                                        <strong>{{ review.fragrance_name }} by {{ review.fragrance_house }}</strong>
+                                    </a></p>
+                                    {% if viewer_email == user_email %}
+                                        <form action="/edit_review" method="POST">
+                                            <input type="hidden" name="review_id" value="{{ review.review_id }}">
+                                            <input type="hidden" name="fragrance_name" value="{{ review.fragrance_name }}">
+                                            <input type="hidden" name="fragrance_house" value="{{ review.fragrance_house }}">
+                                            <input type="hidden" name="review_text" value="{{ review.review }}">
+                                            <input type="hidden" name="rating" value="{{ review.rating }}">
+                                            <button class="edit-button" type="submit">Edit</button>
+                                        </form>
+                                        <button class="delete-button" onclick="confirmDelete('{{ review.review_id }}')">Delete</button>
+                                    {% else %}
+                                        <button class="btn4 like-button {% if review.user_liked %}liked{% endif %}" onclick="addLike('{{ review.review_id }}', this)">
+                                            <i class="{% if review.user_liked %}fas{% else %}far{% endif %} fa-heart"></i>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                                <p class = "spacing10">{{ review.review }}</p>
+                                <small>Rating: 
+                                    <span class="small-stars">
+                                        {% for i in range(5, 0, -1) %}
+                                            <input type="radio" id="star{{i}}_{{review.review_id}}" name="rating{{review.review_id}}" value="{{i}}" {% if review.rating == i %}checked{% endif %} disabled/>
+                                            <label for="star{{i}}_{{review.review_id}}">&#9733;</label>
+                                        {% endfor %}
+                                    </span>
+                                </small>
+                                <br>
+                                <small>Likes: {{ review.likes }}</small>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No reviews available.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons at the bottom -->
+    <div class="button-container">
+        {% if viewer_email == user_email%}
+        <form action="/logout" method="POST">
+            <button class="btn" type="submit">Logout</button>
+        </form>
+        {% endif %}
+        <form action="/handle_menu" method="POST">
+            <button class="btn" type="submit">Main Menu</button>
+        </form>
+    </div>
+</body>
+</html>

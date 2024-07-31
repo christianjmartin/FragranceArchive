@@ -5,62 +5,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Collection Dashboard</title>
         <link rel="stylesheet" href="static/inappstyles.css">
+        <link rel="stylesheet" href="static/mediaqueries.css"/>
     </head>
 </head>
-<body>
-    <h1 class = "title">Welcome to the Collection Dashboard</h1>
-    <div class="logo_container">
-        <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+<body class = "no-cursor">
+    <div class="header">
+        <div class="logo_container">
+            <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
+            <p class="website no-cursor">ScentConnection</p>
+        </div>
+        <div class="icon">
+            <form action="/profile_page" method="GET">
+                <button class="icon" type="submit">
+                    <img src="{{ url_for('static', filename='assets/profile_icon.jpeg') }}"/>
+                </button>
+            </form>
+        </div>
     </div>
-    <div class = selection_container>
-        <p>Here are your options:</p>
-        <!-- Add buttons or links to different functionalities -->
-        <form action="/add_collection" method="GET">
-            <button class = "btn" type="submit">Add a Fragrance</button>
-        </form>
-        <form action="/remove_collection" method="POST">
-            <button class = "btn" type="submit">Remove a Fragrance</button>
-        </form>
-        <p> Dont see a fragrance you know? </p>
-        <form action="/request_fragrance" method="GET">
-            <button class = "btn" type="submit">Request a Fragrance</button>
-        </form>
-    </div>
+    <div class = "profile-container">
+    <div class = "left-column">
+        <!-- <p>Here are your options:</p> -->
+        <div class = "top-buttons-collection">
+            <!-- Add buttons or links to different functionalities -->
+            <form action="/add_collection" method="GET">
+                <button class = "btn" type="submit">Add a Fragrance</button>
+            </form>
+            <form action="/remove_collection" method="POST">
+                <button class = "btn" type="submit">Remove a Fragrance</button>
+            </form>
+        </div>
+        <div class = "request-button-collection">
+            <!-- <p> Dont see a fragrance you know? </p> -->
+            <form action="/request_fragrance" method="GET">
+                <button class = "btn" type="submit">Request a Fragrance</button>
+            </form>
+        </div>
         <img src="{{ url_for('static', filename='assets/fragrances2.jpg.webp') }}" alt="fragrance icon" class="pic_container" />
         <div class = "back_container">
-            <form action="/logout" method="POST">
-                <button class = "btn" type="submit">Logout</button>
-            </form>
             <form action="/handle_menu" method="POST">
                 <button class = "btn" type="submit">Main Menu</button>
             </form>
         </div>
-    <div class = h20>
-        <h2 class = "h2o">My Fragrance Collection</h2>
-        <div class = "fragrance_collection">
-        <table>
-            <thead>
-                <tr>
-                    <th class = "header">Name</th>
-                    <th class = "header">House</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for fragrance in fragrance_collection %}
-                <tr>
-                    <td class = "fragtext bordered">{{ fragrance.name }}</td>
-                    <td class = "fragtext bordered">{{ fragrance.house }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    </div>
+    <div class = "right-column">
+    <!-- <div class = h20> -->
+        <h2 class = "column-title"> My Fragrance Collection</h2>
+        <div class = "fragrance_collection2">
+            {% for fragrance in fragrance_collection %}
+                <p class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
+                    <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
+                </p>        
+            {% endfor %}
         </div>
+    <!-- </div> -->
+    <div class = "request-text-collection">
+        <p>Change the sorting of your Collection?</p>
     </div>
-    <div class = "sort_above">
-        <p>Would you like to change the sorting of your Collection?</p>
-    </div>
-    <div class = "sorting_container">
+    <div class = "sorting-collection">
         <form action="/alphabetically_sort_name_AZ_collection" method="POST">
             <button class = "btn2" type="submit">Name A-Z</button>
         </form>
@@ -80,5 +81,7 @@
             <button class = "btn2" type="submit">Oldest Added</button>
         </form>
     </div>
+</div>
+</div>
 </body>
 </html>

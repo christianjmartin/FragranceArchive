@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/inappstyles.css">
+    <title>Write A Review</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="top_of_removal">
+        <!-- <form action="/back_to_reviews" method="GET">
+            <button class="btn2" type="submit">Back</button>
+        </form> -->
+        <h1>Fragrance Reviews</h1>
+    </div>
+    <div class="form_container3">
+        <h2>Edit your Review for {{ fragrance_name }} by {{ fragrance_house }}</h2>
+        <form id="reviewForm" action="/submit_edited_review" method="POST">
+            <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
+            <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
+            <input type="hidden" name="reviews" value="{{ reviews }}">
+            <input type="hidden" name="review_id" value="{{ review_id }}">
+
+            <label for="review_text">Your Review:</label><br>
+            <textarea id="review_text" name="review_text" rows="4" cols="50" required>{{ review_text }}</textarea><br>
+
+            <p>Rate this fragrance:</p>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" {% if rating == 5 %}checked{% endif %}/><label for="star5" title="5 stars">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" {% if rating == 4 %}checked{% endif %}/><label for="star4" title="4 stars">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" {% if rating == 3 %}checked{% endif %}/><label for="star3" title="3 stars">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" {% if rating == 2 %}checked{% endif %}/><label for="star2" title="2 stars">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" {% if rating == 1 %}checked{% endif %}/><label for="star1" title="1 star">&#9733;</label>
+            </div>
+
+            <button class="btn2" type="button" onclick="submitEditedReview()">Submit Review</button>
+        </form>
+    </div>
+
+    <script>
+        function submitEditedReview() {
+        const reviewText = document.getElementById('review_text').value;
+        const fragranceName = document.querySelector('input[name="fragrance_name"]').value;
+        const fragranceHouse = document.querySelector('input[name="fragrance_house"]').value;
+        const reviewID = document.querySelector('input[name="review_id"]').value;
+        const ratingElement = document.querySelector('input[name="rating"]:checked');
+        const rating = ratingElement ? ratingElement.value : null;
+
+        $.ajax({
+            url: '/submit_edited_review',
+            type: 'POST',
+            data: {
+                review_id: reviewID,
+                fragrance_name: fragranceName,
+                fragrance_house: fragranceHouse,
+                review_text: reviewText,
+                rating: rating,
+            },
+            success: function(response) {
+                console.log('Response from server:', response);
+                if (response.success) {
+                    window.location.href = response.redirect_url;
+                } else {
+                    alert('Failed to submit review and rating: ' + (response.message || 'Unknown error.'));
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('AJAX error:', textStatus, errorThrown);
+                alert('Error occurred while submitting review and rating.');
+            }
+        });
+    }
+</script>
+</body>
+</html>

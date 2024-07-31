@@ -3,17 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FragranceVault</title>
+        <title>ScentConnection</title>
         <link rel="stylesheet" href="static/inappstyles.css">
+        <link rel="stylesheet" href="static/mediaqueries.css"/>
     </head>
 <body>
-    <h1 class = "title">Welcome to the Fragrance Vault</h1>
     <div class="logo_container">
         <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-        <p class = "website">FragranceVault</p><p class = "fragtext2">.com</p>
+        <p class = "website no-cursor">ScentConnection</p>
     </div>
     <div class = "selection_container">
-        <p>Please choose an option below:</p>
+        <!-- <p>Please choose an option below:</p> -->
+        <!-- <br> -->
         <form action="/login" method="GET">
             <button class="btn" type="submit">Login</button>
         </form>
@@ -43,6 +44,7 @@
             <p><a href="https://www.nordstrom.com/browse/beauty/fragrance?breadcrumb=Home%2FBeauty%2FFragrance" target="_blank" class = "link">Nordstrom</a></p>
             <p><a href="https://www.harrods.com/en-us/shopping/beauty-perfume" target="_blank" class = "link">Harrods</a></p>
             <p><a href="https://www.selfridges.com/US/en/cat/beauty/fragrance/" target="_blank" class = "link">Selfridges</a></p>
+            <p><a href="https://www.smallflower.com/collections/fragrance" target="_blank" class = "link">Smallflower</a></p>
             <p class = "bold">Samples</p>
             <p><a href="https://twistedlily.com/collections/samples-fragrance" target="_blank" class = "link">twistedlily</a></p>
             <p><a href="https://www.scentsplit.com" target="_blank" class = "link">scentsplit</a></p>
