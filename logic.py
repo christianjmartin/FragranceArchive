@@ -857,6 +857,7 @@ def getFollowers(dbCursor, email):
         FROM Follows f
         JOIN Client c ON f.FollowerEmail = c.Email
         WHERE f.FollowingEmail = %s
+        ORDER BY DateFollowed DESC
     """
     dbCursor.execute(query, (email,))
     followers = dbCursor.fetchall()
@@ -868,6 +869,7 @@ def getFollowing(dbCursor, email):
         FROM Follows f
         JOIN Client c ON f.FollowingEmail = c.Email
         WHERE f.FollowerEmail = %s
+        ORDER BY DateFollowed DESC
     """
     dbCursor.execute(query, (email,))
     following = dbCursor.fetchall()

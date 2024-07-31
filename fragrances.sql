@@ -74,6 +74,7 @@ CREATE TABLE ReviewRatings (
 CREATE TABLE Follows (
     FollowerEmail VARCHAR(100) NOT NULL,
     FollowingEmail VARCHAR(100) NOT NULL,
+    DateFollowed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (FollowerEmail, FollowingEmail),
     FOREIGN KEY (FollowerEmail) REFERENCES Client(Email),
     FOREIGN KEY (FollowingEmail) REFERENCES Client(Email)

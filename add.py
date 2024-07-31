@@ -6,7 +6,7 @@ import junk
 
 conn = psycopg2.connect(
     host="localhost",
-    database="FragranceDatabase",
+    database="NAME OF DATABASE GOES HERE",
     user="postgres",
     password=junk.string_list[45]
 )

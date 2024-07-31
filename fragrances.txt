@@ -453,7 +453,7 @@ Anabasis by Apoteker Tepe Type
 Anais Anais by Cacharel Type
 Anais Anais L’Original by Cacharel Type
 Anais Anais Premier Delice by Cacharel Type
-Ananas Kiwi by Adopt’ by Reserve Naturelle Type
+Ananas Kiwi by Adopt’ Type
 Ananda by Anu Essentials Type
 Anastasia by Bourbon French Parfums Type
 Ancient Air by DSH Perfumes Type
@@ -1032,7 +1032,7 @@ Blue Smoke by Bluehill Fragrances Type
 Blue Space by Samy Andraus Fragrances Type
 Blue Spruce by Demeter Fragrance Library Type
 Blue Stallion by Alexandria Fragrances Type
-Blue Suit by Adopt’ by Reserve Naturelle Type
+Blue Suit by Adopt’ Type
 Blueberries Crave Cocoa by Arcana Craves Type
 Blueberries Crave Home by Arcana Craves Type
 Blueberries Crave Sunshine by Arcana Craves Type
@@ -1707,7 +1707,7 @@ Chardonnay by Sweet Essentials Type
 Chariot by Boadicea the Victorious Type
 Charlie by Revlon Type
 Charlie No. 5 by Opus Oils Type
-Charlotte Aux Fraises by Adopt’ by Reserve Naturelle Type
+Charlotte Aux Fraises by Adopt’ Type
 Charm by Journal Boutique Type
 Charm by Louis Cardin Type
 Charm by Opus Oils Type
@@ -2127,7 +2127,7 @@ Coco Eau de Toilette by Chanel Type
 Coco Extreme by Comptoir Sud Pacifique Type
 Coco Figue by Comptoir Sud Pacifique Type
 Coco Fleur by Nette Type
-Coco Lada by Adopt’ by Reserve Naturelle Type
+Coco Lada by Adopt’ Type
 Coco Mademoiselle by Chanel Type
 Coco Mademoiselle Eau de Toilette by Chanel Type
 Coco Mademoiselle Hair Mist (2023) by Chanel Type
@@ -3362,8 +3362,8 @@ Fade To Black by Alexandria Fragrances Type
 Fahrenheit by Dior Type
 Fahrenheit Le Parfum by Dior Type
 Fairchild by Anya’s Garden Perfumes Type
-Fairy Land EDP by Adopt’ by Reserve Naturelle Type
-Fairy Land EDP PAILLETÉE by Adopt’ by Reserve Naturelle Type
+Fairy Land EDP by Adopt’ Type
+Fairy Land EDP PAILLETÉE by Adopt’ Type
 Fall by Criminal Elements Type
 Fall Into Stars by Strangelove NYC Type
 Fallen Angel by Hexennacht Type
@@ -3433,7 +3433,7 @@ Fetish by Neil Morris Fragrances Type
 Fetish Pour Homme by Roja Parfums Type
 Feu Follet by Lvnea Type
 Feuilles (Leaves) by DSH Perfumes Type
-Feuilles de Fraisier by Adopt’ by Reserve Naturelle Type
+Feuilles de Fraisier by Adopt’ Type
 Fève Délicieuse (2018) by Dior Type
 Fève Délicieuse by Dior Type
 Fève Tonka de Canaima by Boucheron Type
@@ -3509,11 +3509,11 @@ Fleur by West Third Brand Type
 Fleur D’Oranger 27 Perfume Oil by Le Labo Type
 Fleur d’Oranger by Ava Luxe Type
 Fleur de Blonde by Urban Outfitters Type
-Fleur de Cerisier by Adopt’ by Reserve Naturelle Type
-Fleur de Coton by Adopt’ by Reserve Naturelle Type
+Fleur de Cerisier by Adopt’ Type
+Fleur de Coton by Adopt’ Type
 Fleur de Figuier by Chabaud Type
 Fleur de Figuier by Solinotes Type
-Fleur de Gingembre by Adopt’ by Reserve Naturelle Type
+Fleur de Gingembre by Adopt’ Type
 Fleur De Lilac by Bud Parfums Type
 Fleur de Louis by Arquiste Type
 Fleur de Nuit by Antonio Visconti Type
@@ -3521,8 +3521,8 @@ Fleur de Peau Eau de Parfum by Diptyque Type
 Fleur de Pecher by Karl Lagerfeld Type
 Fleur de Portofino Eau de Parfum by Tom Ford Type
 Fleur de Royale by Bourbon French Parfums Type
-Fleur de Tiaré EDP by Adopt’ by Reserve Naturelle Type
-Fleur de Tiaré EDP PAILLETÉE by Adopt’ by Reserve Naturelle Type
+Fleur de Tiaré EDP by Adopt’ Type
+Fleur de Tiaré EDP PAILLETÉE by Adopt’ Type
 Fleur des Fleurs by Une Nuit Nomade Type
 Fleur du Desert by Louis Vuitton Type
 Fleur du Matin by Miller Harris Type
@@ -3650,8 +3650,8 @@ Free Emotion by Adidas Type
 Free O2 For Her by Avon Type
 Free Spirit by Kensie Type
 Freesia by Demeter Fragrance Library Type
-Freesia Magnolia by Adopt’ by Reserve Naturelle Type
-French Barber by Adopt’ by Reserve Naturelle Type
+Freesia Magnolia by Adopt’ Type
+French Barber by Adopt’ Type
 French Bouquet by BDK Parfums Type
 French Cancan by New Brand Perfumes Type
 French Clary Sage by Lisa Hoffman Type
@@ -3776,7 +3776,7 @@ Gentleman Eau de Parfum Boisée by Givenchy Type
 Gentleman Eau de Parfum by Givenchy Type
 Gentleman Eau de Parfum Reserve Privée by Givenchy Type
 Gentleman Eau de Toilette Intense by Givenchy Type
-Gentleman Lover by Adopt’ by Reserve Naturelle Type
+Gentleman Lover by Adopt’ Type
 Gentlemen Only Casual Chic by Givenchy Type
 Gentlemen Only Intense by Givenchy Type
 Gentlemen’s Club Perfume by Debaucherous Alchemy Type
@@ -3986,7 +3986,7 @@ Gris Charnel Extrait by BDK Parfums Type
 Gris Dior by Dior Type
 Gristmill by Pineward Perfumes Type
 Grit & Poise by West Third Brand Type
-Groseille Fruits Rouges by Adopt’ by Reserve Naturelle Type
+Groseille Fruits Rouges by Adopt’ Type
 Gryffindor™ Parfum by House Of Sillage Type
 GS by Samy Andraus Fragrances Type
 GT For Men by New Brand Perfumes Type
@@ -4770,7 +4770,7 @@ L’Eau d’Issey Reflection In A Drop by Issey Miyake Type
 L’Eau de Liesse by Courrèges Type
 L’Eau Papier by Diptyque Type
 L’Eau par Kenzo by Kenzo Type
-L’eau Virile by Adopt’ by Reserve Naturelle Type
+L’eau Virile by Adopt’ Type
 L’Empreinte by Courrèges Type
 L’Energie de New York Delux by Catherine Malandrino Type
 L’Envol de Cartier Eau de Parfum by Cartier Type
@@ -4939,7 +4939,7 @@ Lavalliere by Yves Saint Laurent Type
 Lavanda by Chloé Type
 Lavande by DSH Perfumes Type
 Lavande by Hové Parfumeur Type
-Lavande Chérie by Adopt’ by Reserve Naturelle Type
+Lavande Chérie by Adopt’ Type
 Lavandula by Fiele Fragrances Type
 Lavender & Vanilla by Victoria’s Secret Type
 Lavender by Demeter Fragrance Library Type
@@ -5069,7 +5069,7 @@ Levis by Angela Ciampagna Type
 Lexington Avenue by Bond No. 9 Type
 Libertine Eau de Parfum by The Maker Type
 Liberty by ALT. Fragrances Type
-Liberty Dream by Adopt’ by Reserve Naturelle Type
+Liberty Dream by Adopt’ Type
 LiboCedro by Acca Kappa Type
 Libra by Cosmic Earth Wellness Type
 Libra by Demeter Fragrance Library Type
@@ -5202,7 +5202,7 @@ Love First by West Third Brand Type
 Love High by Confessions Of A Rebel Type
 Love In A Mist eau de parfum by Providence Perfume Co. Type
 Love in White by Creed Type
-Love Infusion by Adopt’ by Reserve Naturelle Type
+Love Infusion by Adopt’ Type
 Love is Everything by DSH Perfumes Type
 Love is Heavenly Eau De Parfum by Victoria’s Secret Type
 Love is in the Air by House Of Sillage Type
@@ -5519,7 +5519,7 @@ Mercurial Cashmere by Electimuss Type
 Mermaid Vibes by Ocean Pacific Type
 Mermaid’s Kiss Perfume by A Beautiful Life Brands Type
 Merry Maker by Pinrose Type
-Merveilles Des Iles by Adopt’ by Reserve Naturelle Type
+Merveilles Des Iles by Adopt’ Type
 Mesmerize Black for Her by Avon Type
 Mesquite by Demeter Fragrance Library Type
 Messy Sexy Just Rolled out of Bed by A Lab on Fire Type
@@ -5548,9 +5548,9 @@ Midnight Embers Perfume by Lumodos Type
 Midnight Exotics Forbidden Vanilla by Victoria’s Secret Type
 Midnight Fantasy by Britney Spears Fragrances Type
 Midnight Flower by Neil Morris Fragrances Type
-Midnight for Her EDP by Adopt’ by Reserve Naturelle Type
-Midnight for Her EDP PAILLETÉE by Adopt’ by Reserve Naturelle Type
-Midnight for Him EDP by Adopt’ by Reserve Naturelle Type
+Midnight for Her EDP by Adopt’ Type
+Midnight for Her EDP PAILLETÉE by Adopt’ Type
+Midnight for Him EDP by Adopt’ Type
 Midnight Forest by Neil Morris Fragrances Type
 Midnight Leather Eau de Parfum by Noteology Type
 Midnight Madness by Nostalgia Type
@@ -5669,8 +5669,8 @@ Monastic by Solstice Scents Type
 Monoi by MCMC Fragrances Type
 Monoi by Rag & Bone Type
 Monoi de Tiare by MCMC Fragrances Type
-Monoï Des Iles EDP PAILLETÉE by Adopt’ by Reserve Naturelle Type
-Monoï Des Iles EDT by Adopt’ by Reserve Naturelle Type
+Monoï Des Iles EDP PAILLETÉE by Adopt’ Type
+Monoï Des Iles EDT by Adopt’ Type
 Monoliths & Dimensions Extrait de Parfum by Phronema Perfumes Type
 Monsieur by Frederic Malle Type
 Monsieur Oud by Ensar Oud Type
@@ -5741,7 +5741,7 @@ Mr. Sillage by Alexandria Fragrances Type
 Mugler Cologne by Mugler Type
 Muguet by La Bouquetiere Type
 Muguet Cologne by DSH Perfumes Type
-Muguet Coquet by Adopt’ by Reserve Naturelle Type
+Muguet Coquet by Adopt’ Type
 Mukhallat Amber by Abu Zari Fragrances Type
 Mukhallat by Montale Parfums Type
 Mulholland by Keiko Mecheri Type
@@ -5751,11 +5751,11 @@ Mur Mur by Faberlic Type
 Muresque by DSH Perfumes Type
 Murkwood by Pineward Perfumes Type
 Musc al Madina by DSH Perfumes Type
-Musc Blanc by Adopt’ by Reserve Naturelle Type
-Musc Blanc édition Chinese New Year by Adopt’ by Reserve Naturelle Type
+Musc Blanc by Adopt’ Type
+Musc Blanc édition Chinese New Year by Adopt’ Type
 Musc Bleu Eau de Parfum by Il Profvmo Type
 Musc by Bruno Acampora Type
-Musc De Rose by Adopt’ by Reserve Naturelle Type
+Musc De Rose by Adopt’ Type
 Musc Extrait (2010) by Bruno Acampora Type
 Musc Gold Extrait by Bruno Acampora Type
 Musc Gold Perfume Oil by Bruno Acampora Type
@@ -5797,7 +5797,7 @@ My Happy Baby Bouquet by Clinique Type
 My Happy Indigo Mist by Clinique Type
 MY MOST MEANINGFUL RELATIONSHIPS by Filigree & Shadow Type
 My New York by Bond No. 9 Type
-My Rose by Adopt’ by Reserve Naturelle Type
+My Rose by Adopt’ Type
 My Way by Giorgio Armani Type
 My Way Intense by Giorgio Armani Type
 Mykonos Eau De Summer Perfume by Hale Bob Type
@@ -6267,7 +6267,7 @@ Oud Abramad by BDK Parfums Type
 Oud Absolu by Cartier Type
 Oud After Dark by Amouroud Parfums Type
 Oud Al Emarat by Blend Oud Type
-Oud Ambre by Adopt’ by Reserve Naturelle Type
+Oud Ambre by Adopt’ Type
 Oud Azur 75212 by Krigler Type
 Oud Badr by Abu Zari Fragrances Type
 Oud Blue Satin by Abu Zari Fragrances Type
@@ -6366,7 +6366,7 @@ Palo Santo Oil Perfume by Rahua Type
 Paloma Picasso by Paloma Picasso Type
 Pamella Roland Eau de Parfum by Pamella Roland Type
 Pamplemousse by DSH Perfumes Type
-Pamplemousse Grenade by Adopt’ by Reserve Naturelle Type
+Pamplemousse Grenade by Adopt’ Type
 Pamplemousse Vanille by La Bouquetiere Type
 Pan by Anya’s Garden Perfumes Type
 Pan by Opus Oils Type
@@ -6463,8 +6463,8 @@ Patchouli Empire by CB I Hate Perfume Type
 Patchouli Palace by Mondo Mondo Type
 Patchouli Riviera by Atelier Cologne Type
 Patchoulissime by Keiko Mecheri Type
-Patchouly by Adopt’ by Reserve Naturelle Type
-Patchouly Rose by Adopt’ by Reserve Naturelle Type
+Patchouly by Adopt’ Type
+Patchouly Rose by Adopt’ Type
 Paul Sebastian by Paul Sebastian Type
 Paula’s Ibiza by Loewe Type
 Pavo Perfume by Lily Lambert Type
@@ -6685,7 +6685,7 @@ Poisonous Amber by The Dua Brand Type
 Poivre Bengale by Brecourt Type
 Poivre by DSH Perfumes Type
 Poivre Impérial by Caron Type
-Poivre Noir Jasmin by Adopt’ by Reserve Naturelle Type
+Poivre Noir Jasmin by Adopt’ Type
 Poivre Sacré by Caron Type
 Polo Black Eau de Toilette by Ralph Lauren Type
 Polo Blue by Ralph Lauren Type
@@ -6962,7 +6962,7 @@ Red by Giorgio Beverly Hills Type
 Red Dakota by Dedcool Type
 Red Door by Elizabeth Arden Type
 Red Door Revealed by Elizabeth Arden Type
-Red Dress by Adopt’ by Reserve Naturelle Type
+Red Dress by Adopt’ Type
 Red Heart V 3 by Map of the Heart Type
 Red Jeans by Versace Type
 Red Leather by PK Perfumes Type
@@ -7160,8 +7160,8 @@ Rose Musk by Abu Zari Fragrances Type
 Rose Musk by Alyssa Ashley Type
 Rose Noir by Alexandria Fragrances Type
 Rose Noir by Byredo Type
-Rose Noir Collector by Adopt’ by Reserve Naturelle Type
-Rose Noire EDP by Adopt’ by Reserve Naturelle Type
+Rose Noir Collector by Adopt’ Type
+Rose Noire EDP by Adopt’ Type
 Rose of Kali by Neil Morris Fragrances Type
 Rose Of No Man’s Land by Byredo Type
 Rose Omeyyade by Atelier des Ors Type
@@ -7813,8 +7813,8 @@ Stargazer by Ava Luxe Type
 Starlet by Opus Oils Type
 Starlight by Xerjoff Type
 Starlit Night by Bath And Body Works Type
-Starnight EDP by Adopt’ by Reserve Naturelle Type
-Starnight EDP PAILLETÉE by Adopt’ by Reserve Naturelle Type
+Starnight EDP by Adopt’ Type
+Starnight EDP PAILLETÉE by Adopt’ Type
 Starry Night by Montale Parfums Type
 Starry Starry Night by PK Perfumes Type
 Starwalker by Montblanc Type
@@ -8143,7 +8143,7 @@ The Best Life by Alexandria Fragrances Type
 The Bewitching Yasmine by Penhaligon’s Type
 The Black Goat by House of Orpheus Type
 The Black One by Tom Frank Type
-Thé Blanc by Adopt’ by Reserve Naturelle Type
+Thé Blanc by Adopt’ Type
 The Blazing Mr Sam by Penhaligon’s Type
 The Botanist by MiN New York Type
 The California Eau de Parfum by Apothia Type
@@ -8222,7 +8222,7 @@ The Soft Lawn by Imaginary Authors Type
 The Spirits of Lavender by Bonny Doon Farm Type
 The Tragedy of Lord George by Penhaligon’s Type
 The Undersea Eau de Parfum by Ariana & Evans Type
-Thé Vert by Adopt’ by Reserve Naturelle Type
+Thé Vert by Adopt’ Type
 Thé Vert by Florascent Type
 Thé Vert Shiso by Laughing Saint Type
 The Voices of Trees by DSH Perfumes Type
@@ -8564,12 +8564,12 @@ Vanille Antique by Byredo Type
 Vanille Banane by Comptoir Sud Pacifique Type
 Vanille Blackberry by Comptoir Sud Pacifique Type
 Vanille Botanique by DSH Perfumes Type
-Vanille Bourbon Collector by Adopt’ by Reserve Naturelle Type
-Vanille Bourbon EDP by Adopt’ by Reserve Naturelle Type
+Vanille Bourbon Collector by Adopt’ Type
+Vanille Bourbon EDP by Adopt’ Type
 Vanille by Ajne Type
 Vanille by DSH Perfumes Type
 Vanille by Outremer Type
-Vanille Coco by Adopt’ by Reserve Naturelle Type
+Vanille Coco by Adopt’ Type
 Vanille de Cèdre by Kyse Perfumes Type
 Vanille De La Réunion by Les Senteurs Gourmandes Type
 Vanille de Mexico by The Dua Brand Type
@@ -8652,7 +8652,7 @@ Verum by House of Orpheus Type
 Verveine (Lemon Verbena) by DSH Perfumes Type
 Verveine by Hové Parfumeur Type
 Verveine by L’Occitane en Provence Type
-Verveine Fizz by Adopt’ by Reserve Naturelle Type
+Verveine Fizz by Adopt’ Type
 Verveine Fleur de Carotte by L’Occitane en Provence Type
 Vervienne by Fragonard Type
 Very Good Girl by Carolina Herrera Type
@@ -8974,7 +8974,7 @@ Wild Fire by Raw Spirit Fragrances Type
 Wild Geranium by AERIN Type
 Wild Honeysuckle by DSH Perfumes Type
 Wild Hunt by CB I Hate Perfume Type
-Wild Musk by Adopt’ by Reserve Naturelle Type
+Wild Musk by Adopt’ Type
 Wild Pansy by CB I Hate Perfume Type
 Wild Poppy by Nest New York Type
 Wild Primrose by Victoria’s Secret Type
@@ -9100,7 +9100,7 @@ Youth Dew by Estée Lauder Type
 Ysatis by Givenchy Type
 Yseult 2022 by Teone Reinthal Natural Perfume Type
 Yuja Cologne by Jo Malone Type
-Yummy Candy by Adopt’ by Reserve Naturelle Type
+Yummy Candy by Adopt’ Type
 Yuzu by Ajne Type
 Yuzu Eau de Parfum by Acqua di Parma Type
 Yuzu Man by Caron Type

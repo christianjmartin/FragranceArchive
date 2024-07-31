@@ -641,14 +641,14 @@ def profile_page():
     follower_count = len(followers)
     following_count = len(following)
 
-    # follower_count = 792301590
+    # follower_count = 79233
     if follower_count > 1000000:
         follower_count = f"{follower_count / 1000000:.1f}M"
     elif follower_count > 10000:
         follower_count = str(follower_count)[:-3] + "K"
 
     # print(follower_count)
-    # following_count = 1
+    # following_count = 12343
     if following_count > 1000000:
         following_count = f"{following_count / 1000000:.1f}M"
     elif following_count > 10000:
@@ -849,7 +849,7 @@ def toggle_follow():
         conn.commit()
     else:
         # Follow the user
-        query = "INSERT INTO Follows (FollowerEmail, FollowingEmail) VALUES (%s, %s)"
+        query = "INSERT INTO Follows (FollowerEmail, FollowingEmail, DateFollowed) VALUES (%s, %s, CURRENT_TIMESTAMP)"
         dbCursor.execute(query, (follower_email, following_email))
         conn.commit()
     print(follower_email) # cjm (me)
