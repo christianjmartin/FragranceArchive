@@ -109,7 +109,7 @@
     <div class="header">
         <div class="logo_container">
             <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-            <p class="website no-cursor">ScentConnection</p><p class="fragtext2">.com</p>
+            <p class="website no-cursor">FragranceArchive</p><p class="fragtext2">.com</p>
         </div>
         <div class="icon">
             <form action="/profile_page" method="GET">
@@ -123,9 +123,9 @@
     <div class="profile-container">
         <div class="left-column">
             {% if average_rating %}
-                <p>Community Rating: <span class = "kinda-bold2">{{ average_rating }} / 5</span></p>
+                <p class = "AvgRating">Community Rating: <span class = "kinda-bold2">{{ average_rating }} / 5</span></p>
             {% else %}
-                <p>Community Rating: <span class = "kinda-bold2">N/A</span></p>
+                <p class = "AvgRating">Community Rating: <span class = "kinda-bold2">N/A</span></p>
             {% endif %}
             <div class="left-column-review-page">
                 <!-- <form action="{{ url_for('write_review', fragrance_name=fragrance_name|urlencode, fragrance_house=fragrance_house|urlencode) }}" method="POST">
@@ -157,7 +157,7 @@
                     <button class="btn2 spacing11" type="button" onclick="removeRating('{{ fragrance_name }}', '{{ fragrance_house }}')">Remove Rating</button>
                 </div>
 
-                <img src="{{ url_for('static', filename='assets/fragrances12.jpg.avif') }}" alt="fragrance icon" class="pic_container_review_page" />
+                <img src="{{ url_for('static', filename='assets/fragrances14.jpg') }}" alt="fragrance icon" class="pic_container_review_page" />
 
                 <div class="top-buttons-review-page">
                     <form action="/add_fragrance_to_collection" method="POST">
@@ -181,7 +181,7 @@
             <div class="column-title2">
                 <h2 class="no-cursor">Reviews for {{ fragrance_name }}</h2>
             </div>
-            <div class="reviews-container">
+            <div class="reviews-container2">
                 <ul>
                     {% if reviews %}
                         {% for review in reviews %}

@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'); */
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,10 +15,35 @@ body {
 
 
 html {
+    /* font-size: 16px; */
     scroll-behavior: smooth;
 }
 
 .btn {
+    margin-top: 13.5px;
+    padding: 20px 30px;
+    font-size: 15px;
+    border: none;
+    background-color: rgb(182, 121, 179);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1.5px solid rgb(117, 44, 121);
+}
+
+.index-button {
+    margin-top: 13.5px;
+    padding: 20px 30px;
+    font-size: 15px;
+    border: none;
+    background-color: rgb(182, 121, 179);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1.5px solid rgb(117, 44, 121);
+}
+
+.reviews-button {
     margin-top: 13.5px;
     padding: 20px 30px;
     font-size: 15px;
@@ -149,6 +176,12 @@ html {
 .btn:hover {
     background-color: rgb(106, 57, 103);
 }
+.index-button:hover {
+    background-color: rgb(106, 57, 103);
+}
+.reviews-button:hover {
+    background-color: rgb(106, 57, 103);
+}
 
 .btn2:hover {
     background-color: rgb(106, 57, 103);
@@ -180,6 +213,8 @@ html {
     object-fit: cover; /* This ensures the image covers the entire container without stretching */
     object-position: center;
     margin-right: 7px;
+    background: none;
+    border: none;
 }
 
 
@@ -305,6 +340,14 @@ html {
 .top-buttons-collection {
     display: flex;
     gap: 10px;
+    margin-top: -10px;
+}
+
+.top-buttons-reviews {
+    display: block;
+    max-width: 400px;
+    gap: 10px;
+    margin-top: 5px;
 }
 
 .top-buttons-review-page {
@@ -332,8 +375,8 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 450px; /* Adjust the maximum height as needed */
-    min-height: 450px;
+    max-height: 440px; /* Adjust the maximum height as needed */
+    min-height: 440px;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }
@@ -445,6 +488,10 @@ html {
     margin-left: 185px;
 }
 
+.profile-actions p {
+    font-size: smaller;
+}
+
 
 
 
@@ -465,14 +512,12 @@ html {
     flex-wrap: wrap;
     max-height: 700px;
     overflow: hidden;
-    width: 550px
+}
+.selection_container2 p  {
+    max-width: 190px;
 }
 
 .selection_container p {
-    margin-top: 15px;
-}
-
-.selection_container2 p {
     margin-top: 15px;
 }
 
@@ -488,6 +533,19 @@ html {
     border-radius: 5px;
 }
 
+
+.pic_container_menu img {
+    position: relative;
+    object-fit: cover;
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin: auto 0;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(123, 111, 111, 0.2);
+}
+
 .pic_container_reviews {
     position: relative;
     object-fit: cover;
@@ -496,19 +554,20 @@ html {
     width: 400px;
     margin: auto 0;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 7px;
+    margin-top: 7px;
 }
 
 .pic_container_review_page {
     position: relative;
     object-fit: cover;
     display: flex;
-    height: 100px;
+    height: 170px;
     width: 400px;
     margin: auto 0;
     overflow: hidden;
     border-radius: 5px;
-    object-position: right;
+    object-position: left;
 }
 
 
@@ -541,7 +600,7 @@ html {
 
 .information_site p {
     max-width: 530px;
-    margin-top: 10px;
+    margin-top: 75px;
 }
 
 .link {
@@ -557,7 +616,7 @@ html {
 .trustworthy_sites {
     max-width: 280px;
     position: absolute;
-    top: 70px; /* Adjust the distance from the top */
+    top: 80px; /* Adjust the distance from the top */
     right: 30px; /* Adjust the distance from the right */
     background-color: rgb(255, 248, 248); 
     box-shadow: 0 4px 8px rgba(123, 111, 111, 0.1); 
@@ -637,8 +696,19 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 450px; /* Adjust the maximum height as needed */
-    min-height: 450px;
+    max-height: 440px; /* Adjust the maximum height as needed */
+    min-height: 440px;
+    overflow-y: auto; /* Enable vertical scrolling when content overflows */
+    padding: 10px;
+}
+
+.reviews-container2 {
+    width: 100%;
+    /* margin-top: 20px; */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    max-height: 420px; /* Adjust the maximum height as needed */
+    min-height: 420px;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }
@@ -838,6 +908,8 @@ h1 {
     align-items: center;
     min-width: 140px;
     word-break: break-word;
+    margin-right: 0%;
+    margin-left: 0%;
 }
 
 .left-column {
@@ -855,6 +927,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
+    margin-top: -10px;
 }
 
 .column-title {
@@ -1041,3 +1114,61 @@ h1 {
     margin-left: auto;
     /* color: rgb(96, 18, 100); */
 }
+
+
+
+
+
+
+.fragrance-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.fragrance-info {
+    max-width: 500px;
+    text-align: left;
+}
+
+.fragrance-info h4 {
+    font-size: 35px;
+    color: rgb(96, 18, 100);
+}
+
+.fragrance-info p {
+    font-size: 16px;
+    color: rgb(96, 18, 100);
+    margin-top: 10px;
+}
+
+
+.featured-fragrance {
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.5); 
+    max-width: 700px;
+    min-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.featured-fragrance h3 {
+    color: rgb(96, 18, 100);
+    margin-bottom: 8px;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+.AvgRating {
+    margin-top: -20px;
+}
+

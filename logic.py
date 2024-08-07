@@ -33,7 +33,7 @@ def validateSignup(dbCursor, conn, name, email, password, lastname, username):
     if passwordCheck == False:
         return 0
     
-    if len(username) > 15:
+    if len(username) > 24:
         return 4
 
     query = "SELECT * FROM Client WHERE Email = %s"
@@ -874,3 +874,12 @@ def getFollowing(dbCursor, email):
     dbCursor.execute(query, (email,))
     following = dbCursor.fetchall()
     return [{'username': follower[0], 'email': follower[1]} for follower in following]
+
+
+
+
+def getFragranceOfWeek(dbCursor, week_number):
+    query = "SELECT * FROM FragranceOfTheWeek WHERE week_number = %s"
+    dbCursor.execute(query, (week_number,))
+    fragrance = dbCursor.fetchone()
+    return {'fragrance_name': fragrance[2], 'description': fragrance[3], 'image_url': fragrance[4]}

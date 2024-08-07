@@ -67,7 +67,7 @@
     <div class="header">
         <div class="logo_container">
             <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-            <p class="website no-cursor">ScentConnection</p>
+            <p class="website no-cursor">FragranceArchive</p>
         </div>
         <div class="icon">
             <form action="/profile_page" method="GET">
@@ -80,16 +80,15 @@
 
     <div class = "profile-container">
         <div class = "left-column">
-            <div class="top-buttons-collection">
+            <div class="top-buttons-reviews">
                 <form action="/search_reviews" method="GET">
-                    <p class = "no-cursor">From here, you can write a review of your own!</p>
-                    <button class="btn" type="submit">Fragrance Search</button>
+                    <button class="reviews-button" type="submit">Fragrance Search</button>
                 </form>
             </div>
             <img src="{{ url_for('static', filename='assets/fragrances11.jpg') }}" alt="fragrance icon" class="pic_container_reviews" />
             <div class="back_container">
                 <form action="/handle_menu" method="POST">
-                    <button class="btn" type="submit">Main Menu</button>
+                    <button class="reviews-button" type="submit">Main Menu</button>
                 </form>
             </div>
         </div>

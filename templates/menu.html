@@ -3,14 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ScentConnection</title>
+        <title>FragranceArchive</title>
         <link rel="stylesheet" href="static/inappstyles.css">
+        <link rel="stylesheet" href="static/mediaqueries.css">
     </head>
 <body>
     <div class="header">
         <div class="logo_container">
             <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-            <p class="website no-cursor">ScentConnection</p>
+            <p class="website no-cursor">FragranceArchive</p>
         </div>
         <div class="icon">
             <form action="/profile_page" method="GET">
@@ -20,26 +21,72 @@
             </form>
         </div>
     </div>
-    <div class = "selection_container2">
-        <p class="no-cursor">Hello {{ userName }}, Please choose an option below:</p>
-        <form action="/handle_collection" method="POST">
-            <button class = "btn" type="submit">My Collection</button>
-        </form>
-        <form action="/handle_wishlist" method="POST">
-            <button class = "btn" type="submit">My Wishlist</button>
-        </form>
-        <form action="/handle_reviews" method="POST">
-            <button class="btn" type="submit">Fragrance Reviews</button>
-        </form>
-        <form action="/search_reviews" method="GET">
-            <button class="btn" type="submit">Search for a Fragrance</button>
-        </form>
-        <form action="/search_users" method="GET">
-            <button class="btn" type="submit">Search for Users</button>
-        </form>
-        <form action="/logout" method="POST">
-            <button class = "btn" type="submit">Logout</button>
-        </form>
-    </div>
+    <div class = "header">
+        <div class = "left-column">
+            <div class = "selection_container2">
+                <p class="no-cursor">Hello {{ userName }}, Please choose an option below:
+                <form action="/handle_collection" method="POST">
+                    <button class = "btn" type="submit">My Collection</button>
+                </form>
+                <form action="/handle_wishlist" method="POST">
+                    <button class = "btn" type="submit">My Wishlist</button>
+                </form>
+                <form action="/handle_reviews" method="POST">
+                    <button class="btn" type="submit">Fragrance Reviews</button>
+                </form>
+                <form action="/search_reviews" method="GET">
+                    <button class="btn" type="submit">Search for a Fragrance</button>
+                </form>
+                <form action="/search_users" method="GET">
+                    <button class="btn" type="submit">Search for Users</button>
+                </form>
+                <br><br>
+                <form action="/logout" method="POST">
+                    <button class = "btn" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <div class = "left-column">
+            <div class="featured-fragrance">
+                <h3>Fragrance of the Week</h3>
+                <div class="fragrance-card">
+                    <div class = "pic_container_menu">
+                        <img src="{{ url_for('static', filename=fragranceOfWeek.image_url) }}" alt="Featured Fragrance">
+                    </div>
+                    <div class="fragrance-info">
+                        <h4>{{ fragranceOfWeek.fragrance_name }}</h4>
+                        <p>{{ fragranceOfWeek.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class = "column">
+            <div class="trustworthy_sites">
+                <p>Trusted sites to purchase from:</p>
+                <p class = "bold">Discounters</p>
+                <p><a href="https://www.fragrancenet.com" target="_blank" class = "link">Fragrancenet</a></p>
+                <p><a href="https://fragrancebuy.ca" target="_blank" class = "link">Fragrancebuy</a></p>
+                <p><a href="https://www.jomashop.com/fragrances.html" target="_blank" class = "link">Jomashop</a></p>
+                <p><a href="https://www.aurafragrance.com" target="_blank" class = "link">Aurafragrance</a></p>
+                <p><a href="https://www.fragrancex.com" target="_blank" class = "link">FragranceX</a></p>
+                <p><a href="https://perfumeonline.ca" target="_blank" class = "link">Perfumeonline</a></p>
+                <p><a href="https://www.costco.com/fragrances.html" target="_blank" class = "link">Costco</a></p>
+                <p class = "bold">Niche</p>
+                <p><a href="https://www.maxaroma.com" target="_blank" class = "link">Maxaroma</a></p>
+                <p><a href="https://www.luckyscent.com" target="_blank" class = "link">Luckyscent</a></p>
+                <p><a href="https://www.neimanmarcus.com/c/beauty-fragrance-cat10470744" target="_blank" class = "link">Neiman Marcus</a></p>
+                <p><a href="https://www.nordstrom.com/browse/beauty/fragrance?breadcrumb=Home%2FBeauty%2FFragrance" target="_blank" class = "link">Nordstrom</a></p>
+                <p><a href="https://www.harrods.com/en-us/shopping/beauty-perfume" target="_blank" class = "link">Harrods</a></p>
+                <p><a href="https://www.selfridges.com/US/en/cat/beauty/fragrance/" target="_blank" class = "link">Selfridges</a></p>
+                <p><a href="https://www.smallflower.com/collections/fragrance" target="_blank" class = "link">Smallflower</a></p>
+                <p class = "bold">Samples</p>
+                <p><a href="https://twistedlily.com/collections/samples-fragrance" target="_blank" class = "link">twistedlily</a></p>
+                <p><a href="https://www.scentsplit.com" target="_blank" class = "link">scentsplit</a></p>
+                <p><a href="https://microperfumes.com" target="_blank" class = "link">microperfumes</a></p>
+            </div>
+        </div> -->
+</div>
 </body>
 </html>

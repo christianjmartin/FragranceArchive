@@ -14,6 +14,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session
 from urllib.parse import unquote
+from datetime import datetime
 import psycopg2
 import junk
 import logic
@@ -68,7 +69,7 @@ def handle_signup():
             elif validSignup == 2:
                 return 'An account with this username already exists, please choose a different username or go back and log in'
             elif validSignup == 4:
-                return 'The username you have entered is too long, the maximum number of characters allowed is 15'
+                return 'The username you have entered is too long, the maximum number of characters allowed is 24'
             else:
                 return 'Internal error'
         else:
@@ -104,7 +105,13 @@ def handle_login():
 @app.route('/handle_menu', methods=['GET', 'POST'])
 def handle_menu():
     # Handle the main menu
-    return render_template('menu.html', userName = session['name'])
+    week_number = datetime.now().isocalendar()[1]
+    # week_number = (week_number - 1) % 52 + 1
+    fragranceOfWeek = logic.getFragranceOfWeek(dbCursor, 10)
+    
+    # if fragranceOfWeek:
+    #     print(fragranceOfWeek['image_url'])
+    return render_template('menu.html', userName = session['name'], fragranceOfWeek=fragranceOfWeek)
 
 
 

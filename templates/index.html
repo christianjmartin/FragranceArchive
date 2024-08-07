@@ -3,28 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ScentConnection</title>
+        <title>FragranceArchive</title>
         <link rel="stylesheet" href="static/inappstyles.css">
         <link rel="stylesheet" href="static/mediaqueries.css"/>
     </head>
 <body>
     <div class="logo_container">
         <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-        <p class = "website no-cursor">ScentConnection</p>
+        <p class = "website no-cursor">FragranceArchive</p>
     </div>
     <div class = "selection_container">
         <!-- <p>Please choose an option below:</p> -->
         <!-- <br> -->
         <form action="/login" method="GET">
-            <button class="btn" type="submit">Login</button>
+            <button class="index-button" type="submit">Login</button>
         </form>
         <form action="/sign_up" method="GET">
-            <button class="btn" type="submit">Sign Up</button>
+            <button class="index-button" type="submit">Sign Up</button>
         </form>
     </div>
     <div class = "information_site">
-        <p>Curate your collection, or a wishlist for your future in the fragrance world!</p>
-        <p>For more information on fragrances, updated everyday, visit this Reddit page - <a href="https://www.reddit.com/r/fragrance/" target="_blank" class = "link">r/fragrance</a></p>
+        <p>Curate your collection, or a wishlist for your future in the fragrance world! 
+        <br><br>
+        For more information on fragrances, updated everyday, visit this Reddit page - <a href="https://www.reddit.com/r/fragrance/" target="_blank" class = "link">r/fragrance</a></p>
         <img src="{{ url_for('static', filename='assets/fragrances4.jpg') }}" alt="fragpic" class="pic_container_for_4"/>
         <img src="{{ url_for('static', filename='assets/fragrances9.jpg') }}" alt="fragpic" class="pic_container_for_4"/>
         <div class="trustworthy_sites">

@@ -65,7 +65,7 @@
     <div class="header">
         <div class="logo_container">
             <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
-            <p class="website no-cursor">ScentConnection</p>
+            <p class="website no-cursor">FragranceArchive</p>
         </div>
         <div class="icon-container">
             <div class = "horizontal_container2">
@@ -126,12 +126,12 @@
                 <ul>
                     {% if fragrance_collection %}
                         {% for fragrance in fragrance_collection %}
-                        <li class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
+                        <li class="bordered fragtext spacing5 no-bullets"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
                             <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
                         </li>
                         {% endfor %}
                     {% else %}
-                        <li>No fragrances available.</li>
+                        <li class = "no-bullets">No fragrances available.</li>
                     {% endif %}
                 </ul>
             </div>
@@ -145,12 +145,12 @@
                     {% if fragrance_wishlist %}
                         {% for fragrance in fragrance_wishlist %}
                             <!-- <li class="fragtext bordered spacing5"> <b>{{ fragrance.name }}</b> by {{ fragrance.house }}</li> -->
-                            <li class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
+                            <li class="bordered fragtext spacing5 no-bullets"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
                                 <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
                             </li>
                         {% endfor %}
                     {% else %}
-                        <li>No fragrances available.</li>
+                        <li class = "no-bullets">No fragrances available.</li>
                     {% endif %}
                 </ul>
             </div>
@@ -163,7 +163,7 @@
                 <ul>
                     {% if reviews %}
                         {% for review in reviews %}
-                            <li id="review_{{ review.review_id }}" class="review-item fragtext bordered spacing5">
+                            <li id="review_{{ review.review_id }}" class="review-item fragtext bordered spacing5 no-bullets">
                                 <div class = "flexer">
                                     <p><a href="{{ url_for('review_page', fragrance_name=review.fragrance_name|urlencode, fragrance_house=review.fragrance_house|urlencode) }}" class="link-review">
                                         <strong>{{ review.fragrance_name }} by {{ review.fragrance_house }}</strong>
@@ -198,7 +198,7 @@
                             </li>
                         {% endfor %}
                     {% else %}
-                        <li>No reviews available.</li>
+                        <li class = "no-bullets">No reviews available.</li>
                     {% endif %}
                 </ul>
             </div>
