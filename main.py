@@ -19,16 +19,22 @@ import psycopg2
 import junk
 import logic
 
+import urllib.parse as urlparse
+import os
+
 app = Flask(__name__)
 # app.secret_key = '123456789'
-app.secret_key = 'IISAODN-2421S-QWFQ13QV-193C1aaa'
+
+# app.secret_key = 'IISAODN-2421S-QWFQ13QV-193C1aaa'
+app.secret_key = os.getenv('SECRET_KEY')
 
 # Database connection
 conn = psycopg2.connect(
     host="localhost",
     database="FragranceDatabase",
     user="postgres",
-    password=junk.string_list[45],
+    # password=junk.string_list[45],
+    password=os.getenv('DB_PASSWORD'),
 )
 dbCursor = conn.cursor()
 
