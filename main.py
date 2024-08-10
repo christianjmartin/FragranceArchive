@@ -16,7 +16,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify, s
 from urllib.parse import unquote
 from datetime import datetime
 import psycopg2
-import junk
+# import junk
 import logic
 
 import urllib.parse as urlparse
