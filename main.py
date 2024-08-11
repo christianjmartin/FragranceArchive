@@ -28,14 +28,26 @@ app = Flask(__name__)
 # app.secret_key = 'IISAODN-2421S-QWFQ13QV-193C1aaa'
 app.secret_key = os.getenv('SECRET_KEY')
 
-# Database connection
-conn = psycopg2.connect(
-    host="localhost",
-    database="FragranceDatabase",
-    user="postgres",
-    # password=junk.string_list[45],
-    password=os.getenv('DB_PASSWORD'),
-)
+# Parse the database URL provided by Heroku
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    url = urlparse.urlparse(DATABASE_URL)
+    conn = psycopg2.connect(
+        database=url.path[1:],  # Remove leading '/'
+        user=url.username,
+        password=url.password,
+        host=url.hostname,
+        port=url.port
+    )
+else:
+    # Fallback to local settings (useful for local development)
+    conn = psycopg2.connect(
+        host="localhost",
+        database="FragranceDatabase",
+        user="postgres",
+        password=os.getenv('DB_PASSWORD'),
+    )
+    
 dbCursor = conn.cursor()
 
 @app.route('/')
