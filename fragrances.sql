@@ -80,7 +80,7 @@ CREATE TABLE Follows (
     FOREIGN KEY (FollowingEmail) REFERENCES Client(Email)
 );
 
-CREATE TABLE fragrance_of_the_week (
+CREATE TABLE FragranceOfTheWeek (
     id SERIAL PRIMARY KEY,
     week_number INT NOT NULL,
     fragrance_name VARCHAR(255) NOT NULL,

@@ -47,7 +47,7 @@ else:
         user="postgres",
         password=os.getenv('DB_PASSWORD'),
     )
-    
+
 dbCursor = conn.cursor()
 
 @app.route('/')
@@ -125,11 +125,11 @@ def handle_menu():
     # Handle the main menu
     week_number = datetime.now().isocalendar()[1]
     # week_number = (week_number - 1) % 52 + 1
-    fragranceOfWeek = logic.getFragranceOfWeek(dbCursor, 22)
+    # fragranceOfWeek = logic.getFragranceOfWeek(dbCursor, 22)
     
     # if fragranceOfWeek:
     #     print(fragranceOfWeek['image_url'])
-    return render_template('menu.html', userName = session['name'], fragranceOfWeek=fragranceOfWeek)
+    return render_template('menu.html', userName = session['name']) #, fragranceOfWeek=fragranceOfWeek)
 
 
 
