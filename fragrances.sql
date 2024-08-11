@@ -85,7 +85,7 @@ CREATE TABLE fragrance_of_the_week (
     week_number INT NOT NULL,
     fragrance_name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255) NOT NULL
 );
 
 -- CREATE TABLE Reviews ();
