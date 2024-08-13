@@ -1,3 +1,9 @@
+import bcrypt
+
+def hash_password(password):
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed_password.decode('utf-8') 
 
 def passwordChecker(password):
     if len(password) < 8:
@@ -30,7 +36,7 @@ def validateSignup(dbCursor, conn, name, email, password, lastname, username):
     password = password.strip()
 
     passwordCheck = passwordChecker(password)
-    if passwordCheck == False:
+    if not passwordCheck:
         return 0
     
     if len(username) > 24:
@@ -41,7 +47,7 @@ def validateSignup(dbCursor, conn, name, email, password, lastname, username):
         dbCursor.execute(query, (email,))
         row = dbCursor.fetchone()
     except Exception as e:
-        print("error in query execution" + e)
+        print("Error in query execution:", e)
         return -1
 
     if row is not None:
@@ -52,24 +58,72 @@ def validateSignup(dbCursor, conn, name, email, password, lastname, username):
         dbCursor.execute(query2, (username,))
         row2 = dbCursor.fetchone()
     except Exception as e:
-        print("error in query execution" + e)
+        print("Error in query execution:", e)
         return -1
 
     if row2 is not None:
         return 2
     
+    hashed_password = hash_password(password)  # hashed_password is in bytes
+
     query3 = "INSERT INTO Client (Email, Name, Password, LastName, Username) VALUES (%s, %s, %s, %s, %s)"
     try: 
-        dbCursor.execute(query3, (email, name, password, lastname, username))
+        dbCursor.execute(query3, (email, name, hashed_password, lastname, username))
         conn.commit()
         return 3
     except Exception as e:
-        print("error in query execution" + e)
+        print("Error in query execution:", e)
         conn.rollback()
         return -1
 
+def check_password(stored_password, provided_password):
+    # If stored_password was stored as a string, you might need to encode it
+    if isinstance(stored_password, str):
+        stored_password = stored_password.encode('utf-8')
+    return bcrypt.checkpw(provided_password.encode('utf-8'), stored_password)
+
+def validateLogin(dbCursor, email, password):
+    email = email.strip()
+    password = password.strip()
+
+    query = "SELECT Password FROM Client WHERE Email = %s"
+    try:
+        dbCursor.execute(query, (email,))
+        row = dbCursor.fetchone()
+    except Exception as e:
+        print("Error in query execution:", e)
+        return False
+
+    if row is None:
+        return False
+
+    stored_password = row[0]
+
+    if not check_password(stored_password, password):
+        return False
+
+    return True
 
 
+
+
+
+
+# def validateLogin(dbCursor, email, password):
+#     email = email.strip()
+#     password = password.strip()
+#     query = "SELECT * FROM Client WHERE Email = %s AND Password = %s"
+#     try: 
+#         dbCursor.execute(query, (email, password))
+#         row = dbCursor.fetchone()
+#     except Exception as e:
+#         print("error in query execution" + e)
+#         return False
+
+#     if row is None:
+#         return False
+    
+#     return True
 
 def getName(dbCursor, email):
     query = "SELECT Name FROM Client WHERE Email = %s"
@@ -79,23 +133,6 @@ def getName(dbCursor, email):
         return result[0]
     else:
         return None
-
-
-def validateLogin(dbCursor, email, password):
-    email = email.strip()
-    password = password.strip()
-    query = "SELECT * FROM Client WHERE Email = %s AND Password = %s"
-    try: 
-        dbCursor.execute(query, (email, password))
-        row = dbCursor.fetchone()
-    except Exception as e:
-        print("error in query execution" + e)
-        return False
-
-    if row is None:
-        return False
-    
-    return True
 
 
 def searchFragranceByName(dbCursor, query):
