@@ -121,7 +121,13 @@
     <div class="profile-container">
         <!-- Column 1: Collection -->
         <div class="column">
-            <h2 class="column-title no-cursor">Collection</h2>
+            {% if viewer_email == user_email %}
+                <h2 class="column-title">
+                    <a class="link-review2" href="{{ url_for('handle_collection') }}">Collection</a>
+                </h2>
+            {% else %}
+                <h2 class="column-title no-cursor">Collection</h2>
+            {% endif %}
             <div class="column-content">
                 <ul>
                     {% if fragrance_collection %}
@@ -139,7 +145,13 @@
 
         <!-- Column 2: Wishlist -->
         <div class="column">
-            <h2 class="column-title no-cursor">Wishlist</h2>
+            {% if viewer_email == user_email %}
+                <h2 class="column-title">
+                    <a class="link-review2" href="{{ url_for('handle_wishlist') }}">Wishlist</a>
+                </h2>
+            {% else %}
+                <h2 class="column-title no-cursor">Wishlist</h2>
+            {% endif %}
             <div class="column-content">
                 <ul>
                     {% if fragrance_wishlist %}

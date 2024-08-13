@@ -1,5 +1,5 @@
 CREATE TABLE Client (
-    Email VARCHAR(100) PRIMARY KEY,
+    Email VARCHAR(255) PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Password VARCHAR(100) NOT NULL,
     LastName VARCHAR(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE Fragrance (
 
 CREATE TABLE Collection (
     CollectionID SERIAL PRIMARY KEY,
-    ClientEmail VARCHAR(100) NOT NULL,
+    ClientEmail VARCHAR(255) NOT NULL,
     FragranceID INT NOT NULL,
     FOREIGN KEY (ClientEmail) REFERENCES Client(Email),
     FOREIGN KEY (FragranceID) REFERENCES Fragrance(FragranceID)
@@ -25,7 +25,7 @@ CREATE TABLE Collection (
 
 CREATE TABLE Wishlist (
     WishlistID SERIAL PRIMARY KEY,
-    ClientEmail VARCHAR(100) NOT NULL,
+    ClientEmail VARCHAR(255) NOT NULL,
     FragranceID INT NOT NULL,
     FOREIGN KEY (ClientEmail) REFERENCES Client(Email),
     FOREIGN KEY (FragranceID) REFERENCES Fragrance(FragranceID)
@@ -35,7 +35,7 @@ CREATE TABLE Requests (
     RequestID SERIAL PRIMARY KEY,
     Name VARCHAR(255),
     House VARCHAR(100),
-    ClientEmail VARCHAR(100) NOT NULL,
+    ClientEmail VARCHAR(255) NOT NULL,
     FOREIGN KEY (ClientEmail) REFERENCES Client(Email)
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE Reviews (
     Name VARCHAR(255),
     House VARCHAR(100),
     Review TEXT,
-    ClientEmail VARCHAR(100) NOT NULL,
+    ClientEmail VARCHAR(255) NOT NULL,
     ClientName VARCHAR(100) NOT NULL,
     Likes INT DEFAULT 0,
     Rating INTEGER,
@@ -64,7 +64,7 @@ CREATE TABLE ReviewLikes (
 
 CREATE TABLE ReviewRatings (
     ReviewRatingsID SERIAL PRIMARY KEY,
-    Client_Email VARCHAR(100) NOT NULL,
+    Client_Email VARCHAR(255) NOT NULL,
     Rating INTEGER NOT NULL,
     FragName VARCHAR(255),
     FragHouse VARCHAR(100),
@@ -72,8 +72,8 @@ CREATE TABLE ReviewRatings (
 );
 
 CREATE TABLE Follows (
-    FollowerEmail VARCHAR(100) NOT NULL,
-    FollowingEmail VARCHAR(100) NOT NULL,
+    FollowerEmail VARCHAR(255) NOT NULL,
+    FollowingEmail VARCHAR(255) NOT NULL,
     DateFollowed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (FollowerEmail, FollowingEmail),
     FOREIGN KEY (FollowerEmail) REFERENCES Client(Email),
