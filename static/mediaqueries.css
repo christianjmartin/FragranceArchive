@@ -190,6 +190,7 @@
 
 @media screen and (max-width: 600px) {
 
+
     .selection_container2 button {
         margin-top: 10px;
         font-size: 1rem;
@@ -224,10 +225,6 @@
         max-width: 100px;
         min-width: 100px;
         margin-left: -10px;
-    }
-
-    .left-column {
-        margin-left: -20px;
     }
 
     html {
@@ -312,6 +309,7 @@
 
     .selection_container2 {
         max-width: 110px;
+        margin-left: -20px;
     }
 
 
