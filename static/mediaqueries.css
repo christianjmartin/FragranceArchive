@@ -47,8 +47,8 @@
         min-width: 400px;
     }
     .pic_container_menu img{
-        height: 200px;
-        width: 200px;
+        height: 12.5rem;
+        width: 12.5rem;
     }
     .selection_container2 {
         margin-top: 0px;
@@ -212,7 +212,7 @@
     }
     .pic_container_for_4 {
         max-width: 220px;
-        max-height: 175px;
+        max-height: 150px;
         left: 0;
     }
     .information_site {
@@ -277,6 +277,11 @@
         color: rgb(255, 245, 246);;
     } */
 
+    .selection_container2 {
+        max-width: 140px;
+        margin-top: 0px;
+    }
+
 
     .star-rating {
         font-size: 10px;  
@@ -318,13 +323,13 @@
         min-width: 9rem;
         margin-top: -22px;
     }
-    .selection_container2 {
+    /* .selection_container2 {
         margin-top: -20px;
-    }
+    } */
 
     .featured-fragrance {
-        max-width: 300px;
-        min-width: 300px;
+        max-width: 18.7rem;
+        min-width: 18.7rem;
         margin-top: 0px;
     }
 
