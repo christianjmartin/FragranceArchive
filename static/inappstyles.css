@@ -408,8 +408,8 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 500px; /* Adjust the maximum height as needed */
-    min-height: 500px;
+    max-height: 510px; /* Adjust the maximum height as needed */
+    min-height: 510px;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }

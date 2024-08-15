@@ -210,21 +210,21 @@
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
-        margin-left: -10px;
+        margin-left: -30px;
     }
 
     .request-button-collection button {
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
-        margin-left: -10px;
+        margin-left: -30px;
     }
 
     .back_container2 button{
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
-        margin-left: -10px;
+        margin-left: -30px;
     }
 
     html {
@@ -266,8 +266,9 @@
         /* margin-bottom: 5px; */
     }
     .pic_container {
-        margin-left: -10px;
+        margin-left: -30px;
         max-width: 100px;
+        min-width: 100px;
         max-height: 250px;
         object-fit: cover;
         object-position: left;
@@ -336,7 +337,7 @@
     } */
     .top-buttons-collection {
         max-width: 100px;
-        margin-top: 15px;
+        margin-top: 25px;
         gap: 5px;
         flex-wrap: wrap;
         gap: 0px;
