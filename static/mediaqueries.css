@@ -194,10 +194,14 @@
     /* .left-column {
         max-width: 115px;
     } */
-    /* html {
-        font-size: 12px;
-    } */
+    html {
+        font-size: 14px;
+    }
 
+    .index-button {
+        padding: 12px 18px;
+        font-size: 1rem;
+    }
     .right-column {
         min-width: 320px;
     }
@@ -205,6 +209,16 @@
         padding: 15px 20px;
         margin-top: 5px;
         min-width: 115px;
+    }
+    .pic_container_for_4 {
+        max-width: 320px;
+        max-height: 175px;
+        left: 0;
+    }
+    .information_site {
+        margin-top: -55px;
+        display: block;
+        max-width: 320px;
     }
 
     /* .reviews-button {
@@ -300,8 +314,8 @@
 /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
 @media screen and (max-width: 700px) {
     .trustworthy_sites {
-        max-width: 130px;
-        min-width: 130px;
+        max-width: 9rem;
+        min-width: 9rem;
         margin-top: -22px;
     }
     .selection_container2 {

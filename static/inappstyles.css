@@ -11,11 +11,12 @@ body {
     margin: 20px;
     font-family: "Plus Jakarta Sans", sans-serif;
     background-color: rgb(255, 245, 246);
+    font-size: 1rem;
 }
 
 
 html {
-    /* font-size: 16px; */
+    font-size: 16px;
     scroll-behavior: smooth;
 }
 
