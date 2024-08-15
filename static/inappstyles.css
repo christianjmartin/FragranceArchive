@@ -32,6 +32,20 @@ html {
     border: 1.5px solid rgb(117, 44, 121);
 }
 
+.spacing15 {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.collection-header {
+    justify-content: space-between;
+    display: flex;
+}
+
+.collection-header h2 {
+    text-wrap: nowrap;
+}
+
 .index-button {
     margin-top: 13.5px;
     padding: 20px 30px;
@@ -141,6 +155,12 @@ html {
 }
 
 .back_container {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.back_container2 {
     display: flex;
     align-items: center;
     gap: 17px;
@@ -338,6 +358,18 @@ html {
     /* flex-wrap: wrap; */
 }
 
+.sort-container {
+    position: relative;
+}
+
+/* Absolute positioning for the sort box */
+.sorting-container {
+    position: absolute;
+    top: 0;
+    margin-left: 90px;
+    transform: translateX(100%);
+}
+
 .top-buttons-collection {
     display: flex;
     gap: 10px;
@@ -376,8 +408,8 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 440px; /* Adjust the maximum height as needed */
-    min-height: 440px;
+    max-height: 500px; /* Adjust the maximum height as needed */
+    min-height: 500px;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }
@@ -444,6 +476,7 @@ html {
     margin-top: 2px;
     margin-bottom: 3px;
 }
+
 
 .spacing11 {
     margin-bottom: 10px;
@@ -719,7 +752,21 @@ html {
     max-width: 400px;
 }
 
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+/* .collection-container {
+    position: relative;
+    margin-top: 15px;
+}
+
+.collection-container button {
+    position: absolute;
+    margin-left: 200px;
+} */
 
 .horizontal_container {
     flex-direction: row;
@@ -1079,6 +1126,7 @@ h1 {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
+    right: 0;
     min-width: 160px;
     max-width: 160px;
     flex-wrap: wrap;
@@ -1183,3 +1231,37 @@ h1 {
     margin-top: -20px;
 }
 
+
+
+/* General styling for the select box */
+select {
+    appearance: none; /* Remove default styling (use -webkit-appearance or -moz-appearance for compatibility) */
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 0.8rem; /* Adjust the size to use REM units */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+    width: 38px;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+}
+
+/* When hovered */
+select:hover {
+    background-color: #e0e0e0;
+}
+
+/* When focused */
+select:focus {
+    border-color: #888;
+}
+
+/* Option styling (works on some browsers) */
+option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+}

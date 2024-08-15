@@ -41,7 +41,7 @@
             </form>
         </div>
         <img src="{{ url_for('static', filename='assets/fragrances2.jpg.webp') }}" alt="fragrance icon" class="pic_container" />
-        <div class = "back_container">
+        <div class = "back_container2">
             <form action="/handle_menu" method="POST">
                 <button class = "btn" type="submit">Main Menu</button>
             </form>
@@ -49,38 +49,36 @@
     </div>
     <div class = "right-column">
     <!-- <div class = h20> -->
-        <h2 class = "column-title"> My Fragrance Collection</h2>
-        <div class = "fragrance_collection2">
-            {% for fragrance in fragrance_collection %}
-                <p class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
-                    <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
-                </p>        
-            {% endfor %}
+        <div class = "collection-header">
+            <h2 class = "column-title"> My Fragrance Collection</h2>
+                <div class="dropdown">
+                    <button class="btn5 spacing15">Sort</button>
+                    <div class="dropdown-content">
+                        <a class="colored" href="/alphabetically_sort_name_AZ_collection">Name A-Z</a>
+                        <a class="colored" href="/alphabetically_sort_name_ZA_collection">Name Z-A</a>
+                        <a class="colored" href="/alphabetically_sort_house_AZ_collection">House A-Z</a>
+                        <a class="colored" href="/alphabetically_sort_house_ZA_collection">House Z-A</a>
+                        <a class="colored" href="/newest_added_collection">Newest Added</a>
+                        <a class="colored" href="/oldest_added_collection">Oldest Added</a>
+                    </div>
+                </div>
         </div>
-    <!-- </div> -->
-    <div class = "request-text-collection">
-        <p>Change the sorting of your Collection?</p>
-    </div>
-    <div class = "sorting-collection">
-        <form action="/alphabetically_sort_name_AZ_collection" method="POST">
-            <button class = "btn2" type="submit">Name A-Z</button>
-        </form>
-        <form action="/alphabetically_sort_name_ZA_collection" method="POST">
-            <button class = "btn2" type="submit">Name Z-A</button>
-        </form>
-        <form action="/alphabetically_sort_house_AZ_collection" method="POST">
-            <button class = "btn2" type="submit">House A-Z</button>
-        </form>
-        <form action="/alphabetically_sort_house_ZA_collection" method="POST">
-            <button class = "btn2" type="submit">House Z-A</button>
-        </form>
-        <form action="/newest_added_collection" method="POST">
-            <button class = "btn2" type="submit">Newest Added</button>
-        </form>
-        <form action="/oldest_added_collection" method="POST">
-            <button class = "btn2" type="submit">Oldest Added</button>
-        </form>
-    </div>
+            <div class = "fragrance_collection2">
+                {% for fragrance in fragrance_collection %}
+                    <p class="bordered fragtext spacing5"><a class="link-review" href="{{ url_for('review_page', fragrance_name=fragrance.name|urlencode, fragrance_house=fragrance.house|urlencode) }}">
+                        <strong class="kinda-bold">{{ fragrance.name }}</strong> by {{ fragrance.house }}</a>
+                    </p>        
+                {% endfor %}
+            </div>
+    <script>
+        function sortCollection(select) {
+            var selectedValue = select.value;
+            if (selectedValue) {
+                window.location.href = selectedValue;
+            }
+        }
+    </script>
+    
 </div>
 </div>
 </body>

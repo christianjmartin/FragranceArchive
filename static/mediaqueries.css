@@ -123,11 +123,6 @@
         object-fit: cover;
         object-position: left;
     }
-
-    .fragrance_collection2 {
-        max-height: 420px;
-        min-height: 420px;
-    }
     .top-buttons-collection {
         max-width: 400px;
         margin-top: 15px;
@@ -187,19 +182,52 @@
         margin-top: 5px;
         min-width: 124px;
     }
+    .collection-header h2 {
+        font-size: 20px;
+    }
 
 }
 
 @media screen and (max-width: 600px) {
-    /* .left-column {
-        max-width: 115px;
-    } */
 
     .selection_container2 button {
         margin-top: 10px;
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
+    }
+
+    .collection-header h2 {
+        text-wrap: wrap;
+        margin-left: 45px;
+    }
+    .spacing15 {
+        margin-top: 35px;
+    }
+
+    .top-buttons-collection button {
+        font-size: 1rem;
+        max-width: 100px;
+        min-width: 100px;
+        margin-left: -10px;
+    }
+
+    .request-button-collection button {
+        font-size: 1rem;
+        max-width: 100px;
+        min-width: 100px;
+        margin-left: -10px;
+    }
+
+    .back_container2 button{
+        font-size: 1rem;
+        max-width: 100px;
+        min-width: 100px;
+        margin-left: -10px;
+    }
+
+    .left-column {
+        margin-left: -20px;
     }
 
     html {
@@ -211,7 +239,7 @@
         font-size: 1rem;
     }
     .right-column {
-        min-width: 320px;
+        min-width: 17.7rem;
     }
     .btn {
         padding: 10px 15px;
@@ -241,7 +269,8 @@
         /* margin-bottom: 5px; */
     }
     .pic_container {
-        max-width: 115px;
+        margin-left: -10px;
+        max-width: 100px;
         max-height: 250px;
         object-fit: cover;
         object-position: left;
@@ -252,10 +281,6 @@
         gap: 5px;
         margin-top: 5px;
         align-items: center;
-    }
-    .fragrance_collection2 {
-        max-height: 420px;
-        min-height: 420px;
     }
     .btn2 {
         padding: 5px 8px;
@@ -287,8 +312,6 @@
 
     .selection_container2 {
         max-width: 110px;
-        margin-top: 0px;
-        margin-left: -20px;
     }
 
 
@@ -332,15 +355,16 @@
         min-width: 9rem;
         margin-top: -22px;
     }
-    /* .selection_container2 {
+    .selection_container2 {
         margin-top: -20px;
-    } */
+    }
 
     .featured-fragrance {
         max-width: 17.7rem;
         min-width: 17.7rem;
         margin-top: 0px;
     }
+
 
     .spacing9 {
         margin-top: 15px;
