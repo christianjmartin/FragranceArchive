@@ -194,6 +194,14 @@
     /* .left-column {
         max-width: 115px;
     } */
+
+    .selection_container2 button {
+        margin-top: 10px;
+        font-size: 1rem;
+        max-width: 100px;
+        min-width: 100px;
+    }
+
     html {
         font-size: 14px;
     }
@@ -206,9 +214,9 @@
         min-width: 320px;
     }
     .btn {
-        padding: 15px 20px;
+        padding: 10px 15px;
         margin-top: 5px;
-        min-width: 115px;
+        font-size: 1rem;
     }
     .pic_container_for_4 {
         max-width: 220px;
@@ -278,7 +286,7 @@
     } */
 
     .selection_container2 {
-        max-width: 140px;
+        max-width: 110px;
         margin-top: 0px;
     }
 
@@ -328,8 +336,8 @@
     } */
 
     .featured-fragrance {
-        max-width: 18.7rem;
-        min-width: 18.7rem;
+        max-width: 17.7rem;
+        min-width: 17.7rem;
         margin-top: 0px;
     }
 
