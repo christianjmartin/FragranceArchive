@@ -326,6 +326,10 @@
         max-width: 110px;
         margin-left: -20px;
     }
+    .selection_container2 p {
+        text-wrap: wrap;
+        word-break: break-word;
+    }
 
 
     .star-rating {
@@ -356,6 +360,9 @@
         flex-wrap: wrap;
         gap: 0px;
     }
+    .selection_container2{
+        transform: translateY(10px);
+    }
 }
 
 
@@ -373,14 +380,14 @@
         min-width: 9rem;
         margin-top: -22px;
     }
-    .selection_container2 {
-        margin-top: -20px;
-    }
 
     .featured-fragrance {
         max-width: 17.7rem;
         min-width: 17.7rem;
         margin-top: 0px;
+    }
+    .selection_container2 {
+        margin-top: -42px;
     }
 
 
