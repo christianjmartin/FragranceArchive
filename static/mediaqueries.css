@@ -107,10 +107,10 @@
         margin-top: 5px;
     }
 
-    .reviews-container {
+    /* .reviews-container {
         max-height: 420px;
         min-height: 420px;
-    }
+    } */
     .pic_container_reviews {
         max-width: 400px;
         max-height: 400px;
@@ -220,7 +220,21 @@
         margin-left: -30px;
     }
 
+    .top-buttons-reviews button {
+        font-size: 1rem;
+        max-width: 100px;
+        min-width: 100px;
+        margin-top: 20px;
+        margin-left: -30px;
+    }
+
     .back_container2 button{
+        font-size: 1rem;
+        max-width: 100px;
+        min-width: 100px;
+        margin-left: -30px;
+    }
+    .back_container button{
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
@@ -285,17 +299,17 @@
         margin-top: 5px;
     }
 
-    .reviews-container {
+    /* .reviews-container {
         max-height: 420px;
         min-height: 420px;
-    }
-    
-    /* .pic_container_reviews {
-        max-width: 115px;
-        max-height: 400px;
-        object-fit: cover;
     } */
-
+    
+    .pic_container_reviews {
+        margin-left: -30px;
+        max-width: 100px;
+        min-width: 100px;
+        height: 393px;
+    }
     .pic_container_review_page {
         max-width: 115px;
         max-height: 100px;
@@ -349,6 +363,11 @@
 /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
 /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
 @media screen and (max-width: 700px) {
+    .reviews-button {
+        padding: 10px 15px;
+        margin-top: 5px;
+        font-size: 1rem;
+    }
     .trustworthy_sites {
         max-width: 9rem;
         min-width: 9rem;

@@ -731,8 +731,8 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 440px; /* Adjust the maximum height as needed */
-    min-height: 440px;
+    max-height: 510px; /* Adjust the maximum height as needed */
+    min-height: 510px;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }
@@ -1151,6 +1151,9 @@ h1 {
 }
 
 .dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content.show {
     display: block;
 }
 

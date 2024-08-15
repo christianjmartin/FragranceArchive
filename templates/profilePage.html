@@ -9,6 +9,33 @@
     <link rel="stylesheet" href="static/mediaqueries.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        function toggleDropdown(dropdownId) {
+            // Close any open dropdowns before toggling the clicked one
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.id !== dropdownId && openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+
+            // Toggle the clicked dropdown
+            document.getElementById(dropdownId).classList.toggle('show');
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.btn5')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
         function confirmDelete(reviewId) {
             const reviewElement = document.getElementById(`review_${reviewId}`);
             reviewElement.innerHTML = `
@@ -70,22 +97,23 @@
         <div class="icon-container">
             <div class = "horizontal_container2">
                 {% if viewer_email == user_email %}
-                    <div class="dropdown">
-                        <button class="btn5 spacing9">Followers: <strong>{{ follower_count }}</strong></button>
-                        <div class="dropdown-content">
-                            {% for follower in followers %}
-                                <a class="colored" href="{{ url_for('profile_page', user_email=follower.email) }}">{{ follower.username }}</a>
-                            {% endfor %}
-                        </div>
+                <div class="dropdown">
+                    <button class="btn5 spacing9" onclick="toggleDropdown('followersDropdown')">Followers: <strong>{{ follower_count }}</strong></button>
+                    <div id="followersDropdown" class="dropdown-content">
+                        {% for follower in followers %}
+                            <a class="colored" href="{{ url_for('profile_page', user_email=follower.email) }}">{{ follower.username }}</a>
+                        {% endfor %}
                     </div>
-                    <div class="dropdown">
-                        <button class="btn5 spacing9">Following: <strong>{{ following_count }}</strong></button>
-                        <div class="dropdown-content">
-                            {% for follow in following %}
-                                <a class="colored" href="{{ url_for('profile_page', user_email=follow.email) }}">{{ follow.username }}</a>
-                            {% endfor %}
-                        </div>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="btn5 spacing9" onclick="toggleDropdown('followingDropdown')">Following: <strong>{{ following_count }}</strong></button>
+                    <div id="followingDropdown" class="dropdown-content">
+                        {% for follow in following %}
+                            <a class="colored" href="{{ url_for('profile_page', user_email=follow.email) }}">{{ follow.username }}</a>
+                        {% endfor %}
                     </div>
+                </div>
                 {% else %}
                     <small class = "spacing9 coloring">Followers: <strong>{{ follower_count }}</strong></small>
                     <small class = "spacing9 coloring">Following: <strong>{{ following_count }}</strong></small>

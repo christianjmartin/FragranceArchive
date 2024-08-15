@@ -82,7 +82,7 @@
         <div class = "left-column">
             <div class="top-buttons-reviews">
                 <form action="/search_reviews" method="GET">
-                    <button class="reviews-button" type="submit">Fragrance Search</button>
+                    <button class="reviews-button" type="submit">Search Fragrance</button>
                 </form>
             </div>
             <img src="{{ url_for('static', filename='assets/fragrances11.jpg') }}" alt="fragrance icon" class="pic_container_reviews" />
@@ -94,8 +94,19 @@
         </div>
 
         <div class = "right-column">
-            <div class = "column-title">
-                <h2>Fragrance Reviews</h2>
+            <div class = "collection-header">
+                <h2 class = "column-title">Fragrance Reviews</h2>
+                    <div class="dropdown">
+                        <button class="btn5 spacing15" onclick="toggleDropdown()">Sort</button>
+                        <div class="dropdown-content">
+                            <a class="colored" href="/alphabetically_sort_name_AZ_collection">Name A-Z</a>
+                            <a class="colored" href="/alphabetically_sort_name_ZA_collection">Name Z-A</a>
+                            <a class="colored" href="/alphabetically_sort_house_AZ_collection">House A-Z</a>
+                            <a class="colored" href="/alphabetically_sort_house_ZA_collection">House Z-A</a>
+                            <a class="colored" href="/newest_added_collection">Newest Added</a>
+                            <a class="colored" href="/oldest_added_collection">Oldest Added</a>
+                        </div>
+                    </div>
             </div>
             <div class="reviews-container">
                 <ul>
@@ -147,7 +158,7 @@
                     {% endif %}
                 </ul>
             </div>
-            <div class="request-text-collection">
+            <!-- <div class="request-text-collection">
                 <p>Change the sorting of the reviews?</p>
             </div>
             <div class="sorting-collection">
@@ -166,7 +177,7 @@
                     <form action="/sort_reviews_lowest_rated" method="POST">
                         <button class="btn2" type="submit">Low Rated</button>
                     </form>
-            </div>
+            </div> -->
     </div>
 </div>
 </body>
