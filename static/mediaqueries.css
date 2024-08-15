@@ -211,14 +211,14 @@
         min-width: 115px;
     }
     .pic_container_for_4 {
-        max-width: 320px;
+        max-width: 220px;
         max-height: 175px;
         left: 0;
     }
     .information_site {
         margin-top: -55px;
         display: block;
-        max-width: 320px;
+        max-width: 220px;
     }
 
     /* .reviews-button {
