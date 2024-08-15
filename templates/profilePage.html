@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function toggleDropdown(dropdownId) {
-            // Close any open dropdowns before toggling the clicked one
             var dropdowns = document.getElementsByClassName("dropdown-content");
             for (var i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];
@@ -23,8 +22,8 @@
             document.getElementById(dropdownId).classList.toggle('show');
         }
 
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
+        // Close the dropdown if the user clicks or taps outside of it
+        function closeDropdowns(event) {
             if (!event.target.matches('.btn5')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 for (var i = 0; i < dropdowns.length; i++) {
@@ -35,6 +34,10 @@
                 }
             }
         }
+
+        // Add both 'click' and 'touchstart' event listeners to handle desktop and mobile interactions
+        window.addEventListener('click', closeDropdowns);
+        window.addEventListener('touchstart', closeDropdowns);
 
         function confirmDelete(reviewId) {
             const reviewElement = document.getElementById(`review_${reviewId}`);
