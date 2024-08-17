@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/inappstyles.css">
+    <link rel="stylesheet" href="static/mediaqueries.css"/>
     <title>Add Fragrance</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -81,7 +82,7 @@
                         });
 
                         $.each(data, function(index, fragrance) {
-                            $('#searchResults').append('<div class=" form fragtext bordered spacing2 fragrance_select">' + fragrance.name + ' by ' + fragrance.house + '</div>');
+                            $('#searchResults').append('<div class="form fragtext bordered spacing2 fragrance_select">' + fragrance.name + ' by ' + fragrance.house + '</div>');
                         });
                     }
                 });
@@ -93,7 +94,7 @@
         });
     </script>
 
-    <div class="request-button-collection">
+    <div class="request-button-collection2">
         <form action="/request_fragrance" method="GET">
             <button class="btn" type="submit">Request a Fragrance</button>
         </form>

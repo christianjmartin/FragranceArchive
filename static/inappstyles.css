@@ -151,6 +151,7 @@ html {
     display: flex;
     gap: 10px;
     align-items: center;
+    text-align: center;
     flex-direction: column;
 }
 
@@ -394,6 +395,12 @@ html {
     margin-bottom: 13px;
 }
 
+.request-button-collection2 {
+    max-width: 300px;
+    margin-top: 10px;
+    margin-bottom: 13px;
+}
+
 .request-text-collection {
     margin-top: 10px;
 }
@@ -437,6 +444,10 @@ html {
     margin-top: 3px;
 }
 
+
+#searchResults {
+    max-width: 434px;
+}
 
 .spacing {
     margin: 20px;
@@ -826,9 +837,6 @@ html {
 .special2 {
     margin-bottom: 3px;
 }
-
-
-
 
 
 form {
