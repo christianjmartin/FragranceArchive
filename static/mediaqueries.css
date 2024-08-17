@@ -43,7 +43,7 @@
 @media screen and (max-width: 1000px) {
 
     .featured-fragrance {
-        max-width: 400px;
+        width: 450px;
         min-width: 400px;
     }
     .pic_container_menu img{

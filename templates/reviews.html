@@ -99,12 +99,11 @@
                     <div class="dropdown">
                         <button class="btn5 spacing15" onclick="toggleDropdown()">Sort</button>
                         <div class="dropdown-content">
-                            <a class="colored" href="/alphabetically_sort_name_AZ_collection">Name A-Z</a>
-                            <a class="colored" href="/alphabetically_sort_name_ZA_collection">Name Z-A</a>
-                            <a class="colored" href="/alphabetically_sort_house_AZ_collection">House A-Z</a>
-                            <a class="colored" href="/alphabetically_sort_house_ZA_collection">House Z-A</a>
-                            <a class="colored" href="/newest_added_collection">Newest Added</a>
-                            <a class="colored" href="/oldest_added_collection">Oldest Added</a>
+                            <a class="colored" href="/sort_reviews_highest_rated">High Rating</a>
+                            <a class="colored" href="/sort_reviews_lowest_rated">Low Rating</a>
+                            <a class="colored" href="/sort_reviews_popularity">Popularity</a>
+                            <a class="colored" href="/sort_reviews_newest">Newest Added</a>
+                            <a class="colored" href="/sort_reviews_oldest">Oldest Added</a>
                         </div>
                     </div>
             </div>
@@ -136,7 +135,9 @@
                                 <br>
                                 <small>Likes: {{ review.likes }}</small>
                                 <br>
+                                {% if email != review.review_email %}
                                 <small>User: <a href="{{ url_for('profile_page', user_email=review.review_email) }}" class="link-review">{{ review.name }}</a></small>
+                                {% endif %}
                                 {% if email == review.review_email %}
                                     <div class="edit-delete-buttons">
                                         <form action="/edit_review" method="POST">

@@ -133,9 +133,9 @@
     <div class="profile-actions">
         <div class="profile-title-name no-cursor spacing7">
             {% if viewer_email == user_email %}
-                <p class = "specialCase">My Profile</p>
+                <p class = "specialCase">{{ username }}</p>
             {% else %}
-                <p>{{ username }}'s Profile</p>
+                <p>{{ username }}</p>
                 <form action="{{ url_for('toggle_follow') }}" method="POST">
                     <input type="hidden" name="follower_email" value="{{ viewer_email }}">
                     <input type="hidden" name="following_email" value="{{ user_email }}">

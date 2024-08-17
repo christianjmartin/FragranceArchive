@@ -87,7 +87,7 @@ def handle_signup():
             elif validSignup == 2:
                 return 'An account with this username already exists, please choose a different username or go back and log in'
             elif validSignup == 4:
-                return 'The username you have entered is too long, the maximum number of characters allowed is 24'
+                return 'The username you have entered is too long, the maximum number of characters allowed is 22'
             else:
                 return 'Internal error'
         else:

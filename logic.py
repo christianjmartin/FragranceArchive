@@ -39,7 +39,7 @@ def validateSignup(dbCursor, conn, name, email, password, lastname, username):
     if not passwordCheck:
         return 0
     
-    if len(username) > 24:
+    if len(username) > 22:
         return 4
 
     query = "SELECT * FROM Client WHERE Email = %s"

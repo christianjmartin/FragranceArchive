@@ -132,6 +132,11 @@ html {
     flex-direction: column;
 }
 
+.centered h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .centered th, td {
     padding-right: 20px; /* Increased padding for more space */
     padding-left: 20px;
@@ -1140,7 +1145,7 @@ h1 {
     flex-wrap: wrap;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    max-height: 105px;
+    max-height: 175px;
     overflow-y: auto; 
 }
 
