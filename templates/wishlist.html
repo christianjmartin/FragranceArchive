@@ -79,8 +79,7 @@
             document.querySelector('.dropdown-content').classList.toggle('show');
         }
 
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
+        function closeDropdowns(event) {
             if (!event.target.matches('.btn5')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 for (var i = 0; i < dropdowns.length; i++) {
@@ -91,6 +90,9 @@
                 }
             }
         }
+
+        window.addEventListener('click', closeDropdowns);
+        window.addEventListener('touchstart', closeDropdowns);
     </script>
 </body>
 </html>
