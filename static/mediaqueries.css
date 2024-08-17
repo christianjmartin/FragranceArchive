@@ -176,6 +176,8 @@
     .pic_container_review_page {
         max-height: 130px;
         max-width: 200px;
+        margin-top: -8px;
+        margin-bottom: -8px;
     }
     .top-buttons-reviews {
         display: block;
