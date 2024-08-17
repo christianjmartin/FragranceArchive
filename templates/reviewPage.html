@@ -11,6 +11,25 @@
 </head>
 <body class="no-cursor">
     <script>
+        function toggleDropdown() {
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        }
+
+        function closeDropdowns(event) {
+            if (!event.target.matches('.btn5')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('click', closeDropdowns);
+        window.addEventListener('touchstart', closeDropdowns);
+
         function addLike(review_id, button) {
             $.ajax({
                 url: '/like_review',
@@ -106,6 +125,9 @@
             location.reload();
         }
     </script>
+    <div class="review-page-title no-cursor">
+        <b>{{ fragrance_name }}</b>
+    </div>
     <div class="header">
         <div class="logo_container">
             <img src="{{ url_for('static', filename='assets/logo.jpeg') }}" alt="logo" class="icon" />
@@ -119,7 +141,6 @@
             </form>
         </div>
     </div>
-
     <div class="profile-container">
         <div class="left-column">
             {% if average_rating %}
@@ -138,7 +159,7 @@
                     <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
                     <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
                     <input type="hidden" name="reviews" value="{{ reviews }}">
-                    <button class="btn" type="submit">Write a Review</button>
+                    <button class="write-button" type="submit">Write a Review</button>
                 </form>
 
                 <br>
@@ -169,7 +190,7 @@
                         <button class="btn2" type="submit">Add to Wishlist</button>
                     </form>
                 </div>
-                <div class="back_container">
+                <div class="back_container3">
                     <form action="/handle_menu" method="POST">
                         <button class="btn" type="submit">Main Menu</button>
                     </form>
@@ -178,8 +199,18 @@
         </div>
 
         <div class="right-column">
-            <div class="column-title2">
-                <h2 class="no-cursor">Reviews for {{ fragrance_name }}</h2>
+            <div class="collection-header">
+                <h2 class="column-title2">Fragrance Reviews</h2>
+                <div class="dropdown">
+                    <button class="btn5 spacing18" onclick="toggleDropdown()">Sort</button>
+                    <div class="dropdown-content spacing19">
+                        <a class="colored" href="{{ url_for('review_page') }}?fragrance_name={{ fragrance_name|urlencode }}&fragrance_house={{ fragrance_house|urlencode }}&sort_by=highRated">High Rating</a>
+                        <a class="colored" href="{{ url_for('review_page') }}?fragrance_name={{ fragrance_name|urlencode }}&fragrance_house={{ fragrance_house|urlencode }}&sort_by=lowRated">Low Rating</a>
+                        <a class="colored" href="{{ url_for('review_page') }}?fragrance_name={{ fragrance_name|urlencode }}&fragrance_house={{ fragrance_house|urlencode }}&sort_by=popularity">Popularity</a>
+                        <a class="colored" href="{{ url_for('review_page') }}?fragrance_name={{ fragrance_name|urlencode }}&fragrance_house={{ fragrance_house|urlencode }}&sort_by=NONE">Newest Added</a>
+                        <a class="colored" href="{{ url_for('review_page') }}?fragrance_name={{ fragrance_name|urlencode }}&fragrance_house={{ fragrance_house|urlencode }}&sort_by=oldest">Oldest Added</a>
+                    </div>
+                </div>
             </div>
             <div class="reviews-container2">
                 <ul>
@@ -209,7 +240,9 @@
                                 <br>
                                 <small class="no-cursor">Likes: {{ review.likes }}</small>
                                 <br>
+                                {% if email != review.review_email %}
                                 <small class="no-cursor">User: <a href="{{ url_for('profile_page', user_email=review.review_email) }}" class="link-review">{{ review.name }}</a></small>
+                                {% endif %}
                                 {% if email == review.review_email %}
                                     <div class="edit-delete-buttons">
                                         <form action="/edit_review" method="POST">
@@ -231,10 +264,10 @@
                     {% endif %}
                 </ul>
             </div>
-            <div class="request-text-collection">
+            <!-- <div class="request-text-collection">
                 <p>Change the sorting of the reviews?</p>
-            </div>
-            <div class="sorting-collection">
+            </div> -->
+            <!-- <div class="sorting-collection">
                     <form action="/sort_reviews_oldest_onpage" method="POST">
                         <input type="hidden" name="fragrance_name" value="{{ fragrance_name }}">
                         <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
@@ -260,7 +293,7 @@
                         <input type="hidden" name="fragrance_house" value="{{ fragrance_house }}">
                         <button class="btn2" type="submit">Low Rated</button>
                     </form>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>

@@ -32,9 +32,30 @@ html {
     border: 1.5px solid rgb(117, 44, 121);
 }
 
+.write-button {
+    margin-top: 13.5px;
+    padding: 20px 30px;
+    font-size: 15px;
+    border: none;
+    background-color: rgb(182, 121, 179);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1.5px solid rgb(117, 44, 121);
+}
+
 .spacing15 {
     margin-bottom: 5px;
     margin-left: 10px;
+}
+
+.spacing18 {
+    margin-left: 10px;
+    transform: translateY(10px);
+}
+
+.spacing19 {
+    margin-top: 12px;
 }
 
 .collection-header {
@@ -172,6 +193,12 @@ html {
     gap: 17px;
 }
 
+.back_container3 {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
 .sorting_container {
     display: flex;
     gap: 15px;
@@ -201,6 +228,9 @@ html {
 
 
 .btn:hover {
+    background-color: rgb(106, 57, 103);
+}
+.write-button:hover {
     background-color: rgb(106, 57, 103);
 }
 .index-button:hover {
@@ -526,8 +556,14 @@ html {
     /* margin-left: 10px; */
 }
 
-
-
+.review-page-title {
+    color: rgb(96, 18, 100);
+    position: absolute;
+    top: 12.2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* Ensures that the text itself is centered */
+}
 
 .profile-actions {
     display: flex;
@@ -537,6 +573,7 @@ html {
     margin-top: -50px;
     margin-left: 185px;
 }
+
 
 .profile-actions p {
     font-size: smaller;
@@ -1002,6 +1039,7 @@ h1 {
     text-align: center;
     margin-bottom: 10px;
     color: rgb(96, 18, 100);
+    margin-top: 27px;
 }
 
 .column-content {
@@ -1244,7 +1282,7 @@ h1 {
 }
 
 .AvgRating {
-    margin-top: -20px;
+    margin-top: 10px;
 }
 
 

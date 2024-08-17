@@ -87,7 +87,7 @@ def handle_signup():
             elif validSignup == 2:
                 return 'An account with this username already exists, please choose a different username or go back and log in'
             elif validSignup == 4:
-                return 'The username you have entered is too long, the maximum number of characters allowed is 22'
+                return 'The username you have entered is too long, the maximum number of characters allowed is 21'
             else:
                 return 'Internal error'
         else:
@@ -468,7 +468,7 @@ def review_page():
         if fragrance_house:
             fragrance_house = unquote(fragrance_house)
 
-    sorting = "NONE"
+    sorting = request.args.get('sort_by', 'NONE')
     reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
     reviews = reviews_tuples
     average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
