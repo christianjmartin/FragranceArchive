@@ -906,12 +906,10 @@ h1 {
 }
 
 
-
-
 .star-rating {
     direction: rtl;
     display: inline-block;
-    font-size: 2em;
+    font-size: 1.5em;
     unicode-bidi: bidi-override;
 }
 .star-rating input {

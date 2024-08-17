@@ -744,70 +744,70 @@ def sort_reviews_lowest_rated():
 #SORTING FOR REVIEWS HERE ON REVIEW PAGE
 # ON REVIEW PAGE 
 
-@app.route('/sort_reviews_oldest_onpage', methods=['POST', 'GET'])
-def sort_reviews_oldest_onpage():
-    sorting = "oldest"
-    email = session['email']
-    fragrance_name = request.form.get('fragrance_name')
-    fragrance_house = request.form.get('fragrance_house')
-    print(fragrance_name)
-    print(fragrance_house)
+# @app.route('/sort_reviews_oldest_onpage', methods=['POST', 'GET'])
+# def sort_reviews_oldest_onpage():
+#     sorting = "oldest"
+#     email = session['email']
+#     fragrance_name = request.form.get('fragrance_name')
+#     fragrance_house = request.form.get('fragrance_house')
+#     print(fragrance_name)
+#     print(fragrance_house)
 
-    reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
-    reviews = reviews_tuples
-    average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
-    user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
-    return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
+#     reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
+#     reviews = reviews_tuples
+#     average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
+#     user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
+#     return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
     
 
-@app.route('/sort_reviews_newest_onpage', methods=['POST', 'GET'])
-def sort_reviews_newest_onpage():
-    sorting = "NONE"
-    email = session['email']
-    fragrance_name = request.form.get('fragrance_name')
-    fragrance_house = request.form.get('fragrance_house')
-    reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
-    reviews = reviews_tuples
-    average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
-    user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
-    return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
+# @app.route('/sort_reviews_newest_onpage', methods=['POST', 'GET'])
+# def sort_reviews_newest_onpage():
+#     sorting = "NONE"
+#     email = session['email']
+#     fragrance_name = request.form.get('fragrance_name')
+#     fragrance_house = request.form.get('fragrance_house')
+#     reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
+#     reviews = reviews_tuples
+#     average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
+#     user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
+#     return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
 
-@app.route('/sort_reviews_popularity_onpage', methods=['POST', 'GET'])
-def sort_reviews_popularity_onpage():
-    sorting = "popularity"
-    email = session['email']
-    fragrance_name = request.form.get('fragrance_name')
-    fragrance_house = request.form.get('fragrance_house')
-    reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
-    reviews = reviews_tuples
-    average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
-    user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
-    return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
+# @app.route('/sort_reviews_popularity_onpage', methods=['POST', 'GET'])
+# def sort_reviews_popularity_onpage():
+#     sorting = "popularity"
+#     email = session['email']
+#     fragrance_name = request.form.get('fragrance_name')
+#     fragrance_house = request.form.get('fragrance_house')
+#     reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
+#     reviews = reviews_tuples
+#     average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
+#     user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
+#     return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
 
 
-@app.route('/sort_reviews_highest_rated_onpage', methods=['POST', 'GET'])
-def sort_reviews_highest_rated_onpage():
-    sorting = "highRated"
-    email = session['email']
-    fragrance_name = request.form.get('fragrance_name')
-    fragrance_house = request.form.get('fragrance_house')
-    reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
-    reviews = reviews_tuples
-    average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
-    user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
-    return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
+# @app.route('/sort_reviews_highest_rated_onpage', methods=['POST', 'GET'])
+# def sort_reviews_highest_rated_onpage():
+#     sorting = "highRated"
+#     email = session['email']
+#     fragrance_name = request.form.get('fragrance_name')
+#     fragrance_house = request.form.get('fragrance_house')
+#     reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
+#     reviews = reviews_tuples
+#     average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
+#     user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
+#     return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
 
-@app.route('/sort_reviews_lowest_rated_onpage', methods=['POST', 'GET'])
-def sort_reviews_lowest_rated_onpage():
-    sorting = "lowRated"
-    email = session['email']
-    fragrance_name = request.form.get('fragrance_name')
-    fragrance_house = request.form.get('fragrance_house')
-    reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
-    reviews = reviews_tuples
-    average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
-    user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
-    return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
+# @app.route('/sort_reviews_lowest_rated_onpage', methods=['POST', 'GET'])
+# def sort_reviews_lowest_rated_onpage():
+#     sorting = "lowRated"
+#     email = session['email']
+#     fragrance_name = request.form.get('fragrance_name')
+#     fragrance_house = request.form.get('fragrance_house')
+#     reviews_tuples = logic.getAllReviewsForReviewPage(dbCursor, email, sorting, fragrance_name, fragrance_house)
+#     reviews = reviews_tuples
+#     average_rating = logic.getAverageRating(dbCursor, fragrance_name, fragrance_house)
+#     user_rating = logic.getUserRating(dbCursor, email, fragrance_name, fragrance_house)  # Get the user's rating
+#     return render_template('reviewPage.html', fragrance_name=fragrance_name, fragrance_house=fragrance_house, reviews=reviews, average_rating=average_rating, user_rating=user_rating, email=email)
 
 
 
