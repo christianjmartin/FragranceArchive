@@ -559,7 +559,7 @@ html {
 .review-page-title {
     color: rgb(96, 18, 100);
     position: absolute;
-    top: 12.2%;
+    top: 12.3%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; /* Ensures that the text itself is centered */
@@ -795,8 +795,8 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 420px; /* Adjust the maximum height as needed */
-    min-height: 420px;
+    max-height: 487px; /* Adjust the maximum height as needed */
+    min-height: 487px;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }

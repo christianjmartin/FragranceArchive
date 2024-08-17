@@ -195,6 +195,9 @@
 
 @media screen and (max-width: 600px) {
 
+    .reviews-container2 {
+        margin-right: 30px;
+    }
 
     .selection_container2 button {
         margin-top: 10px;
@@ -212,6 +215,7 @@
     }
     .spacing18 {
         transform: translateY(30px);
+        margin-right: 17px;
     }
     .spacing19 {
         margin-top: 30px;
