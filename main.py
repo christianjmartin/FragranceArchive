@@ -497,17 +497,38 @@ def write_review():
 
 
 
-@app.route('/edit_review', methods=['POST','GET'])
-def edit_review():
-    revID = request.form.get('review_id')
-    name = request.form.get('fragrance_name')
-    house = request.form.get('fragrance_house')
-    review = request.form.get('review_text')
-    rating = request.form.get('rating')
-    if rating >= '1' and rating <= '5':
-        rating = int(rating)
-    return render_template('editReview.html', fragrance_name=name, fragrance_house=house, review_text=review, rating=rating, review_id=revID)
+# @app.route('/edit_review', methods=['POST','GET'])
+# def edit_review():
+#     revID = request.form.get('review_id')
+#     name = request.form.get('fragrance_name')
+#     house = request.form.get('fragrance_house')
+#     review = request.form.get('review_text')
+#     rating = request.form.get('rating')
+#     if rating:
+#         if rating >= '1' and rating <= '5':
+#             rating = int(rating)
+#     return render_template('editReview.html', fragrance_name=name, fragrance_house=house, review_text=review, rating=rating, review_id=revID)
 
+@app.route('/edit_review')
+def edit_review():
+    review_id = request.args.get('review_id')
+    fragrance_name = unquote(request.args.get('fragrance_name'))  # Decode the URL-encoded string
+    fragrance_house = unquote(request.args.get('fragrance_house'))  # Decode the URL-encoded string
+    
+    # Query the database to get the review details based on the review_id
+    review = logic.getFragranceReviewByID(dbCursor, review_id)
+    
+    # Ensure the review was found
+    if not review:
+        return "Review not found", 404
+
+    # Pass the data to the template for rendering
+    return render_template('editReview.html', 
+                           review_id=review_id, 
+                           fragrance_name=fragrance_name, 
+                           fragrance_house=fragrance_house, 
+                           review_text=review['Text'], 
+                           rating=review['Rating'])
 
 @app.route('/delete_review', methods=['POST'])
 def delete_review():

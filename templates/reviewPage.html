@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Fragrance Review</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/app.js"></script>
 </head>
 <body class="no-cursor">
     <script>
@@ -30,100 +31,100 @@
         window.addEventListener('click', closeDropdowns);
         window.addEventListener('touchstart', closeDropdowns);
 
-        function addLike(review_id, button) {
-            $.ajax({
-                url: '/like_review',
-                type: 'POST',
-                data: { review_id: review_id },
-                success: function(response) {
-                    if (response.success) {
-                        $(button).find('i').toggleClass('far fas');
-                        $(button).toggleClass('liked');
-                    } else {
-                        alert('An error occurred.');
-                    }
-                },
-                error: function() {
-                    alert('ERROR BAD');
-                }
-            });
-        }
+        // function addLike(review_id, button) {
+        //     $.ajax({
+        //         url: '/like_review',
+        //         type: 'POST',
+        //         data: { review_id: review_id },
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 $(button).find('i').toggleClass('far fas');
+        //                 $(button).toggleClass('liked');
+        //             } else {
+        //                 alert('An error occurred.');
+        //             }
+        //         },
+        //         error: function() {
+        //             alert('ERROR BAD');
+        //         }
+        //     });
+        // }
 
-        function submitRating(fragrance_name, fragrance_house, rating) {
-            $.ajax({
-                url: '/rate_fragrance',
-                type: 'POST',
-                data: {
-                    fragrance_name: fragrance_name,
-                    fragrance_house: fragrance_house,
-                    rating: rating
-                },
-                success: function(response) {
-                    if (response.success) {
-                        location.reload();
-                    } else {
-                        alert('Failed to add rating.');
-                    }
-                },
-                error: function() {
-                    alert('Error occurred while adding rating.');
-                }
-            });
-        }
+        // function submitRating(fragrance_name, fragrance_house, rating) {
+        //     $.ajax({
+        //         url: '/rate_fragrance',
+        //         type: 'POST',
+        //         data: {
+        //             fragrance_name: fragrance_name,
+        //             fragrance_house: fragrance_house,
+        //             rating: rating
+        //         },
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 location.reload();
+        //             } else {
+        //                 alert('Failed to add rating.');
+        //             }
+        //         },
+        //         error: function() {
+        //             alert('Error occurred while adding rating.');
+        //         }
+        //     });
+        // }
 
-        function removeRating(fragrance_name, fragrance_house) {
-            $.ajax({
-                url: '/remove_rating',
-                type: 'POST',
-                data: {
-                    fragrance_name: fragrance_name,
-                    fragrance_house: fragrance_house
-                },
-                success: function(response) {
-                    if (response.success) {
-                        location.reload();
-                    } else {
-                        alert('Failed to remove rating.');
-                    }
-                },
-                error: function() {
-                    alert('Error occurred while removing rating.');
-                }
-            });
-        }
+        // function removeRating(fragrance_name, fragrance_house) {
+        //     $.ajax({
+        //         url: '/remove_rating',
+        //         type: 'POST',
+        //         data: {
+        //             fragrance_name: fragrance_name,
+        //             fragrance_house: fragrance_house
+        //         },
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 location.reload();
+        //             } else {
+        //                 alert('Failed to remove rating.');
+        //             }
+        //         },
+        //         error: function() {
+        //             alert('Error occurred while removing rating.');
+        //         }
+        //     });
+        // }
 
-        function confirmDelete(reviewId) {
-            const reviewElement = document.getElementById(`review_${reviewId}`);
-            reviewElement.innerHTML = `
-                <div class="fragtext bordered spacing">
-                    <p>Are you sure you want to delete this review?</p>
-                    <button class="confirm-button" onclick="deleteReview(${reviewId})">Yes</button>
-                    <button class="confirm-button" onclick="cancelDelete(${reviewId})">No</button>
-                </div>
-            `;
-        }
+        // function confirmDelete(reviewId) {
+        //     const reviewElement = document.getElementById(`review_${reviewId}`);
+        //     reviewElement.innerHTML = `
+        //         <div class="fragtext bordered spacing">
+        //             <p>Are you sure you want to delete this review?</p>
+        //             <button class="confirm-button" onclick="deleteReview(${reviewId})">Yes</button>
+        //             <button class="confirm-button" onclick="cancelDelete(${reviewId})">No</button>
+        //         </div>
+        //     `;
+        // }
 
-        function deleteReview(reviewId) {
-            $.ajax({
-                url: '/delete_review',
-                type: 'POST',
-                data: { review_id: reviewId },
-                success: function(response) {
-                    if (response.success) {
-                        document.getElementById(`review_${reviewId}`).remove();
-                    } else {
-                        alert('Failed to delete review.');
-                    }
-                },
-                error: function() {
-                    alert('Error occurred while deleting review.');
-                }
-            });
-        }
+        // function deleteReview(reviewId) {
+        //     $.ajax({
+        //         url: '/delete_review',
+        //         type: 'POST',
+        //         data: { review_id: reviewId },
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 document.getElementById(`review_${reviewId}`).remove();
+        //             } else {
+        //                 alert('Failed to delete review.');
+        //             }
+        //         },
+        //         error: function() {
+        //             alert('Error occurred while deleting review.');
+        //         }
+        //     });
+        // }
 
-        function cancelDelete(reviewId) {
-            location.reload();
-        }
+        // function cancelDelete(reviewId) {
+        //     location.reload();
+        // }
     </script>
     <div class="review-page-title no-cursor">
         <p>{{ fragrance_name }} by {{ fragrance_house }}</p>
@@ -245,14 +246,7 @@
                                 {% endif %}
                                 {% if email == review.review_email %}
                                     <div class="edit-delete-buttons">
-                                        <form action="/edit_review" method="POST">
-                                            <input type="hidden" name="review_id" value="{{ review.review_id }}">
-                                            <input type="hidden" name="fragrance_name" value="{{ review.fragrance_name }}">
-                                            <input type="hidden" name="fragrance_house" value="{{ review.fragrance_house }}">
-                                            <input type="hidden" name="review_text" value="{{ review.review }}">
-                                            <input type="hidden" name="rating" value="{{ review.rating }}">
-                                            <button class="edit-button" type="submit">Edit</button>
-                                        </form>
+                                        <a href="{{ url_for('edit_review', review_id=review.review_id, fragrance_name=review.fragrance_name|urlencode, fragrance_house=review.fragrance_house|urlencode, rating=review.rating) }}" class="edit-button">Edit</a>
                                         <button class="delete-button" onclick="confirmDelete('{{ review.review_id }}')">Delete</button>
                                     </div>
                                 {% endif %}

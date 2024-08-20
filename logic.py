@@ -466,6 +466,20 @@ def getFragranceReviews(dbCursor, name, house):
         return False
     
 
+def getFragranceReviewByID(dbCursor, ReviewID):
+    query = "SELECT Review, Rating FROM Reviews WHERE ReviewID = %s"
+    try:
+        dbCursor.execute(query, (ReviewID,))
+        row = dbCursor.fetchone()  # Fetch a single row
+        if row is None:
+            return ''
+        else:
+            review = {'Text': row[0], 'Rating': row[1] if row[1] is not None else 'No Rating'}
+            return review
+    except Exception as e:
+        print("Error in query execution: " + str(e))
+        return False
+
 
 def saveFragranceReview(dbCursor, conn, name, house, reviewText, email, rating):
     email = email.strip()

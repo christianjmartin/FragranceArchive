@@ -155,6 +155,9 @@
     .star-rating {
         font-size: 15px;
     }
+    .review-write-stars {
+        font-size: 20px;
+    }
     .top-buttons-review-page {
         max-width: 100px;
         gap: 5px;
@@ -415,6 +418,29 @@
     }
     #searchResults {
         max-width: 300px;
+    }
+
+
+    .form_container3 textarea{
+        max-width: 300px;
+    }
+    .review-title {
+        font-size: smaller;
+        max-width: 300px;
+        margin: 0 auto; /* Centers the element */
+        transform: translateY(20px);
+    }   
+    .review-title2 {
+        font-size: smaller;
+        max-width: 300px;
+        margin: 0 auto; /* Centers the element */
+        transform: translateY(20px);
+    }  
+    .form_container3 {
+        margin-top: 20px;
+    }
+    .review-write-stars {
+        font-size: 20px;
     }
 }
 
