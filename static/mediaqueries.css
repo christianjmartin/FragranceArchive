@@ -449,6 +449,7 @@
     }
     .column-content {
         max-width: 300px;
+        min-width: 300px;
     }
     .button-container {
         justify-content: center;
