@@ -1002,6 +1002,13 @@ h1 {
     justify-content: space-between;
     padding: 20px;
 }
+
+.profile-container2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
 .column {
     flex: 1;
     margin: 10px;
@@ -1334,4 +1341,8 @@ option {
     background-color: #fff;
     color: #333;
     padding: 10px;
+}
+
+.invisible {
+    color: rgb(255, 252, 252);
 }
