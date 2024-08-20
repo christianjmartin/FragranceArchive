@@ -233,9 +233,6 @@
                                 <br>
                                 <small>Likes: {{ review.likes }}</small>
                                 <br>
-                                {% if viewer_email == user_email %}
-                                    <p class = "invisible">-</p>
-                                {% endif %}
                             </li>
                         {% endfor %}
                     {% else %}
