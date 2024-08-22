@@ -45,6 +45,9 @@
     /* .follower-container {
         margin-top: -30px;
     } */
+    .spacing20 {
+        margin-top: 53px;
+    }
     .featured-fragrance {
         width: 450px;
         min-width: 400px;
@@ -506,6 +509,10 @@
     .follower-container {
         margin-top: 0px;
     }
+    .spacing20 {
+        margin-top: 13px;
+    }
+
     /* .top-buttons-collection p {
         margin-top: -10px;
         font-size: 0px;

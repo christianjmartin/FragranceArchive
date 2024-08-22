@@ -128,7 +128,7 @@ html {
     border: 1.5px solid rgb(117, 44, 121);
     max-width: 80px;
     align-self: center;
-    margin-top: 5px;
+    margin-top: 25px;
 }
 
 
@@ -516,6 +516,13 @@ html {
 
 .spacing9 {
     margin-top: 15px;
+}
+
+.spacing20 {
+    margin-top: 13px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-wrap: nowrap;
 }
 
 .spacing10 {
