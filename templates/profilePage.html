@@ -40,56 +40,6 @@
         window.addEventListener('click', closeDropdowns);
         window.addEventListener('touchstart', closeDropdowns);
 
-        // function confirmDelete(reviewId) {
-        //     const reviewElement = document.getElementById(`review_${reviewId}`);
-        //     reviewElement.innerHTML = `
-        //         <p>Are you sure you want to delete this review?</p>
-        //         <button class="confirm-button" onclick="deleteReview(${reviewId})">Yes</button>
-        //         <button class="confirm-button" onclick="cancelDelete(${reviewId})">No</button>
-        //     `;
-        // }
-
-        // function deleteReview(reviewId) {
-        //     $.ajax({
-        //         url: '/delete_review',
-        //         type: 'POST',
-        //         data: { review_id: reviewId },
-        //         success: function(response) {
-        //             if (response.success) {
-        //                 document.getElementById(`review_${reviewId}`).remove();
-        //             } else {
-        //                 alert('Failed to delete review.');
-        //             }
-        //         },
-        //         error: function() {
-        //             alert('Error occurred while deleting review.');
-        //         }
-        //     });
-        // }
-
-        // function cancelDelete(reviewId) {
-        //     // Reload the page to show the original content
-        //     location.reload();
-        // }
-
-        // function addLike(review_id, button) {
-        //     $.ajax({
-        //         url: '/like_review',
-        //         type: 'POST',
-        //         data: { review_id: review_id },
-        //         success: function(response) {
-        //             if (response.success) {
-        //                 $(button).find('i').toggleClass('far fas');
-        //                 $(button).toggleClass('liked');
-        //             } else {
-        //                 alert('An error occurred.');
-        //             }
-        //         },
-        //         error: function() {
-        //             alert('ERROR BAD');
-        //         }
-        //     });
-        // }
     </script>
 </head>
 <body class = "no-cursor">
@@ -100,28 +50,6 @@
         </div>
         <div class="icon-container">
             <div class = "horizontal_container2">
-                <!-- {% if viewer_email == user_email %}
-                <div class="dropdown">
-                    <button class="btn5 spacing9" onclick="toggleDropdown('followersDropdown')">Followers: <strong>{{ follower_count }}</strong></button>
-                    <div id="followersDropdown" class="dropdown-content">
-                        {% for follower in followers %}
-                            <a class="colored" href="{{ url_for('profile_page', user_email=follower.email) }}">{{ follower.username }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                
-                <div class="dropdown">
-                    <button class="btn5 spacing9" onclick="toggleDropdown('followingDropdown')">Following: <strong>{{ following_count }}</strong></button>
-                    <div id="followingDropdown" class="dropdown-content">
-                        {% for follow in following %}
-                            <a class="colored" href="{{ url_for('profile_page', user_email=follow.email) }}">{{ follow.username }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% else %}
-                    <small class = "spacing9 coloring">Followers: <strong>{{ follower_count }}</strong></small>
-                    <small class = "spacing9 coloring">Following: <strong>{{ following_count }}</strong></small>
-                {% endif %} -->
                 <form action="/profile_page" method="GET">
                     <button class="icon" type="submit">
                         <img src="{{ url_for('static', filename='assets/profile_icon.jpeg') }}"/>

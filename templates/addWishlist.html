@@ -10,25 +10,20 @@
     <script src="/static/app.js"></script>
 </head>
 <div class = "top_of_removal no-cursor">
-    <!-- <form action="/back_to_wishlist" method="POST">
-        <button class = "btn2" type="submit">Back</button>
-    </form> -->
     <h1>Add to Wishlist</h1>
 </div>
 <div class="form_container2">
     <form id="fragrance_name_form" action="/add_fragrance_to_wishlist" method="POST" autocomplete="off">
         <label for="fragrance_name">Search by fragrance name:</label>
         <input type="text" id="fragrance_name" name="fragrance_name" autocomplete="off" autocorrect="off">
-        <!-- <button class = "btn2" type="submit">Submit</button> -->
     </form>
 
     <form id="fragrance_house_form" action="/add_fragrance_to_wishlist" method="POST" autocomplete="off">
         <label for="fragrance_house">Search by fragrance house:</label>
         <input type="text" id="fragrance_house" name="fragrance_house" autocomplete="off" autocorrect="off">
-        <!-- <button class = "btn2" type="submit">Submit</button> -->
     </form>
 
     <div id="searchResults"></div>
-    
+
 </div>
 </html>

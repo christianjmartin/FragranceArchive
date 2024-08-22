@@ -1,17 +1,6 @@
 @media screen and (max-width: 1400px) {
 }
 
-@media screen and (max-width: 1200px) {
-    /* .featured-fragrance {
-        max-width: 600px;
-        min-width: 600px;
-    }
-    .pic_container_menu img{
-        height: 300px;
-        width: 300px;
-    } */
-}
-
 @media screen and (max-width: 1100px) {
     .featured-fragrance {
         max-width: 640px;
@@ -516,45 +505,5 @@
         margin-top: 13px;
     }
 
-    /* .top-buttons-collection p {
-        margin-top: -10px;
-        font-size: 0px;
-        color: rgb(255, 245, 246);;
-    } */
-    /* .pic_container_reviews {
-        max-width: 115px;
-        max-height: 400px;
-        object-fit: cover;
-    }
-    .top-buttons-reviews {
-        max-width: 100px;
-        margin-top: 33px;
-        gap: 5px;
-        flex-wrap: wrap;
-        gap: 0px;
-    }
-    
-    .top-buttons-reviews p {
-        margin-top: -10px;
-        font-size: 0px;
-        color: rgb(255, 245, 246);;
-    } */
-
-    /* .btn {
-        padding: 15px 20px;
-        margin-top: 5px;
-        min-width: 115px;
-    } */
-
-    /* FROM HERE IT IS THE SAME AS 600 
-    /* FROM HERE IT IS THE SAME AS 600
-    /* FROM HERE IT IS THE SAME AS 600
-    /* FROM HERE IT IS THE SAME AS 600
-    /* FROM HERE IT IS THE SAME AS 600
-    /* FROM HERE IT IS THE SAME AS 600 */
-
     
 }
- /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
-  /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
-   /* OTHER PEOPLES PROFIELS ARE SCREWED UP HERE   */
