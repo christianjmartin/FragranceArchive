@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/inappstyles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/app.js"></script>
     <title>Sign Up</title>
 </head>
 <body>
@@ -14,7 +16,7 @@
         <h1>Sign Up</h1>
     </div>
     <div class = form_container>
-    <form action="/sign_up" method="POST">
+    <form id="signupForm" action="/sign_up" method="POST">
 
         <label for="name">First Name:</label>
         <input type="name" id="name" name="name" required>

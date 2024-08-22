@@ -484,6 +484,10 @@ html {
     max-width: 434px;
 }
 
+#reviewSearchResults {
+    max-width: 434px;
+}
+
 .spacing {
     margin: 20px;
 }

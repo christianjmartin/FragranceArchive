@@ -79,22 +79,20 @@ def handle_signup():
         if name and email and password:
             validSignup = logic.validateSignup(dbCursor, conn, name, email, password, lastname, username)
             if validSignup == 3:
-                return redirect(url_for('handle_menu', userName = session['name']))  # Placeholder response
+                return jsonify({'success': True, 'redirect_url': url_for('handle_menu', userName=session['name'])})
             elif validSignup == 0:
-                return 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'
+                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'})
             elif validSignup == 1:
-                return 'An account with this email address already exists, please choose a different email or go back and log in'
+                return jsonify({'success': False, 'message': 'An account with this email address already exists, please choose a different email or go back and log in.'})
             elif validSignup == 2:
-                return 'An account with this username already exists, please choose a different username or go back and log in'
+                return jsonify({'success': False, 'message': 'An account with this username already exists, please choose a different username or go back and log in.'})
             elif validSignup == 4:
-                return 'The username you have entered is too long, the maximum number of characters allowed is 21'
+                return jsonify({'success': False, 'message': 'The username you have entered is too long, the maximum number of characters allowed is 21.'})
             else:
-                return 'Internal error'
+                return jsonify({'success': False, 'message': 'Internal error.'})
         else:
-            return 'Invalid form data. Please provide email and password.'
-
+            return jsonify({'success': False, 'message': 'Invalid form data. Please provide email and password.'})
     else:
-        # Render the sign-up form template for GET requests
         return render_template('signup.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -167,7 +165,7 @@ def search_fragrances_by_name_and_house():
     house = request.args.get('house_query')
     name = name.lower()
     house = house.lower()
-
+    
     results = logic.searchFragranceByNameAndHouse(dbCursor, name, house)
     if results is not None:
         #print(results)
@@ -217,9 +215,9 @@ def add_fragrance_to_collection():
     addedSuccessfully = logic.addToCollection(dbCursor, conn, email, fragrance_name)
    
     if addedSuccessfully:
-        return redirect(url_for('handle_collection'))
+        return jsonify({'success': True, 'redirect_url': url_for('handle_collection')})
     else:
-        return jsonify({'message': str(fragrance_name) + ' was not not found, or it is already a part of your collection... go back and try again'})
+        return jsonify({'success': False,'message': str(fragrance_name) + ' is already a part of your collection.'})
 
 
 @app.route('/remove_collection', methods=['GET', 'POST'])
@@ -281,9 +279,9 @@ def add_fragrance_to_wishlist():
     addedSuccessfully = logic.addToWishlist(dbCursor, conn, email, fragrance_name)
    
     if addedSuccessfully:
-        return redirect(url_for('handle_wishlist'))
+        return jsonify({'success': True, 'redirect_url': url_for('handle_wishlist')})
     else:
-        return jsonify({'message': str(fragrance_name) + ' was not not found, or it is already a part of your wishlist... go back and try again'})
+        return jsonify({'success': False,'message': str(fragrance_name) + ' is already a part of your wishlist.'})
 
 
 @app.route('/remove_wishlist', methods=['GET', 'POST'])

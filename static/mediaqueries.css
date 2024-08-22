@@ -422,6 +422,9 @@
     #searchResults {
         max-width: 300px;
     }
+    #reviewSearchResults {
+        max-width: 300px;
+    }
 
 
     .form_container3 textarea{

@@ -29,67 +29,6 @@
             </form>
 
     <div id="searchResults"></div>
-        <!-- // $(document).ready(function() {
-        //     // Function to handle click on fragrance option in the dropdown
-        //     $('#searchResults').on('click', 'div', function() {
-        //         var selectedFragrance = $(this).text().trim();
-        //         $('#fragrance_name').val(selectedFragrance);
-        //         $('#fragrance_name_form').submit();
-        //     });
 
-        //     function performSearch() {
-        //         var nameQuery = $('#fragrance_name').val();
-        //         var houseQuery = $('#fragrance_house').val();
-
-        //         var url = '';
-        //         var data = {};
-
-        //         if (nameQuery && houseQuery) {
-        //             url = '/search_fragrances_by_name_and_house';
-        //             data = { name_query: nameQuery, house_query: houseQuery };
-        //         } else if (nameQuery) {
-        //             url = '/search_fragrances_by_name';
-        //             data = { query: nameQuery };
-        //         } else if (houseQuery) {
-        //             url = '/search_fragrances_by_house';
-        //             data = { query: houseQuery };
-        //         } else {
-        //             $('#searchResults').empty();
-        //             return; // If both fields are empty, do nothing
-        //         }
-
-        //         $.ajax({
-        //             url: url,
-        //             type: 'GET',
-        //             data: data,
-        //             success: function(data) {
-        //                 $('#searchResults').empty();
-                        
-        //                 data.sort(function(a, b) {
-        //                     var nameA = a.name.toUpperCase(); // Ignore case
-        //                     var nameB = b.name.toUpperCase(); // Ignore case
-                            
-        //                     if (nameA < nameB) {
-        //                         return -1;
-        //                     }
-        //                     if (nameA > nameB) {
-        //                         return 1;
-        //                     }
-
-        //                     // names must be equal
-        //                     return 0;
-        //                 });
-
-        //                 $.each(data, function(index, fragrance) {
-        //                     $('#searchResults').append('<div class=" form fragtext bordered spacing2 fragrance_select">' + fragrance.name + ' by ' + fragrance.house + '</div>');
-        //                 });
-        //             }
-        //         });
-        //     }
-
-        //     $('#fragrance_name, #fragrance_house').on('input', function() {
-        //         performSearch();
-        //     });
-        // }); -->
 </div>
 </html>
