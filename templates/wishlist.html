@@ -25,21 +25,21 @@
         <div class="left-column">
             <div class="top-buttons-collection">
                 <form action="/add_wishlist" method="GET">
-                    <button class="btn" type="submit">Add a Fragrance</button>
+                    <button id = "addButton" class="btn" type="submit">Add</button>
                 </form>
                 <form action="/remove_wishlist" method="POST">
-                    <button class="btn" type="submit">Remove a Fragrance</button>
+                    <button id = "removeButton" class="btn" type="submit">Remove</button>
                 </form>
             </div>
-            <div class="request-button-collection">
+            <!-- <div class="request-button-collection">
                 <form action="/request_fragrance_wishlist" method="GET">
                     <button class="btn" type="submit">Request Fragrance</button>
                 </form>
-            </div>
+            </div> -->
             <img src="{{ url_for('static', filename='assets/fragrances3.jpg.webp') }}" alt="fragrance icon" class="pic_container" />
             <div class="back_container2">
                 <form action="/handle_menu" method="POST">
-                    <button class="btn" type="submit">Main Menu</button>
+                    <button id = "menuButton" class="btn" type="submit">Menu</button>
                 </form>
             </div>
         </div>
@@ -47,7 +47,7 @@
         <div class="right-column">
             <!-- Updated to match the collection layout with a dropdown -->
             <div class="collection-header">
-                <h2 class="column-title">My Fragrance Wishlist</h2>
+                <h2 class="column-title">My Wishlist</h2>
                 <div class="dropdown">
                     <button class="btn5 spacing15" onclick="toggleDropdown()">Sort</button>
                     <div class="dropdown-content">
@@ -93,6 +93,26 @@
 
         window.addEventListener('click', closeDropdowns);
         window.addEventListener('touchstart', closeDropdowns);
+
+
+        // BUTTON UPDATING
+        function updateButtonText() {
+            const addButton = document.getElementById('addButton');
+            const removeButton = document.getElementById('removeButton');
+            const menuButton = document.getElementById('menuButton');
+            
+            if (window.innerWidth >= 630) {
+                addButton.textContent = 'Add a Fragrance';
+                removeButton.textContent = 'Remove a Fragrance';
+                menuButton.textContent = 'Main Menu'
+            } else {
+                addButton.textContent = 'Add';
+                removeButton.textContent = 'Remove';
+                menuButton.textContent = 'Menu';
+            }
+        }
+        updateButtonText();
+        window.addEventListener('resize', updateButtonText);
     </script>
 </body>
 </html>

@@ -28,29 +28,28 @@
         <div class = "top-buttons-collection">
             <!-- Add buttons or links to different functionalities -->
             <form action="/add_collection" method="GET">
-                <button class = "btn" type="submit">Add a Fragrance</button>
+                <button id = "addButton" class = "btn spacing22" type="submit">Add</button>
             </form>
             <form action="/remove_collection" method="POST">
-                <button class = "btn" type="submit">Remove a Fragrance</button>
+                <button id = "removeButton" class = "btn" type="submit">Remove</button>
             </form>
         </div>
-        <div class = "request-button-collection">
-            <!-- <p> Dont see a fragrance you know? </p> -->
+        <!-- <div class = "request-button-collection">
             <form action="/request_fragrance" method="GET">
                 <button class = "btn" type="submit">Request Fragrance</button>
             </form>
-        </div>
+        </div> -->
         <img src="{{ url_for('static', filename='assets/fragrances2.jpg.webp') }}" alt="fragrance icon" class="pic_container" />
         <div class = "back_container2">
             <form action="/handle_menu" method="POST">
-                <button class = "btn" type="submit">Main Menu</button>
+                <button id = 'menuButton' class = "btn" type="submit">Menu</button>
             </form>
         </div>
     </div>
     <div class = "right-column">
     <!-- <div class = h20> -->
         <div class = "collection-header">
-            <h2 class = "column-title"> My Fragrance Collection</h2>
+            <h2 class = "column-title"> My Collection</h2>
                 <div class="dropdown">
                     <button class="btn5 spacing15" onclick="toggleDropdown()">Sort</button>
                     <div class="dropdown-content">
@@ -90,6 +89,28 @@
 
         window.addEventListener('click', closeDropdowns);
         window.addEventListener('touchstart', closeDropdowns);
+
+
+
+        // BUTTON UPDATING
+        function updateButtonText() {
+            const addButton = document.getElementById('addButton');
+            const removeButton = document.getElementById('removeButton');
+            const menuButton = document.getElementById('menuButton');
+            
+            if (window.innerWidth >= 630) {
+                addButton.textContent = 'Add a Fragrance';
+                removeButton.textContent = 'Remove a Fragrance';
+                menuButton.textContent = 'Main Menu'
+            } else {
+                addButton.textContent = 'Add';
+                removeButton.textContent = 'Remove';
+                menuButton.textContent = 'Menu';
+            }
+        }
+        updateButtonText();
+        window.addEventListener('resize', updateButtonText);
+
     </script>
     
 </div>

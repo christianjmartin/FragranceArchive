@@ -1,4 +1,4 @@
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 414px) {
 }
 
 @media screen and (max-width: 1100px) {
@@ -38,8 +38,8 @@
         margin-top: 53px;
     }
     .featured-fragrance {
-        width: 450px;
-        min-width: 400px;
+        width: 410px;
+        min-width: 410px;
     }
     .pic_container_menu img{
         height: 12.5rem;
@@ -180,7 +180,7 @@
     .top-buttons-reviews {
         display: block;
         max-width: 400px;
-        margin-top: 15px;
+        /* margin-top: 15px; */
     }
     .reviews-button {
         padding: 15px 20px;
@@ -193,17 +193,19 @@
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 630px) {
 
     .reviews-container2 {
         margin-right: 30px;
     }
 
     .selection_container2 button {
-        margin-top: 10px;
+        margin-top: 0px;
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
+        min-height: 55px;
+        max-height: 55px;
     }
 
     .collection-header h2 {
@@ -223,9 +225,16 @@
 
     .top-buttons-collection button {
         font-size: 1rem;
-        max-width: 100px;
-        min-width: 100px;
-        margin-left: -30px;
+        min-width:min-content;
+        max-width:min-content;
+        /* margin-left: -30px; */
+    }
+    .top-buttons-collection {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        margin-top: -10px;
+        margin-left: -15px;
     }
 
     .left-column-review-page {
@@ -243,7 +252,7 @@
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
-        margin-left: -30px;
+        /* margin-left: -30px; */
     }
 
     .request-button-collection2 button {
@@ -258,8 +267,10 @@
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
-        margin-top: 20px;
-        margin-left: -30px;
+        margin-left: -10px;
+    }
+    .top-buttons-reviews{
+        gap: 50px;
     }
 
     .back_container3 button{
@@ -269,15 +280,18 @@
     }
     .back_container2 button{
         font-size: 1rem;
-        max-width: 100px;
-        min-width: 100px;
-        margin-left: -30px;
+        max-width: 67px;
+        min-width: 67px;
+        margin-top: -5px;
+        margin-left: -5px;
+    }
+    .back_container2 {
+        gap: 50px;
     }
     .back_container button{
         font-size: 1rem;
         max-width: 100px;
         min-width: 100px;
-        margin-left: -30px;
     }
 
     html {
@@ -290,6 +304,7 @@
     }
     .right-column {
         min-width: 17.7rem;
+        margin-top: -25px;
     }
     .btn {
         padding: 10px 15px;
@@ -312,11 +327,12 @@
         max-width: 220px;
     }
 
-    /* .reviews-button {
-        padding: 15px 20px;
-        margin-top: 5px;
-        min-width: 110px;
-    } */
+    .reviews-button{
+        transform: translateY(-10px)
+    }
+    .spacing21 {
+        transform: translateY(-2px)
+    }
     .request-button-collection {
         max-width: 115px;
         text-wrap: wrap;
@@ -325,10 +341,10 @@
     }
 
     .pic_container {
-        margin-left: -30px;
-        max-width: 100px;
-        min-width: 100px;
-        max-height: 250px;
+        /* margin-left: -30px; */
+        max-width: 0px;
+        min-width: 0px;
+        max-height: 0px;
         object-fit: cover;
         object-position: left;
     }
@@ -350,10 +366,10 @@
     } */
     
     .pic_container_reviews {
-        margin-left: -30px;
-        max-width: 100px;
-        min-width: 100px;
-        height: 393px;
+        /* margin-left: -30px; */
+        max-width: 0px;
+        min-width: 0px;
+        height: 0px;
     }
     .pic_container_review_page {
         max-width: 100px;
@@ -367,13 +383,23 @@
         color: rgb(255, 245, 246);;
     } */
 
-    .selection_container2 {
+    /* .selection_container2 {
         max-width: 110px;
         margin-left: -20px;
-    }
+    } */
     .selection_container2 p {
         text-wrap: wrap;
         word-break: break-word;
+    }
+
+    .menu-header .selection_container2 {
+        flex-direction: row;
+        column-gap: 10px;
+        row-gap: 5px;
+        place-content: center;
+        transform: translateY(10px);
+        margin-top: -35px;
+        max-width: 320px;
     }
 
 
@@ -394,16 +420,13 @@
     .left-column-review-page {
         max-width: 115px;
     }
-    .top-buttons-collection {
+    /* .top-buttons-collection {
         max-width: 100px;
         margin-top: 25px;
         gap: 5px;
         flex-wrap: wrap;
         gap: 0px;
-    }
-    .selection_container2{
-        transform: translateY(10px);
-    }
+    } */
     .spacing2 {
         min-width: 300px;
         max-width: 300px;
@@ -446,7 +469,6 @@
         margin-top: 40px;
     }
     .column-content {
-        max-width: 300px;
         min-width: 300px;
     }
     .button-container {
@@ -458,6 +480,89 @@
     .button-container button {
         max-width: 120px;
         min-width: 120px;
+    }
+
+
+    .profile-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .left-column {
+        flex-direction: row;
+        gap: 5px;
+    }
+    .reviews-container {
+        margin-top: -5px;
+        min-height: 63vh;
+        max-height: 63vh;
+        /* margin-right: 5px;
+        margin-left: 5px; */
+        /* max-width: 320px; */
+    }
+    .fragrance_collection2 {
+        margin-top: -12px;
+        min-height: 63vh;
+        max-height: 63vh;
+        /* margin-right: 5px;
+        margin-left: 5px; */
+        /* max-width: 320px; */
+    }
+    .spacing15 {
+        transform: translateY(-17px);
+    }
+    .dropdown-content {
+        margin-top: -17px;
+    }
+
+    .menu-header {
+        flex-direction: column-reverse;
+    }
+
+    .featured-fragrance {
+        margin-top: -10px; 
+        width: 100%;
+        min-width: 17.7rem;
+        height: fit-content;
+    }
+   
+}
+
+@media screen and (max-height: 780px) {
+    .fragrance-info h4 {
+        font-size: 1.5rem;
+    }
+    .pic_container_menu img{
+        height: 10rem;
+        width: 10rem;
+    }
+    .fragrance-info h4 {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    /* .trustworthy_sites {
+        max-width: 0rem;
+        min-width: 0rem;
+        max-height: 0rem;
+        min-height: 0rem;
+        background-color: rgb(255, 248, 248);
+        box-shadow: none;    
+    } 
+    .trustworthy_sites p{
+        font-size: 0px
+    }  */
+    .selection_container {
+        flex-direction: column;
+        gap: 0px;
+    }
+    .pic_container_for_4 {
+        max-width: 100px;
+        max-height: 120px;
+        left: 0;
+    }
+    .information_site p {
+        max-width: 140px;
     }
 
 }
@@ -478,14 +583,11 @@
         margin-top: -22px;
     }
 
-    .featured-fragrance {
+    /* .featured-fragrance {
         max-width: 17.7rem;
         min-width: 17.7rem;
         margin-top: 0px;
-    }
-    .selection_container2 {
-        margin-top: -42px;
-    }
+    } */
 
 
     .spacing9 {

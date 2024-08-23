@@ -26,6 +26,9 @@ $(document).ready(function() {
 
 
 
+
+
+
 // REVIEWPAGE fragrance searching
 $(document).ready(function() {
     // Function to handle click on fragrance option in the dropdown specific to the review page

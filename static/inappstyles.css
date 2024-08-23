@@ -141,6 +141,13 @@ html {
     padding: 10px;
 }
 
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
 
 .flexer {
     display: flex;
@@ -450,8 +457,8 @@ html {
     /* margin-top: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
-    max-height: 510px; /* Adjust the maximum height as needed */
-    min-height: 510px;
+    min-height: 67vh;
+    max-height: 67vh;
     overflow-y: auto; /* Enable vertical scrolling when content overflows */
     padding: 10px;
 }
@@ -618,6 +625,19 @@ html {
     max-width: 190px;
 }
 
+/* 
+.selection_container3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-height: 700px;
+    overflow: hidden;
+}
+.selection_container3 p  {
+    max-width: 190px;
+} */
+
 .selection_container p {
     margin-top: 15px;
 }
@@ -691,6 +711,7 @@ html {
     border-radius: 5px;
     margin-top: 18px;
     object-fit: cover;
+    object-position: 20% 50%;
 }
 
 
