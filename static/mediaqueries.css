@@ -234,7 +234,8 @@
         flex-direction: row;
         gap: 5px;
         margin-top: -10px;
-        margin-left: -15px;
+        margin-left: -9px;
+        transform: translateX(2px)
     }
 
     .left-column-review-page {
@@ -287,6 +288,7 @@
     }
     .back_container2 {
         gap: 50px;
+        transform: translateX(2px)
     }
     .back_container button{
         font-size: 1rem;
@@ -528,19 +530,23 @@
         min-width: 17.7rem;
         height: fit-content;
     }
+    .pic_container_menu img{
+        height: 11.5rem;
+        width: 11.5rem;
+    }
+    .fragrance-info h4 {
+        font-size: 1.7rem;
+    }
+    
+    
 
    
 }
 
 @media screen and (max-height: 780px) and (max-width: 359px) {
-    .fragrance-info h4 {
-        font-size: 5rem;
-    }
     .pic_container_menu img{
-        min-height: 10rem;
-        max-height: 10rem;
-        max-width: 10rem;
-        min-width: 10rem;
+        height: 9rem;
+        width: 9rem;
     }
     .fragrance-info h4 {
         font-size: 1.7rem;
