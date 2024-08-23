@@ -493,16 +493,16 @@
     }
     .reviews-container {
         margin-top: -5px;
-        min-height: 55vh;
-        max-height: 55vh;
+        min-height: 58vh;
+        max-height: 58vh;
         /* margin-right: 5px;
         margin-left: 5px; */
         /* max-width: 320px; */
     }
     .fragrance_collection2 {
         margin-top: -12px;
-        min-height: 55vh;
-        max-height: 55vh;
+        min-height: 58vh;
+        max-height: 58vh;
         /* margin-right: 5px;
         margin-left: 5px; */
         /* max-width: 320px; */
@@ -529,7 +529,7 @@
 
 @media screen and (max-height: 780px) {
     .fragrance-info h4 {
-        font-size: 1.5rem;
+        font-size: 5rem;
     }
     .pic_container_menu img{
         height: 10rem;
@@ -540,18 +540,7 @@
     }
 }
 
-@media screen and (max-width: 400px) {
-    /* .trustworthy_sites {
-        max-width: 0rem;
-        min-width: 0rem;
-        max-height: 0rem;
-        min-height: 0rem;
-        background-color: rgb(255, 248, 248);
-        box-shadow: none;    
-    } 
-    .trustworthy_sites p{
-        font-size: 0px
-    }  */
+@media screen and (max-width: 399px) {
     .selection_container {
         flex-direction: column;
         gap: 0px;
@@ -565,6 +554,9 @@
         max-width: 140px;
     }
 
+    .menu-header .selection_container2 {
+        column-gap: 30px; 
+    }
 }
 
 
