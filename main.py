@@ -123,7 +123,7 @@ def handle_menu():
     # Handle the main menu
     week_number = datetime.now().isocalendar()[1]
     # week_number = (week_number - 1) % 52 + 1
-    fragranceOfWeek = logic.getFragranceOfWeek(dbCursor, week_number)
+    fragranceOfWeek = logic.getFragranceOfWeek(dbCursor, 53)
     
     # if fragranceOfWeek:
     #     print(fragranceOfWeek['image_url'])
