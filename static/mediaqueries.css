@@ -201,11 +201,11 @@
 
     .selection_container2 button {
         margin-top: 0px;
-        font-size: 1rem;
-        max-width: 100px;
-        min-width: 100px;
-        min-height: 55px;
-        max-height: 55px;
+        font-size: 0.88rem;
+        max-width: 90px;
+        min-width: 90px;
+        min-height: 50px;
+        max-height: 50px;
     }
 
     .collection-header h2 {
@@ -394,7 +394,7 @@
 
     .menu-header .selection_container2 {
         flex-direction: row;
-        column-gap: 10px;
+        column-gap: 5px;
         row-gap: 5px;
         place-content: center;
         transform: translateY(10px);
@@ -554,9 +554,11 @@
     .information_site p {
         max-width: 140px;
     }
+}
 
+@media screen and (max-width: 359px) {
     .menu-header .selection_container2 {
-        column-gap: 30px; 
+        column-gap: 25px;
     }
 }
 
