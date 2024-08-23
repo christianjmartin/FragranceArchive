@@ -511,7 +511,7 @@
         transform: translateY(-17px);
     }
     .dropdown-content {
-        margin-top: -17px;
+        margin-top: -21px;
     }
 
     .menu-header {
@@ -524,6 +524,7 @@
         min-width: 17.7rem;
         height: fit-content;
     }
+
    
 }
 

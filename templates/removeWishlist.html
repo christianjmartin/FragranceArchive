@@ -2,22 +2,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/inappstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="static/mediaqueries.css"/>
     <title>Remove Fragrance Wishlist</title>
 </head>
 <div class = "centered">
     <h3>Please choose a fragrance to remove from your wishlist</h2>
         <table>
-            <thead>
+            <!-- <thead>
                 <tr>
                     <th class = "spacing4">Name</th>
                     <th class = "spacing4">House</th>
                 </tr>
-            </thead>
+            </thead> -->
             <tbody>
                 {% for fragrance in fragrance_wishlist %}
                 <tr>
-                    <td>{{ fragrance.name }}</td>
-                    <td>{{ fragrance.house }}</td>
+                    <td>{{ fragrance.name }} by {{ fragrance.house }}</td>
                     <td>
                         <form action="/remove_fragrance_wishlist" method="POST">
                             <input type="hidden" class="fragtext spacing3" name="fragrance_name" value="{{ fragrance.name }}">

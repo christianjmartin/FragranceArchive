@@ -160,6 +160,7 @@ html {
     flex-direction: column;
 }
 
+
 .centered h3 {
     text-align: center;
     margin-top: 20px;
@@ -169,6 +170,7 @@ html {
     padding-right: 20px; /* Increased padding for more space */
     padding-left: 20px;
     max-width: 350px;
+    padding-bottom: 25px;
 }
 
 .centered h3 {
@@ -765,6 +767,11 @@ html {
     flex-direction: column;
 }
 
+.form_container h4 {
+    text-align: center
+}
+
+
 
 .reviews_container {
     position: absolute;
@@ -1225,8 +1232,8 @@ h1 {
     position: absolute;
     background-color: #f9f9f9;
     right: 0;
-    min-width: 160px;
-    max-width: 160px;
+    min-width: 150px;
+    max-width: 150px;
     flex-wrap: wrap;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -1313,6 +1320,10 @@ h1 {
     font-size: 1rem;
     color: rgb(96, 18, 100);
     margin-top: 10px;
+}
+
+.spacing23 {
+    transform: translateY(21px)
 }
 
 
