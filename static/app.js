@@ -25,6 +25,33 @@ $(document).ready(function() {
 });
 
 
+// LOGIN Error Responses 
+$(document).ready(function() {
+    $('#loginForm').on('submit', function(event) {
+        event.preventDefault();  // Prevent default form submission
+
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    // Redirect if successful
+                    window.location.href = response.redirect_url;
+                } else {
+                    // Show the error message
+                    alert(response.message);  // You can replace this with a custom popup or inline error message
+                }
+            },
+            error: function() {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    });
+});
+
+
+
 
 
 

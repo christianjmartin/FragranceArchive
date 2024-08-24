@@ -108,9 +108,9 @@ def handle_login():
         if email and password:
             validSignup = logic.validateLogin(dbCursor, email, password)
             if validSignup:
-                return redirect(url_for('handle_menu', userName = session['name']))  # Placeholder response
+                return jsonify({'success': True, 'redirect_url': url_for('handle_menu', userName=session['name'])})
             else:
-                return 'An account with this email & password combination \n does not exist, please choose a different email or go back and create a new account with us'
+                return jsonify({'success': False, 'message': 'An account with this email & password combination does not exist, please choose a different email or go back and create a new account with us.'})
         else:
             return 'Invalid form data. Please provide email and password.'
 

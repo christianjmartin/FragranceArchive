@@ -418,7 +418,7 @@ html {
 .top-buttons-collection {
     display: flex;
     gap: 10px;
-    margin-top: -10px;
+    margin-top: 0px;
 }
 
 .top-buttons-reviews {
@@ -1239,6 +1239,7 @@ h1 {
     z-index: 1;
     max-height: 175px;
     overflow-y: auto; 
+    margin-top: -5px;
 }
 
 .dropdown-content a {
@@ -1260,6 +1261,10 @@ h1 {
 }
 .dropdown-content.show {
     display: block;
+}
+
+.follower-container .dropdown .dropdown-content {
+    margin-top: 0px;
 }
 
 .spacing8 {
@@ -1322,14 +1327,11 @@ h1 {
     margin-top: 10px;
 }
 
-.spacing23 {
-    transform: translateY(21px)
-}
 
 
 .featured-fragrance {
     margin: 20px 0;
-    padding: 20px;
+    padding: 17px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

@@ -63,7 +63,7 @@
         {% if viewer_email == user_email %}
         <div class="dropdown">
             <button class="btn5 spacing9" onclick="toggleDropdown('followersDropdown')">Followers: <strong>{{ follower_count }}</strong></button>
-            <div id="followersDropdown" class="dropdown-content spacing23">
+            <div id="followersDropdown" class="dropdown-content">
                 {% for follower in followers %}
                     <a class="colored" href="{{ url_for('profile_page', user_email=follower.email) }}">{{ follower.username }}</a>
                 {% endfor %}
@@ -72,7 +72,7 @@
         
         <div class="dropdown">
             <button class="btn5 spacing9" onclick="toggleDropdown('followingDropdown')">Following: <strong>{{ following_count }}</strong></button>
-            <div id="followingDropdown" class="dropdown-content spacing23">
+            <div id="followingDropdown" class="dropdown-content">
                 {% for follow in following %}
                     <a class="colored" href="{{ url_for('profile_page', user_email=follow.email) }}">{{ follow.username }}</a>
                 {% endfor %}
