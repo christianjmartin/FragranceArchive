@@ -276,7 +276,7 @@
         place-content: center;
         justify-content: center;
         gap: -5px;
-        margin-top: 35px;
+        margin-top: 30px;
     }
 
     .bruh3 .star-rating {
@@ -284,6 +284,8 @@
         transform: translateX(-67px);
         white-space: nowrap;
         display: flex;
+        font-size: 1rem;
+        margin-right: -40px;
     }
 
     .bruh3 p {
@@ -292,7 +294,7 @@
     }
 
     .bruh3 button {
-        transform: translateY(-40px);
+        transform: translateY(-35px);
     }
 
     .bruh4 {
