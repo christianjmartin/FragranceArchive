@@ -327,3 +327,33 @@ function removeRating(fragrance_name, fragrance_house) {
 
 
 
+
+$(document).ready(function() {
+    // Intercept form submission
+    $('.top-buttons-review-page2 form').on('submit', function(event) {
+        event.preventDefault();  // Prevent the default form submission
+
+        var form = $(this);
+
+        $.ajax({
+            url: form.attr('action'),  // Get the action URL from the form
+            type: 'POST',
+            data: form.serialize(),  // Serialize the form data
+            success: function(response) {
+                // Check if the response was successful
+                if (response.success) {
+                    // Redirect on success
+                    window.location.href = response.redirect_url;
+                } else {
+                    // Show an error pop-up or alert if there's an issue
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors that occur during the request
+                alert('An error occurred. Please try again.');
+            }
+        });
+    });
+});
+

@@ -161,8 +161,17 @@
         margin-bottom: 10px;
         margin-top: 17px;
     }
+    .top-buttons-review-page2 {
+        max-width: 100px;
+        gap: 5px;
+        flex-wrap: wrap;
+        gap: 0px;
+        margin-bottom: 10px;
+        margin-top: 17px;
+    }
     .column-title2 {
         font-size: smaller;
+        margin-top: 35px;
     }
     .left-column-review-page {
         max-width: 200px;
@@ -218,13 +227,18 @@
     .spacing15 {
         margin-top: 35px;
     }
-    .spacing18 {
-        transform: translateY(30px);
-        margin-right: 17px;
-    }
     .spacing19 {
-        margin-top: 30px;
+        margin-top: 70px;
+        transform: translateY(36px);
     }
+    .spacing18 {
+        transform: translateY(15px);
+    }
+
+    .column-title2 .dropwdown-content {
+        transform: translateY(-100px);
+    }
+
 
     .top-buttons-collection button {
         font-size: 1rem;
@@ -242,15 +256,73 @@
     }
 
     .left-column-review-page {
-        display: flex;
+        display:block;
         flex-direction: row;
+        justify-content: space-between;
         /* max-width: 400vw; */
         flex-wrap: wrap;
     }
 
-    .AvgRating {
-        margin-left: -30px;
+    .bruh2 {
+        display: flex;
+        place-content: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: -10px;
     }
+
+    .bruh3 {
+        display: flex;
+        place-content: center;
+        justify-content: center;
+        gap: -5px;
+        margin-top: 35px;
+    }
+
+    .bruh3 .star-rating {
+        text-wrap: nowrap;
+        transform: translateX(-67px);
+    }
+
+    .bruh3 p {
+        transform: translateY(-19px);
+        text-wrap: nowrap;
+    }
+
+    .bruh3 button {
+        transform: translateY(-40px);
+    }
+
+    .bruh4 {
+        display: flex;
+        justify-content: center;
+        gap: 9px;
+        margin-top: -40px;
+    }
+
+    .back_container3 button {
+        min-width: min-content;
+        max-width: min-content;
+        max-height: 47px;
+        min-height: 47px;
+        font-size: 1rem;
+    }
+    .top-buttons-review-page2 {
+        max-width: 1000px;
+        gap: 0px;
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        z-index: 2;
+    }
+    
+
+    .AvgRating {
+        margin-left: 0px;
+    }
+
+    
 
     .request-button-collection button {
         font-size: 1rem;
@@ -277,11 +349,7 @@
         gap: 50px;
     }
 
-    .back_container3 button{
-        font-size: 1rem;
-        max-width: 100px;
-        min-width: 100px;
-    }
+    
     .back_container2 button{
         font-size: 1rem;
         max-width: 75px;
@@ -418,8 +486,9 @@
         flex-wrap: nowrap;
         gap: 5px;
     }
-    .column-title2 {
+    .column-title2 h2 {
         font-size: smaller;
+        text-wrap: nowrap;
     }
     /* .top-buttons-collection {
         max-width: 100px;
@@ -535,6 +604,10 @@
     }
     .fragrance-info h4 {
         font-size: 1.7rem;
+    }
+
+    .review-page-title {
+        margin-top: 5px;
     }
    
 }

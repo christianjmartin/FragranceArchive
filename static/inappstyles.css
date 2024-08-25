@@ -433,6 +433,11 @@ html {
     gap: 10px;
 }
 
+.top-buttons-review-page2 {
+    display: flex;
+    gap: 10px;
+}
+
 .request-button-collection {
     max-width: 300px;
     margin-top: 10px;
