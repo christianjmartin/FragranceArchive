@@ -282,6 +282,8 @@
     .bruh3 .star-rating {
         text-wrap: nowrap;
         transform: translateX(-67px);
+        white-space: nowrap;
+        display: flex;
     }
 
     .bruh3 p {
