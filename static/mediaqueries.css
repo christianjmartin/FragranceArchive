@@ -317,6 +317,10 @@
         margin-top: 0px;
         z-index: 2;
     }
+    .top-buttons-review-page2 button {
+        max-height: 47px;
+        min-height: 47px;
+    }
     
 
     .AvgRating {
