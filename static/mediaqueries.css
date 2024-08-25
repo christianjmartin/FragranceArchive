@@ -284,13 +284,10 @@
         transform: translateX(-67px);
         white-space: nowrap;
         display: flex;
-        font-size: 1rem;
-        margin-right: -40px;
-    }
-
-    .bruh3 p {
-        transform: translateY(-19px);
-        text-wrap: nowrap;
+        font-size: 1.18rem;
+        margin-right: -57px;
+        margin-left: 20px;
+        margin-top: -17px;
     }
 
     .bruh3 button {
@@ -612,6 +609,9 @@
 
     .review-page-title {
         margin-top: 5px;
+    }
+    .myRating {
+        color: rgb(255, 245, 246);;
     }
    
 }
