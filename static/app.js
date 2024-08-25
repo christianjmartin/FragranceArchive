@@ -58,6 +58,16 @@ $(document).ready(function() {
 
 // REVIEWPAGE fragrance searching
 $(document).ready(function() {
+    $('#review_fragrance_name_form').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+    $('#review_fragrance_house_form').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
     // Function to handle click on fragrance option in the dropdown specific to the review page
     $('#reviewSearchResults').on('click', 'div', function() {
         var selectedFragrance = $(this).text().trim();
@@ -127,6 +137,12 @@ $(document).ready(function() {
 
 // COLLECTION / WISHLIST / fragrance searching
 $(document).ready(function() {
+    $('#fragrance_name, #fragrance_house').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();  // Prevent form submission
+        }
+    });
+
     // Function to handle click on fragrance option in the dropdown
     $('#searchResults').on('click', 'div', function() {
         var selectedFragrance = $(this).text().trim();

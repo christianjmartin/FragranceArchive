@@ -251,8 +251,9 @@
         flex-direction: row;
         gap: 5px;
         margin-top: -10px;
-        margin-left: -9px;
-        transform: translateX(2px)
+        margin-left: -4px;
+        transform: translateX(2px);
+        flex-wrap: nowrap;
     }
 
     .left-column-review-page {
@@ -267,7 +268,7 @@
         display: flex;
         place-content: center;
         justify-content: center;
-        gap: 20px;
+        gap: 0px;
         margin-top: -10px;
     }
 
@@ -297,7 +298,7 @@
     .bruh4 {
         display: flex;
         justify-content: center;
-        gap: 9px;
+        gap: 10px;
         margin-top: -40px;
     }
 
@@ -312,7 +313,7 @@
         max-width: 1000px;
         gap: 0px;
         flex-wrap: nowrap;
-        gap: 10px;
+        gap: 11px;
         margin-bottom: 0px;
         margin-top: 0px;
         z-index: 2;
@@ -364,7 +365,8 @@
     }
     .back_container2 {
         gap: 50px;
-        transform: translateX(2px)
+        transform: translateX(2px);
+        flex-wrap: nowrap;
     }
     .back_container button{
         font-size: 1rem;
