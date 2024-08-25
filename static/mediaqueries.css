@@ -284,10 +284,10 @@
         transform: translateX(-67px);
         white-space: nowrap;
         display: flex;
-        font-size: 1.18rem;
+        font-size: 1.5rem;
         margin-right: -57px;
         margin-left: 20px;
-        margin-top: -17px;
+        margin-top: -20px;
     }
 
     .bruh3 button {
@@ -386,8 +386,8 @@
         font-size: 1rem;
     }
     .write-button {
-        padding: 10px 15px;
-        width: 100px;
+        padding: 12px 10px;
+        width: 125px;
         font-size: 1rem;
     }
     .pic_container_for_4 {
