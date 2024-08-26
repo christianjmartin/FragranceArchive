@@ -186,6 +186,9 @@
                                 <br>
                                 <small>Likes: {{ review.likes }}</small>
                                 <br>
+                                {% if viewer_email != user_email %}
+                                <small class="no-cursor">User: <a href="{{ url_for('profile_page', user_email=review.review_email) }}" class="link-review">{{ review.name }}</a></small>
+                                {% endif %}
                             </li>
                         {% endfor %}
                     {% else %}
