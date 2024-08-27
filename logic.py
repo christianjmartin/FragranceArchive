@@ -873,6 +873,7 @@ def searchUsers(dbCursor, query):
         SELECT Username, Email 
         FROM Client 
         WHERE Username ILIKE %s
+        ORDER BY LOWER(Username)
     """
     dbCursor.execute(query, (search_query,))
     users = dbCursor.fetchall()
