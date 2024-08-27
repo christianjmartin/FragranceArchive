@@ -23,9 +23,7 @@ import urllib.parse as urlparse
 import os
 
 app = Flask(__name__)
-# app.secret_key = '123456789'
 
-# app.secret_key = 'IISAODN-2421S-QWFQ13QV-193C1aaa'
 app.secret_key = os.getenv('SECRET_KEY')
 
 # Parse the database URL provided by Heroku

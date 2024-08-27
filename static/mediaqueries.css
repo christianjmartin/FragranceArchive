@@ -34,6 +34,13 @@
     /* .follower-container {
         margin-top: -30px;
     } */
+
+    .spacing19 {
+        transform: translateY(18px);
+    }
+    .spacing18 {
+        transform: translateY(13px);
+    }
     .spacing20 {
         margin-top: 53px;
     }
