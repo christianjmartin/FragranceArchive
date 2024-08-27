@@ -251,6 +251,7 @@
         flex-direction: row;
         gap: 5px;
         margin-top: -10px;
+        margin-bottom: 0px;
         margin-left: -4px;
         transform: translateX(2px);
         flex-wrap: nowrap;
