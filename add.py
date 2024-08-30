@@ -1,16 +1,7 @@
 # # python3 -m venv path/to/venv
 # # source path/to/venv/bin/activate
 # import psycopg2
-# import junk
 
-
-# conn = psycopg2.connect(
-#     host="localhost",
-#     database="NAME OF DATABASE GOES HERE",
-#     user="postgres",
-#     password=junk.string_list[45]
-# )
-# dbCursor = conn.cursor()
 
 # with open('fragrances.txt', 'r') as file:
 #     # Read the first 10 lines of the file
