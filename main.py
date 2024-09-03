@@ -101,6 +101,7 @@ def handle_login():
         password = request.form.get('password')
         session['email'] = email
         session['name'] = logic.getName(dbCursor, email)
+        session['username'] = logic.getUsername(dbCursor, email)
 
         # Process form data (validate, create user, etc.)
         if email and password:
@@ -669,19 +670,18 @@ def remove_rating():
 # PROFILE PAGE HERE 
 @app.route('/profile_page', methods=['POST', 'GET'])
 def profile_page():
-    review_email = request.args.get('user_email', session.get('email')) # the one of the review
-    viewer_email = session['email'] 
+    # review_email = request.args.get('user_email', session.get('email')) # the one of the review
 
-    # STARTING LOGIC FOR SWAPPING EMAILS FOR USERNAME FOR URL / SECURITY PURPOSE 
-    actual_username = logic.getUsername(dbCursor, review_email)
-    viewer_username = logic.getUsername(dbCursor, viewer_email)
+    username = request.args.get('username', session.get('username'))
+    viewer_email = session['email'] 
+    review_email = logic.getUserEmailByUsername(dbCursor, username)
+
 
 
     sorting = "NONE"
     fragrance_collection = logic.getFragranceCollection(dbCursor, review_email, sorting)
     fragrance_wishlist = logic.getFragranceWishlist(dbCursor, review_email, sorting)
     reviews = logic.getUserReviews(dbCursor, review_email, viewer_email)
-    username = logic.getUsername(dbCursor, review_email)
     following_status = logic.is_following(dbCursor, viewer_email, review_email)
 
     followers = logic.getFollowers(dbCursor, review_email)
@@ -900,9 +900,10 @@ def toggle_follow():
         query = "INSERT INTO Follows (FollowerEmail, FollowingEmail, DateFollowed) VALUES (%s, %s, CURRENT_TIMESTAMP)"
         dbCursor.execute(query, (follower_email, following_email))
         conn.commit()
-    print(follower_email) # cjm (me)
-    print(following_email) # oliver (other)
-    return redirect(url_for('profile_page', user_email=following_email))
+    # print(follower_email) # cjm (me)
+    # print(following_email) # oliver (other)
+    following_username = logic.getUsername(dbCursor, following_email)
+    return redirect(url_for('profile_page', username=following_username))
 
 
 
@@ -926,8 +927,9 @@ def go_to_user_profile():
     username = request.form.get('user')
     # print(username)
     user_email = logic.getUserEmailByUsername(dbCursor, username)
+    username = logic.getUsername(dbCursor, user_email)
     if user_email:
-        return redirect(url_for('profile_page', user_email=user_email))
+        return redirect(url_for('profile_page', username=username))
     return redirect(url_for('profile_page'))
 
 
@@ -946,10 +948,10 @@ def logout():
 
 
 
-@app.errorhandler(KeyError)
-def handle_key_error(e):
-    # Handle the error when a session key is missing
-    return redirect(url_for('home'))
+# @app.errorhandler(KeyError)
+# def handle_key_error(e):
+#     # Handle the error when a session key is missing
+#     return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

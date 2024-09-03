@@ -84,7 +84,7 @@
                                 <small>Likes: {{ review.likes }}</small>
                                 <br>
                                 {% if email != review.review_email %}
-                                <small>User: <a href="{{ url_for('profile_page', user_email=review.review_email) }}" class="link-review">{{ review.name }}</a></small>
+                                <small>User: <a href="{{ url_for('profile_page', username=review.name) }}" class="link-review">{{ review.name }}</a></small>
                                 {% endif %}
                                 {% if email == review.review_email %}
                                     <div class="edit-delete-buttons">
