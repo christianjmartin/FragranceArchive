@@ -77,7 +77,7 @@ def handle_signup():
         if name and email and password:
             validSignup = logic.validateSignup(dbCursor, conn, name, email, password, lastname, username)
             if validSignup == 3:
-                return jsonify({'success': True, 'redirect_url': url_for('handle_menu', userName=session['name'])})
+                return jsonify({'success': True, 'redirect_url': url_for('handle_menu')})
             elif validSignup == 0:
                 return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'})
             elif validSignup == 1:
@@ -107,7 +107,7 @@ def handle_login():
         if email and password:
             validSignup = logic.validateLogin(dbCursor, email, password)
             if validSignup:
-                return jsonify({'success': True, 'redirect_url': url_for('handle_menu', userName=session['name'])})
+                return jsonify({'success': True, 'redirect_url': url_for('handle_menu')})
             else:
                 return jsonify({'success': False, 'message': 'An account with this email & password combination does not exist, please choose a different email or go back and create a new account with us.'})
         else:
@@ -126,7 +126,7 @@ def handle_menu():
     
     # if fragranceOfWeek:
     #     print(fragranceOfWeek['image_url'])
-    return render_template('menu.html', userName = session['name'], fragranceOfWeek=fragranceOfWeek)
+    return render_template('menu.html', fragranceOfWeek=fragranceOfWeek)
 
 
 
