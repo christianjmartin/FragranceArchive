@@ -671,6 +671,12 @@ def remove_rating():
 def profile_page():
     review_email = request.args.get('user_email', session.get('email')) # the one of the review
     viewer_email = session['email'] 
+
+    # STARTING LOGIC FOR SWAPPING EMAILS FOR USERNAME FOR URL / SECURITY PURPOSE 
+    actual_username = logic.getUsername(dbCursor, review_email)
+    viewer_username = logic.getUsername(dbCursor, viewer_email)
+
+
     sorting = "NONE"
     fragrance_collection = logic.getFragranceCollection(dbCursor, review_email, sorting)
     fragrance_wishlist = logic.getFragranceWishlist(dbCursor, review_email, sorting)
