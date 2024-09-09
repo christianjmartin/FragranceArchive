@@ -851,9 +851,9 @@ def request_fragrance():
         # print(house)
         goodRequest = logic.sendRequest(dbCursor, conn, name, house, session['email'])
         if goodRequest:
-            sorting = "NONE"
-            fragrance_collection = logic.getFragranceCollection(dbCursor, session['email'], sorting)
-            return render_template('collection.html', fragrance_collection=fragrance_collection)
+            # sorting = "NONE"
+            # fragrance_collection = logic.getFragranceCollection(dbCursor, session['email'], sorting)
+            return redirect(url_for('handle_menu'))
         else:
             return jsonify({'message': 'There was an error submitting your request, please try again'})
         # call fucntion in logic
