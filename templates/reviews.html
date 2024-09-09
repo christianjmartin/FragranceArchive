@@ -33,7 +33,7 @@
                     <button id = "searchButton" class="reviews-button" type="submit">Search</button>
                 </form>
             </div>
-            <img src="{{ url_for('static', filename='assets/fragrances11.jpg') }}" alt="fragrance icon" class="pic_container_reviews" />
+            <img src="{{ url_for('static', filename='assets/fragrances19 2.jpeg') }}" alt="fragrance icon" class="pic_container_reviews" />
             <div class="back_container">
                 <form action="/handle_menu" method="POST">
                     <button id = "menuButton" class="reviews-button" type="submit">Menu</button>
@@ -139,7 +139,7 @@
         const searchButton = document.getElementById('searchButton');
         const menuButton = document.getElementById('menuButton');
         
-        if (window.innerWidth >= 630) {
+        if (window.innerWidth > 630) {
             searchButton.textContent = 'Search Fragrance';
             menuButton.textContent = 'Main Menu';
         } else {

@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-                <img src="{{ url_for('static', filename='assets/fragrances14.jpg') }}" alt="fragrance icon" class="pic_container_review_page" />
+                <img src="{{ url_for('static', filename='assets/fragrances18.jpeg') }}" alt="fragrance icon" class="pic_container_review_page" />
 
                 <div class = "bruh4">
                 <div class="top-buttons-review-page2">
@@ -185,7 +185,7 @@
         function updateButtonText() {
             const menuButton = document.getElementById('menuButton');
             
-            if (window.innerWidth >= 630) {
+            if (window.innerWidth > 630) {
                 menuButton.textContent = 'Main Menu'
             } else {
                 menuButton.textContent = 'Menu';
