@@ -221,7 +221,7 @@ def add_fragrance_to_collection():
 
 @app.route('/remove_collection', methods=['GET', 'POST'])
 def remove_collection():
-    sorting = "NONE"
+    sorting = "AZbyName"
     fragrance_collection = logic.getFragranceCollection(dbCursor, session['email'], sorting)
     return render_template('removeCollection.html', fragrance_collection=fragrance_collection)
 
@@ -285,7 +285,7 @@ def add_fragrance_to_wishlist():
 
 @app.route('/remove_wishlist', methods=['GET', 'POST'])
 def remove_wishlist():
-    sorting = "NONE"
+    sorting = "AZbyName"
     fragrance_wishlist = logic.getFragranceWishlist(dbCursor, session['email'], sorting)
     return render_template('removeWishlist.html', fragrance_wishlist=fragrance_wishlist)
 
