@@ -948,10 +948,10 @@ def logout():
 
 
 
-# @app.errorhandler(KeyError)
-# def handle_key_error(e):
-#     # Handle the error when a session key is missing
-#     return redirect(url_for('home'))
+@app.errorhandler(KeyError)
+def handle_key_error(e):
+    # Handle the error when a session key is missing
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':
