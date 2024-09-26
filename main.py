@@ -61,8 +61,8 @@ else:
     app.config['MAIL_PASSWORD'] = os.getenv('APP_PASSWORD') # use an app password for security
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
-    mail = Mail(app)
 
+mail = Mail(app)
 dbCursor = conn.cursor()
 
 
