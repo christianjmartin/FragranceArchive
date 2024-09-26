@@ -47,6 +47,12 @@ if DATABASE_URL:
         host=url.hostname,
         port=url.port
     )
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = os.getenv('APP_EMAIL')
+    app.config['MAIL_PASSWORD'] = os.getenv('APP_PASSWORD') # use an app password for security
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
 else:
     # Fallback to local settings (useful for local development)
     conn = psycopg2.connect(
