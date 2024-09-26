@@ -21,10 +21,20 @@ import logic
 
 import urllib.parse as urlparse
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from itsdangerous import URLSafeTimedSerializer
+from flask import current_app as app
+from flask_mail import Mail, Message
+
 
 app = Flask(__name__)
 
 app.secret_key = os.getenv('SECRET_KEY')
+serializer = URLSafeTimedSerializer(app.secret_key)
+
+
 
 # Parse the database URL provided by Heroku
 DATABASE_URL = os.getenv('DATABASE_URL')
@@ -45,8 +55,17 @@ else:
         user="postgres",
         password=os.getenv('DB_PASSWORD'),
     )
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = os.getenv('APP_EMAIL')
+    app.config['MAIL_PASSWORD'] = os.getenv('APP_PASSWORD') # use an app password for security
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    mail = Mail(app)
 
 dbCursor = conn.cursor()
+
+
 
 @app.route('/')
 def home():
@@ -129,6 +148,65 @@ def handle_menu():
     return render_template('menu.html', fragranceOfWeek=fragranceOfWeek)
 
 
+
+
+
+@app.route('/reset_password', methods = ['GET'])
+def reset_password():
+    return render_template('resetPassword.html')
+
+@app.route('/send_reset_email', methods=['POST'])
+def send_reset_email():
+    email = request.form.get('email')
+    hasAccount = logic.getName(dbCursor, email)
+    if hasAccount is None:
+        return jsonify({'success': False, 'message': 'You do not have an account, please make one'})
+
+    token = serializer.dumps(email, salt='password-reset-salt')
+
+    reset_link = url_for('reset_password_with_token', token=token, _external=True)
+ 
+    msg = Message(subject='Password Reset Request',
+                  sender='fragrancearchive23@gmail.com',
+                  recipients=[email])
+
+    msg.body = f"Please click the following link to reset your password: {reset_link}\nIf you didn't request this, ignore this email.".encode('utf-8')
+
+    try:
+        mail.send(msg)
+        return jsonify({'success': True, 'redirect_url': url_for('home')})
+    except smtplib.SMTPException as e:
+        return jsonify({'success': False, 'message': f"Error sending email: {str(e)}"})
+    except Exception as e:
+        return jsonify({'success': False, 'message': f"Unexpected error: {str(e)}"})
+
+
+# Route to handle the reset link
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password_with_token(token):
+    try:
+        # Verify the token (it expires in 1 hour = 3600 seconds)
+        email = serializer.loads(token, salt='password-reset-salt', max_age=3600)
+    except Exception as e:
+        return jsonify({'success': False, 'message': 'The reset link is invalid or has expired.'})
+
+    if request.method == 'POST':
+        # Handle the new password submission
+        new_password = request.form.get('password')
+        # print(email)
+        # print(new_password)
+        if new_password:
+            # Update the password in the database using logic.updatePassword()
+            result = logic.changePassword(dbCursor, conn, email, new_password)
+            if result == 1:
+                return jsonify({'success': True, 'redirect_url': url_for('home')})
+            if result == 0:
+                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'})
+        else:
+            return jsonify({'success': False, 'message': 'Please provide a valid password.'})
+
+    # Render the password reset form (GET request)
+    return render_template('FinalResetPassword.html', email=email, token=token)
 
 
 
@@ -948,10 +1026,10 @@ def logout():
 
 #comment for sanity check of git still working ...
 
-@app.errorhandler(KeyError)
-def handle_key_error(e):
-    # Handle the error when a session key is missing
-    return redirect(url_for('home'))
+# @app.errorhandler(KeyError)
+# def handle_key_error(e):
+#     # Handle the error when a session key is missing
+#     return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

@@ -105,8 +105,28 @@ def validateLogin(dbCursor, email, password):
     return True
 
 
+def changePassword(dbCursor, conn, email, newPassword):
+    passwordCheck = passwordChecker(newPassword)
+    if not passwordCheck:
+        return 0
+    print(email)
+    print(newPassword)
+    hashed_password = hash_password(newPassword)
+    query = "UPDATE Client SET Password = %s WHERE Email = %s"
+    try: 
+        dbCursor.execute(query, (hashed_password, email))
+        if dbCursor.rowcount > 0:
+            print(f"Password updated for {email}.")
+        else:
+            print(f"No update occurred. No user found with the email: {email}")
+        conn.commit()
+        return 1
+    except Exception as e:
+        print("Error in query execution:", e)
+        conn.rollback()
+        return -1
 
-
+    
 
 
 # def validateLogin(dbCursor, email, password):

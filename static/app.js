@@ -52,6 +52,33 @@ $(document).ready(function() {
 
 
 
+// $(document).ready(function() {
+//     $('#passwordEmailForm').on('submit', function(event) {
+//         event.preventDefault();  // Prevent default form submission
+
+//         $.ajax({
+//             url: '/send_reset_email',
+//             type: 'POST',
+//             data: $(this).serialize(),  // Serialize form data
+//             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+//             success: function(response) {
+//                 if (response.success) {
+//                     // Redirect if successful
+//                     window.location.href = response.redirect_url;
+//                 } else {
+//                     // Show the error message (replace with custom UI if needed)
+//                     alert(response.message);
+//                 }
+//             },
+//             error: function() {
+//                 alert('An error occurred. Please try again.');
+//             }
+//         });
+//     });
+// });
+
+
+
 
 
 

@@ -774,6 +774,19 @@ html {
     flex-direction: column;
 }
 
+.form_container button {
+    width: 220px;
+}
+
+/* .bottomed {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+
+
 .form_container h4 {
     text-align: center
 }
