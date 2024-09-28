@@ -19,19 +19,16 @@
         $(document).ready(function() {
             var token = "{{ token }}"
             $('#changeUsernameForm').on('submit', function(event) {
-                event.preventDefault();  // Prevent default form submission
+                event.preventDefault();
 
                 $.ajax({
                     url: '/change_username_logic',
                     type: 'POST',
-                    data: $(this).serialize(),  // Serialize form data
-                    // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: $(this).serialize(),
                     success: function(response) {
                         if (response.success) {
-                            // Redirect if successful
                             window.location.href = response.redirect_url;
                         } else {
-                            // Show the error message (replace with custom UI if needed)
                             alert(response.message);
                         }
                     },
