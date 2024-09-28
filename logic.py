@@ -1,4 +1,5 @@
 import bcrypt
+import psycopg2
 
 def hash_password(password):
     salt = bcrypt.gensalt()
