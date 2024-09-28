@@ -1018,6 +1018,72 @@ def go_to_user_profile():
 
 
 
+@app.route('/manage_account', methods=['GET', 'POST'])
+def manage_account():
+    email = request.form.get('email')
+    username = request.form.get('username')
+    # print(email)
+    # print(username)
+    return render_template('manageAccount.html', email=email, username=username)
+
+@app.route('/change_username', methods=['GET', 'POST'])
+def change_username():
+    email = request.form.get('email')
+    username = request.form.get('username')
+    # print(email)
+    # print(username)
+    return render_template('changeUsername.html', email=email, username=username)
+
+@app.route('/delete_account', methods=['GET', 'POST'])
+def delete_account():
+    email = request.form.get('email')
+    username = request.form.get('username')
+    # print(email)
+    # print(username)
+    return render_template('deleteAccount.html', email=email, username=username)
+
+@app.route('/delete_account_logic', methods=['GET', 'POST'])
+def delete_account_logic():
+    entered_username = request.form.get('entered_username')
+    email = request.form.get('email')
+    username = request.form.get('username')
+    # print("actual: " + str(username))
+    # print("entered: " + str(entered_username))
+    if entered_username == username:
+        deleted = logic.deleteAccount(conn, dbCursor, email, entered_username)
+        if deleted:
+            return jsonify({'success': True, 'redirect_url': url_for('home')})
+        else:
+            return jsonify({'success': False, 'message': 'There was an error deleting your account'})
+    else:
+        return jsonify({'success': False, 'message': 'The username you entered does not match, try again'})
+        
+
+
+    
+
+@app.route('/change_username_logic', methods=['GET', 'POST'])
+def change_username_logic():
+    entered_username = request.form.get('entered_username')
+    email = request.form.get('email')
+    username = request.form.get('username')
+    unique = logic.getClientByUsername(dbCursor, entered_username)
+    if unique != None:
+        return jsonify({'success': False, 'message': 'An account with this username already exists, please choose a different username.'})
+    good_len = logic.validateNewUsername(entered_username)
+    if not good_len:
+        return jsonify({'success': False, 'message': 'The username you have entered is too long, the maximum number of characters allowed is 21.'})
+    updatedUsername = logic.updateUsername(conn, dbCursor, email, username, entered_username)
+    if updatedUsername:
+        session['username'] = entered_username
+        return jsonify({'success': True, 'redirect_url': url_for('profile_page', username = entered_username)})
+    else:
+        return jsonify({'success': False, 'message': 'Error updating username'})
+
+    
+
+
+
 
 
 @app.route('/logout', methods=['POST'])

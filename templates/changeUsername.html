@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="static/inappstyles.css">
+    <title>Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='inappstyles.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var form = document.getElementById("passwordEmailForm");
+            var form = document.getElementById("changeUsernameForm");
             form.addEventListener("keydown", function(event) {
                 if (event.key === "Enter") {
                     event.preventDefault();
@@ -17,14 +17,15 @@
         });
 
         $(document).ready(function() {
-            $('#passwordEmailForm').on('submit', function(event) {
+            var token = "{{ token }}"
+            $('#changeUsernameForm').on('submit', function(event) {
                 event.preventDefault();  // Prevent default form submission
 
                 $.ajax({
-                    url: '/send_reset_email',
+                    url: '/change_username_logic',
                     type: 'POST',
                     data: $(this).serialize(),  // Serialize form data
-                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                     success: function(response) {
                         if (response.success) {
                             // Redirect if successful
@@ -44,15 +45,15 @@
 </head>
 <body>
     <div class = "top_of_removal no-cursor">
-        <h1>Password Reset</h1>
+        <h1>Change your Username</h1>
     </div>
     <div class="form_container no-cursor">
-        <h4>Please enter your email, if you have an account associated with us you will recieve an email with password resetting instructions momentarily.
-        </h4>
-        <form id="passwordEmailForm" action="/send_reset_email" method="POST">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>   
-            <button class=btn2 type="submit">Submit</button> 
+        <h4>Please enter your new username</h4>
+        <form id="changeUsernameForm" action="/change_username_logic" method="POST">
+            <input type="text" name="entered_username" required>
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <button class="btn2" type="submit">Submit</button>
         </form>
     </div>
 </body>

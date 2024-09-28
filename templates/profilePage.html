@@ -209,6 +209,15 @@
         <form action="/handle_menu" method="POST">
             <button class="btn" type="submit">Main Menu</button>
         </form>
+        {% if viewer_email == user_email%}
+        <form action="/manage_account" method="POST">
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="hidden" name="email" value="{{ viewer_email }}">
+            <button class = "settings-image" type="submit" style="border: none; background-color: transparent;">
+                <img src="{{ url_for('static', filename='assets/settings.png') }}" alt="Manage Account">
+            </button>
+        </form>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -30,6 +30,11 @@
 }
 
 @media screen and (max-width: 1000px) {
+    .settings-image {
+        cursor: pointer;
+        margin-top: -18px;
+        transform: translateX(-20px);
+    }
 
     /* .follower-container {
         margin-top: -30px;
@@ -558,9 +563,9 @@
     }
     .button-container {
         justify-content: center;
-        margin-right: 20px;
-        margin-bottom: 125px;
-        margin-top: 50px;
+        margin-right: 0px;
+        margin-bottom: 150px;
+        margin-top: 35px;
     }
     .button-container button {
         max-width: 120px;
@@ -626,6 +631,20 @@
     }
     .myRating {
         color: rgb(255, 245, 246);;
+    }
+    .manage-button {
+        margin-top: -115px;
+    }
+
+    .settings-image {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 85px;
+    }
+    .settings-image img{
+        height: 80px;
+        width: 80px;
     }
    
 }

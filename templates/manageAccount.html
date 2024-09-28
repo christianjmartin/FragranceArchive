@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Account</title>
+    <link rel="stylesheet" href="static/inappstyles.css">
+</head>
+<body>
+    <div class = "top_of_removal no-cursor">
+        <h1>Account Management</h1>
+    </div>
+    <div class="form_container no-cursor">
+        <form action="/change_username" method="POST">
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <button class=btn2 type="submit">Change Username</button> 
+        </form>
+        <form action="/delete_account" method="POST">
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <button class=btn2 type="submit">Delete Account</button> 
+        </form>
+    </div>
+</body>
+</html>

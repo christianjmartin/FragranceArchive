@@ -145,6 +145,70 @@ def changePassword(dbCursor, conn, email, newPassword):
     
 #     return True
 
+
+
+
+
+
+def deleteAccount(conn, dbCursor, email, username):
+    query = "DELETE FROM ReviewLikes WHERE ClientEmail = %s"
+    dbCursor.execute(query, (email,))
+
+    queryy = "DELETE FROM ReviewLikes WHERE Review_ID IN (SELECT Review_ID FROM Reviews WHERE ClientEmail = %s)"
+    dbCursor.execute(queryy, (email,))
+
+    query2 = "DELETE FROM ReviewRatings WHERE Client_Email = %s"
+    dbCursor.execute(query2, (email,))
+
+    query3 = "DELETE FROM Reviews WHERE ClientEmail = %s"
+    dbCursor.execute(query3, (email,))
+
+    query4 = "DELETE FROM Follows WHERE FollowerEmail = %s OR FollowingEmail = %s"
+    dbCursor.execute(query4, (email, email))
+
+    query5 = "DELETE FROM Requests WHERE ClientEmail = %s"
+    dbCursor.execute(query5, (email,))
+
+    query6 = "DELETE FROM Collection WHERE ClientEmail = %s"
+    dbCursor.execute(query6, (email,))
+
+    query7 = "DELETE FROM Wishlist WHERE ClientEmail = %s"
+    dbCursor.execute(query7, (email,))
+
+    query8 = "DELETE FROM Client WHERE Email = %s AND Username = %s"
+    try:
+        dbCursor.execute(query8, (email, username))
+        conn.commit()
+ 
+        if dbCursor.rowcount == 0:
+            # print("No account was deleted. No matching email and username found.")
+            return False
+        else:
+            # print("Account successfully deleted.")
+            return True
+    except Exception as e:
+        print("Error in query execution: " + str(e))
+        return False
+
+
+
+def updateUsername(conn, dbCursor, email, username, entered_username):
+    query = "UPDATE Client SET Username = %s WHERE email = %s AND username = %s"
+    try:
+        dbCursor.execute(query, (entered_username, email, username))
+        conn.commit()
+        if dbCursor.rowcount == 0:
+            # print("No account was deleted. No matching email and username found.")
+            return False
+        else:
+            # print("Account successfully deleted.")
+            return True
+    except Exception as e:
+        print("Error in query execution: " + str(e))
+        return False
+
+
+
 def getName(dbCursor, email):
     query = "SELECT Name FROM Client WHERE Email = %s"
     dbCursor.execute(query,(email,))
@@ -153,6 +217,27 @@ def getName(dbCursor, email):
         return result[0]
     else:
         return None
+    
+def getClientByUsername(dbCursor, username):
+    query = "SELECT * FROM Client WHERE Username = %s"
+    try: 
+        dbCursor.execute(query, (username,))
+        row2 = dbCursor.fetchone()
+    except Exception as e:
+        print("Error in query execution:", e)
+        return None
+
+    if row2 is not None:
+        return row2
+    
+    return None
+
+def validateNewUsername(username):
+    if len(username) > 21:
+        return False
+    else:
+        return True
+
 
 
 def searchFragranceByName(dbCursor, query):

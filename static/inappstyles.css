@@ -1134,6 +1134,14 @@ h1 {
 .button-container form {
     margin: 0 10px;
 }
+.button-container .btn button {
+    max-width: 100px;
+}
+
+.manage-button {
+    position: absolute;
+    transform: translateX(500px);
+}
 
 
 .review-item {
@@ -1426,3 +1434,12 @@ option {
     gap: 10px;
 }
 
+.settings-image {
+    cursor: pointer;
+    margin-top: -5px;
+    transform: translateX(-20px);
+}
+.settings-image img{
+    height: 100px;
+    width: 100px;
+}
