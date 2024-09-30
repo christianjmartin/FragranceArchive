@@ -1103,6 +1103,13 @@ def handle_key_error(e):
     # Handle the error when a session key is missing
     return redirect(url_for('home'))
 
+@app.before_request
+def ensure_session():
+    open_routes = ['home', 'handle_login', 'handle_signup', 'reset_password', 'send_reset_email', 'reset_password_with_token', 'static']
+    if request.endpoint not in open_routes and 'username' not in session:
+        print("Redirecting to home, no session found")
+        return redirect(url_for('home'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
