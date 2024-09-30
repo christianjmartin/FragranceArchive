@@ -1,8 +1,10 @@
-
 // SIGNUP Error Responses 
 $(document).ready(function() {
     $('#signupForm').on('submit', function(event) {
         event.preventDefault();  // Prevent default form submission
+
+        var submitButton = $(this).find('button[type="submit"]');
+        submitButton.prop('disabled', true);  // Disable the button to prevent multiple submissions
 
         $.ajax({
             url: '/sign_up',
@@ -13,22 +15,27 @@ $(document).ready(function() {
                     // Redirect if successful
                     window.location.href = response.redirect_url;
                 } else {
-                    // Show the error message
+                    // Show the error message and re-enable the button
                     alert(response.message);  // You can replace this with a custom popup or inline error message
+                    submitButton.prop('disabled', false);  // Re-enable the button on failure
                 }
             },
             error: function() {
                 alert('An error occurred. Please try again.');
+                submitButton.prop('disabled', false);  // Re-enable the button on error
             }
         });
     });
 });
 
 
-// LOGIN Error Responses 
+// LOGIN Error Responses
 $(document).ready(function() {
     $('#loginForm').on('submit', function(event) {
         event.preventDefault();  // Prevent default form submission
+        
+        var submitButton = $(this).find('button[type="submit"]');
+        submitButton.prop('disabled', true);  // Disable the button to prevent multiple submissions
 
         $.ajax({
             url: '/login',
@@ -41,41 +48,17 @@ $(document).ready(function() {
                 } else {
                     // Show the error message
                     alert(response.message);  // You can replace this with a custom popup or inline error message
+                    submitButton.prop('disabled', false);  // Re-enable the button on failure
                 }
             },
             error: function() {
                 alert('An error occurred. Please try again.');
+                submitButton.prop('disabled', false);  // Re-enable the button on error
             }
         });
     });
 });
 
-
-
-// $(document).ready(function() {
-//     $('#passwordEmailForm').on('submit', function(event) {
-//         event.preventDefault();  // Prevent default form submission
-
-//         $.ajax({
-//             url: '/send_reset_email',
-//             type: 'POST',
-//             data: $(this).serialize(),  // Serialize form data
-//             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-//             success: function(response) {
-//                 if (response.success) {
-//                     // Redirect if successful
-//                     window.location.href = response.redirect_url;
-//                 } else {
-//                     // Show the error message (replace with custom UI if needed)
-//                     alert(response.message);
-//                 }
-//             },
-//             error: function() {
-//                 alert('An error occurred. Please try again.');
-//             }
-//         });
-//     });
-// });
 
 
 
