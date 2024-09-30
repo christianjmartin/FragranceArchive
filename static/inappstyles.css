@@ -104,6 +104,22 @@ html {
     border: 1.5px solid rgb(117, 44, 121);
 }
 
+.btn8 {
+    margin-top: 15px;
+    padding: 12px 17px;
+    font-size: 14px;
+    border: none;
+    background-color: rgba(30, 12, 31, 0.07);
+    color: gray;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn8:hover {
+    background-color: rgba(30, 12, 31, 17%);
+}
+
 .btn5 {
     padding: 3px 7px;
     font-size: 10px;
@@ -772,6 +788,10 @@ html {
     gap: 20px;
     align-items: center;
     flex-direction: column;
+}
+
+.form_container h4 {
+    max-width: 550px;
 }
 
 .form_container button {
