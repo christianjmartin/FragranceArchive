@@ -33,7 +33,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#loginForm').on('submit', function(event) {
         event.preventDefault();  // Prevent default form submission
-        
+
         var submitButton = $(this).find('button[type="submit"]');
         submitButton.prop('disabled', true);  // Disable the button to prevent multiple submissions
 
@@ -43,22 +43,30 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(response) {
                 if (response.success) {
-                    // Redirect if successful
+                    // Redirect immediately
                     window.location.href = response.redirect_url;
+
+                    // Re-enable the button after 5 seconds (even if user comes back)
+                    setTimeout(function() {
+                        submitButton.prop('disabled', false);
+                    }, 5000);
                 } else {
                     // Show the error message
-                    alert('bruh');  // You can replace this with a custom popup or inline error message
-                    submitButton.prop('disabled', false);  // Re-enable the button on failure
+                    alert(response.message);
+
+                    // Re-enable the button immediately on failure
+                    submitButton.prop('disabled', false);
                 }
             },
             error: function() {
                 alert('An error occurred. Please try again.');
-                submitButton.prop('disabled', false);  // Re-enable the button on error
+
+                // Re-enable the button immediately on error
+                submitButton.prop('disabled', false);
             }
         });
     });
 });
-
 
 
 
