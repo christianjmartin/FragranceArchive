@@ -31,24 +31,11 @@ $(document).ready(function() {
 
 // LOGIN Error Responses
 $(document).ready(function() {
-    const submitButton = $('#loginForm').find('button[type="submit"]');
-    
-    // Check if button state was saved in localStorage
-    if (localStorage.getItem('loginButtonDisabled') === 'true') {
-        submitButton.prop('disabled', true);  // Keep button disabled
-    }
-
-    // Re-enable button after 5 seconds if it was disabled
-    setTimeout(function() {
-        submitButton.prop('disabled', false);
-        localStorage.removeItem('loginButtonDisabled');  // Clean up storage
-    }, 5000);
-
     $('#loginForm').on('submit', function(event) {
         event.preventDefault();  // Prevent default form submission
-
+        
+        var submitButton = $(this).find('button[type="submit"]');
         submitButton.prop('disabled', true);  // Disable the button to prevent multiple submissions
-        localStorage.setItem('loginButtonDisabled', 'true');  // Save button state
 
         $.ajax({
             url: '/login',
@@ -56,17 +43,17 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(response) {
                 if (response.success) {
-                    window.location.href = response.redirect_url;  // Redirect immediately
+                    // Redirect if successful
+                    window.location.href = response.redirect_url;
                 } else {
-                    alert(response.message);  // Show error message
-                    submitButton.prop('disabled', false);  // Re-enable button on failure
-                    localStorage.removeItem('loginButtonDisabled');  // Clean up storage
+                    // Show the error message
+                    alert(response.message);  // You can replace this with a custom popup or inline error message
+                    submitButton.prop('disabled', false);  // Re-enable the button on failure
                 }
             },
             error: function() {
                 alert('An error occurred. Please try again.');
-                submitButton.prop('disabled', false);  // Re-enable on error
-                localStorage.removeItem('loginButtonDisabled');  // Clean up storage
+                submitButton.prop('disabled', false);  // Re-enable the button on error
             }
         });
     });
