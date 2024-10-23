@@ -47,7 +47,7 @@ $(document).ready(function() {
                     window.location.href = response.redirect_url;
                 } else {
                     // Show the error message
-                    alert(response.message);  // You can replace this with a custom popup or inline error message
+                    alert('bruh');  // You can replace this with a custom popup or inline error message
                     submitButton.prop('disabled', false);  // Re-enable the button on failure
                 }
             },
