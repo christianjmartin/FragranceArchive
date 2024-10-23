@@ -14,6 +14,9 @@ $(document).ready(function() {
                 if (response.success) {
                     // Redirect if successful
                     window.location.href = response.redirect_url;
+                    setTimeout(function() {
+                        submitButton.prop('disabled', false);
+                    }, 5000);
                 } else {
                     // Show the error message and re-enable the button
                     alert(response.message);  // You can replace this with a custom popup or inline error message
@@ -45,23 +48,17 @@ $(document).ready(function() {
                 if (response.success) {
                     // Redirect immediately
                     window.location.href = response.redirect_url;
-
                     // Re-enable the button after 5 seconds (even if user comes back)
                     setTimeout(function() {
                         submitButton.prop('disabled', false);
                     }, 5000);
                 } else {
-                    // Show the error message
                     alert(response.message);
-
-                    // Re-enable the button immediately on failure
                     submitButton.prop('disabled', false);
                 }
             },
             error: function() {
                 alert('An error occurred. Please try again.');
-
-                // Re-enable the button immediately on error
                 submitButton.prop('disabled', false);
             }
         });
