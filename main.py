@@ -170,7 +170,7 @@ def send_reset_email():
 
     token = serializer.dumps(email, salt='password-reset-salt')
 
-    reset_link = url_for('reset_password_with_token', token=token, _external=True)
+    reset_link = url_for('reset_password_with_token', token=token, _external=True, _scheme = 'https')
  
     msg = Message(subject='Password Reset Request',
                   sender='fragrancearchive23@gmail.com',
