@@ -242,7 +242,7 @@ def validateNewUsername(username):
 def searchFragranceByName(dbCursor, query):
     query = query.strip()
     input = '%' + query + '%'
-    query = "SELECT * FROM Fragrance WHERE REPLACE(LOWER(Name), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '')"
+    query = "SELECT * FROM Fragrance WHERE REPLACE(LOWER(Name), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '') LIMIT 100"
     try: 
         dbCursor.execute(query, (input,))
         rows = dbCursor.fetchall()
@@ -259,7 +259,7 @@ def searchFragranceByName(dbCursor, query):
 def searchFragranceByHouse(dbCursor, query):
     query = query.strip()
     input = '%' + query + '%'
-    query = "SELECT * FROM Fragrance WHERE REPLACE(LOWER(House), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '')"
+    query = "SELECT * FROM Fragrance WHERE REPLACE(LOWER(House), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '') LIMIT 100"
     try: 
         dbCursor.execute(query, (input,))
         rows = dbCursor.fetchall()
@@ -280,7 +280,7 @@ def searchFragranceByNameAndHouse(dbCursor, name, house):
     input = '%' + name + '%'
     input2 = '%' + house + '%'
     query = "SELECT * FROM Fragrance WHERE REPLACE(LOWER(name), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '') \
-             AND REPLACE(LOWER(house), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '')"
+             AND REPLACE(LOWER(house), ' ', '') LIKE REPLACE(LOWER(%s), ' ', '') LIMIT 100"
     try: 
         dbCursor.execute(query, (input, input2))
         rows = dbCursor.fetchall()
@@ -978,6 +978,7 @@ def searchUsers(dbCursor, query):
         FROM Client 
         WHERE Username ILIKE %s
         ORDER BY LOWER(Username)
+        LIMIT 100
     """
     dbCursor.execute(query, (search_query,))
     users = dbCursor.fetchall()
