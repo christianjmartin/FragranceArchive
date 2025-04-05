@@ -1463,3 +1463,12 @@ option {
     height: 100px;
     width: 100px;
 }
+
+
+.password-reset-disclaimer {
+    width: 50%;
+    opacity: 50%;
+    font-size: 0.75rem;
+    margin-top: 20px;
+    text-align: center;
+}
