@@ -89,22 +89,22 @@ def back_to_index():
 def handle_signup():
     if request.method == 'POST':
         # Handle form submission
-        name = request.form.get('name')
+        # name = request.form.get('name')
         email = request.form.get('email')
-        lastname = request.form.get('lastname')
+        # lastname = request.form.get('lastname')
         username = request.form.get('username')
         session['username'] = username
         session['email'] = email
-        session['name'] = name
+        # session['name'] = name
         password = request.form.get('password')
 
         # Process form data (validate, create user, etc.)
-        if name and email and password:
-            validSignup = logic.validateSignup(dbCursor, conn, name, email, password, lastname, username)
+        if email and password:
+            validSignup = logic.validateSignup(dbCursor, conn, email, password, username)
             if validSignup == 3:
                 return jsonify({'success': True, 'redirect_url': url_for('handle_menu')})
             elif validSignup == 0:
-                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'})
+                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit'})
             elif validSignup == 1:
                 return jsonify({'success': False, 'message': 'An account with this email address already exists, please choose a different email or go back and log in.'})
             elif validSignup == 2:
@@ -125,7 +125,7 @@ def handle_login():
         email = request.form.get('email')
         password = request.form.get('password')
         session['email'] = email
-        session['name'] = logic.getName(dbCursor, email)
+        # session['name'] = logic.getName(dbCursor, email)
         session['username'] = logic.getUsername(dbCursor, email)
 
         # Process form data (validate, create user, etc.)

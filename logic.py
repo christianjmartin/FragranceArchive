@@ -13,7 +13,7 @@ def passwordChecker(password):
     counter_upper = False
     counter_lower = False
     counter_digit = False
-    counter_symbol = False
+    # counter_symbol = False
 
     for i in password:
         if 'A' <= i <= 'Z':
@@ -22,17 +22,17 @@ def passwordChecker(password):
             counter_lower = True
         elif '0' <= i <= '9':
             counter_digit = True
-        else:
-            counter_symbol = True
+        # else:
+        #     counter_symbol = True
 
-    if counter_upper == False or counter_lower == False or counter_digit == False or counter_symbol == False:
+    if counter_upper == False or counter_lower == False or counter_digit == False:
         return False
     else:
         return True
     
 
-def validateSignup(dbCursor, conn, name, email, password, lastname, username):
-    name = name.strip()
+def validateSignup(dbCursor, conn, email, password, username):
+    # name = name.strip()
     email = email.strip()
     password = password.strip()
 
@@ -67,9 +67,9 @@ def validateSignup(dbCursor, conn, name, email, password, lastname, username):
     
     hashed_password = hash_password(password)  # hashed_password is in bytes
 
-    query3 = "INSERT INTO Client (Email, Name, Password, LastName, Username) VALUES (%s, %s, %s, %s, %s)"
+    query3 = "INSERT INTO Client (Email, Password, Username) VALUES (%s, %s, %s)"
     try: 
-        dbCursor.execute(query3, (email, name, hashed_password, lastname, username))
+        dbCursor.execute(query3, (email, hashed_password, username))
         conn.commit()
         return 3
     except Exception as e:
@@ -209,7 +209,7 @@ def updateUsername(conn, dbCursor, email, username, entered_username):
 
 
 def getName(dbCursor, email):
-    query = "SELECT Name FROM Client WHERE Email = %s"
+    query = "SELECT Username FROM Client WHERE Email = %s"
     dbCursor.execute(query,(email,))
     result = dbCursor.fetchone()
     if result is not None:
