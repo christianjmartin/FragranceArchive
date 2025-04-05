@@ -104,7 +104,7 @@ def handle_signup():
             if validSignup == 3:
                 return jsonify({'success': True, 'redirect_url': url_for('handle_menu')})
             elif validSignup == 0:
-                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit'})
+                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.'})
             elif validSignup == 1:
                 return jsonify({'success': False, 'message': 'An account with this email address already exists, please choose a different email or go back and log in.'})
             elif validSignup == 2:
@@ -207,7 +207,7 @@ def reset_password_with_token(token):
             if result == 1:
                 return jsonify({'success': True, 'redirect_url': url_for('home')})
             if result == 0:
-                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'})
+                return jsonify({'success': False, 'message': 'Invalid Password, Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.'})
         else:
             return jsonify({'success': False, 'message': 'Please provide a valid password.'})
 
